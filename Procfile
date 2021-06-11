@@ -1,1 +1,1 @@
-eb: gunicorn schoolApp.wsgi --log-file -
+eb: gunicorn SchoolApp.wsgi --log-file -
