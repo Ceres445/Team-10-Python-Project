@@ -90,9 +90,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
@@ -125,3 +125,5 @@ DATABASES['default'].update(db_from_env)
 
 # set allowed hosts for heroku
 ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1']
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
