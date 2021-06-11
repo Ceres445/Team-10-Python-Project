@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # DEBUG = True
 DEBUG = False
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&nvk9yq0&_*#(=gxgd-*-w')
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -124,4 +124,4 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 # set allowed hosts for heroku
-ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1']
