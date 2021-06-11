@@ -1,1 +1,1 @@
-web: gunicorn SchoolApp.wsgi --log-file -
+web: gunicorn --chdir SchoolApp/ SchoolApp.wsgi --log-file -
