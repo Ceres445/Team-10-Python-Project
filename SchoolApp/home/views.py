@@ -8,9 +8,9 @@ import home.forms as forms
 
 
 def index(request):
-    return render(request, "home/index.html")
+    # return render(request, "home/index.html")
     # rick roll
-    # return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+    return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 
 
 def register(request):
