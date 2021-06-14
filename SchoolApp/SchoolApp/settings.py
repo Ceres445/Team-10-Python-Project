@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = False
+DEBUG = True
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&nvk9yq0&_*#(=gxgd-*-w')
 # ALLOWED_HOSTS = []
 
@@ -111,6 +111,7 @@ USE_I18N = True
 
 USE_L10N = True
 
+
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
@@ -125,6 +126,6 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 # set allowed hosts for heroku
-ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost']
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
