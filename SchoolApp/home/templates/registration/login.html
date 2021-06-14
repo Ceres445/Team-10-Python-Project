@@ -43,9 +43,9 @@
     <form method="post">
          {% csrf_token %}
         <div class="container">
-            <div style="text-align: left;"> <label for=" {{ form.username.id_for_label }}">Username  </label> </div>
+            <div class = 'input-label'> <label for=" {{ form.username.id_for_label }}">Username  </label> </div>
             <label> <input type="text" placeholder="Enter Username" name="username" autofocus autocomplete="username" required id="{{ form.username.id_for_label }}"></label>
-            <div style="text-align: left;"> <label for="{{ form.password.id_for_label }}">Password </label> </div>
+            <div class = 'input-label'> <label for="{{ form.password.id_for_label }}">Password </label> </div>
             <label>
                 <input type="password" placeholder="Enter Password" name="password" id=" {{ form.password.id_for_label }}" autocomplete="current-password" required>
             </label>
