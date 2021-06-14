@@ -1,15 +1,119 @@
+<!--<!DOCTYPE html>-->
+{#<!--{% extends 'base.html' %}-->#}
+{##}
+{#<!--{% block content %}-->#}
+{#<!--<h2>Login</h2>-->#}
+{#<!--    Hello There-->#}
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{# {{ form.as_p }}#}
+{#<input type="submit" value="Login">#}
+{##}
+{#</form>#}
+{##}
+{#<!--<a href="{% url 'home_page' %}">Back to dashboard</a>-->#}
+{#<!--    <a href="{% url 'register' %}">Register</a>-->#}
+{#<!--{% endblock %}-->#}
+
 <!DOCTYPE html>
-{% extends 'base.html' %}
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Sign in to portal </title>
+<style>
+body {
+  font-family: Calibri, Helvetica, sans-serif;
+  background-color: white;
+  text-align: center;
+}
+.errorlist{
+background-color: red;
+}
+.redirect{
+    margin-top: 16px;
+    border: #1b1b1b 1px solid;
+    border-radius: 6px;
+    padding: 10px;
+}
+.form-container{
+    {#background-color: #5b80b2;#}
+    width: 340px;
+    padding: 5%;
+    margin: 0 auto 10px;
+}
+.submit {
+       background-color: white;
+       width: 90%;
+        color: black;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+        border: 2px solid #1e6ed6
+         }
+ input[type=text], input[type=password] {
+        width: 90%;
+        margin: 8px 0;
+        padding: 12px 20px;
+        display: inline-block;
+        box-sizing: border-box;
+        text-align: center;
+        border: 1px solid #6f94c6;
+        border-top: 0;
+        border-radius: 6px;
+    }
+ .submit:hover {
+        background-color: #1e6ed6;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
 
-{% block content %}
-<h2>Login</h2>
-    Hello There
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-</form>
+ .container {
+        border: #264b5d 1px solid;
+        padding: 25px;
+        background-color: #79aec8;
+        border-radius: 16px;
 
-<a href="{% url 'home_page' %}">Back to dashboard</a>
-    <a href="{% url 'register' %}">Register</a>
-{% endblock %}
+    }
+</style>
+</head>
+<body>
+<div class="form-container">
+    <div style="text-align: center;"> <h1> Sign in </h1> </div>
+    {% if form.non_field_errors %}
+        {% if form.non_field_errors|length > 1 %}
+            <ul class="errorlist">
+            {% for error in form.non_field_errors %}
+                <li class="error">{{ error|escape }}</li>
+            {% endfor %}
+            </ul>
+
+        {% else %}
+            <div class="errorlist">
+            <p class="error"> {{ form.non_field_errors.0 }}</p>
+            </div>
+        {%  endif %}
+    {% endif %}
+    <form method="post">
+         {% csrf_token %}
+        <div class="container">
+            <div style="text-align: left;"> <label for=" {{ form.username.id_for_label }}">Username  </label> </div>
+            <label> <input type="text" placeholder="Enter Username" name="username" autofocus autocomplete="username" required id="{{ form.username.id_for_label }}"></label>
+            <div style="text-align: left;"> <label for="{{ form.password.id_for_label }}">Password </label> </div>
+            <label>
+                <input type="password" placeholder="Enter Password" name="password" id=" {{ form.password.id_for_label }}" autocomplete="current-password" required>
+            </label>
+            <br> <input class = 'submit' type="submit" name="Sign in "><br>
+
+        </div>
+    </form>
+<div class="redirect">
+    <a href="{% url 'home_page' %}">Back to dashboard</a>
+</div>
+<div class="redirect">
+    New here? <a href="{% url 'register' %}">Sign up now</a>
+</div>
+</div>
+</body>
+</html>
