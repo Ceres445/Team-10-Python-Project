@@ -23,3 +23,9 @@ def register(request):
             user = form.save()
             login(request, user)
             return redirect(reverse("home_page"))
+        else:
+            # form is invalid, return error
+            return render(
+                request, "home/register.html",
+                {"form": form}
+            )
