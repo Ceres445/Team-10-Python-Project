@@ -50,7 +50,7 @@
                 <input type="password" placeholder="Enter Password" name="password" id=" {{ form.password.id_for_label }}" autocomplete="current-password" required>
             </label>
             <br> <input class = 'submit' type="submit" name="Sign in "><br>
-
+            <a class="forgot-link" tabindex="0" href="{% url 'password_reset' %}">Forgot password?</a>
         </div>
     </form>
 <div class="redirect">

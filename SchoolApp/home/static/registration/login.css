@@ -1,7 +1,9 @@
 body{
-  font-family: Roboto, Helvetica, sans-serif;
-  background-color: white;
-  text-align: center;
+    font-family: Roboto, sans-serif;
+    background-color: white;
+/*rgb(13, 17, 23);*/
+    text-align: center;
+    /*color:rgb(201, 209, 217)*/
 }
 .redirect{
     margin-top: 16px;
@@ -51,6 +53,7 @@ body{
         border: #264b5d 1px solid;
         padding: 25px;
         background-color: #79aec8;
+                /*rgb(22, 27, 34);*/
         border-radius: 16px;
 
     }
@@ -69,4 +72,12 @@ body{
     border-width: 1px ;
     border-color:rgb(255, 123, 114) ;
     border-style: solid;
+}
+a{
+    color: #447e9b; ;
+    text-decoration: none;
+}
+.forgot-link{
+    position: absolute!important;
+
 }
