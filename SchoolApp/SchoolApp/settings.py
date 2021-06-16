@@ -62,6 +62,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # 'loaders': [
+            #     'django.template.loaders.app_directories.Loader'
+            # ]
         },
     },
 ]
@@ -116,3 +119,6 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025
