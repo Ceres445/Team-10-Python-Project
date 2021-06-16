@@ -1,6 +1,5 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
-
 # Create your views here.
 from django.urls import reverse
 

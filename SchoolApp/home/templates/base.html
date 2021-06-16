@@ -21,6 +21,7 @@
       {% block extra_head %}{% endblock %}
   </head>
   <body>
+  {%  block navbar %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -68,6 +69,7 @@
         </div>
       </div>
     </nav>
+  {% endblock %}
 {% block content %}
 {% endblock %}
   </body>
