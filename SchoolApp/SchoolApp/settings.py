@@ -131,7 +131,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 # set allowed hosts for heroku
-ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost', '0.0.0.0']
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
