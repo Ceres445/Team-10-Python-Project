@@ -8,3 +8,4 @@ sqlparse==0.4.1
 whitenoise==5.2.0 
 python-dotenv==0.17.1
 django-compressor-parceljs
+django-compressor
