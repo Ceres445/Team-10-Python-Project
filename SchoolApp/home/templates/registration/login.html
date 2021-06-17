@@ -13,19 +13,20 @@
 	<body>
 		<div class="form-container">
 			<div style="text-align: center"><h1>Sign in</h1></div>
-			{% if form.non_field_errors %} {% if form.non_field_errors|length >
-			1 %}
-			<ul class="errorlist">
-				{% for error in form.non_field_errors %}
-				<li class="error">{{ error|escape }}</li>
-				{% endfor %}
-			</ul>
+			{% if form.non_field_errors %}
+                {% if form.non_field_errors|length > 1 %}
+                    <ul class="errorlist">
+                        {% for error in form.non_field_errors %}
+                           <li class="error">{{ error|escape }}</li>
+                        {% endfor %}
+                    </ul>
 
-			{% else %}
-			<div class="errorlist">
-				<p class="error">{{ form.non_field_errors.0 }}</p>
-			</div>
-			{% endif %} {% endif %}
+                {% else %}
+                    <div class="errorlist">
+                        <p class="error">{{ form.non_field_errors.0 }}</p>
+                    </div>
+			    {% endif %}
+            {% endif %}
 			<form method="post">
 				{% csrf_token %}
 				<div class="container">
