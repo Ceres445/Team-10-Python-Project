@@ -2,10 +2,10 @@
   "name": "schoolapp",
   "version": "1.0.0",
   "description": "Computer Science project, a school student portal web application",
-  "main": "static/dist",
+  "main": "home/static/dist",
   "scripts": {
-    "build": "parcel build static/src/parcel-entry.js",
-    "start": "parcel static/src/parcel-entry.js --hmr-port 34471 --out-file main"
+    "build": "parcel build home/static/src/parcel-entry.js",
+    "start": "parcel home/static/src/parcel-entry.js --hmr-port 34471 --dist-dir static/dist"
   },
   "author": "Ceres445",
   "license": "ISC",
