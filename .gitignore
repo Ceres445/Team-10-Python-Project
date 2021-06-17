@@ -2,7 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-SchoolApp/_staticfiles
 # C extensions
 *.so
 
@@ -61,7 +60,6 @@ coverage.xml
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-SchoolApp/staticfiles
 
 # Flask stuff:
 instance/
