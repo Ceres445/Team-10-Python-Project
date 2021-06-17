@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 {% extends 'base.html' %} {% load static %} {% block extra_head %}
-<link
-	rel="stylesheet"
-	type="text/css"
-	href=" {% static 'registration/login.css' %}"
-/>
+    {% load compress %}
+    {% compress css file style %}
+       <link
+			rel="stylesheet"
+			type="text/css"
+			href="{% static 'registration/login.css' %}"
+		/>
+    {% endcompress %}
 {% endblock %} {% block navbar %} {% endblock %} {% block content %}
 <h2>Register</h2>
 {% if form.non_field_errors %} {% if form.non_field_errors|length > 1 %}
