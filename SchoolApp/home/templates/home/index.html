@@ -1,6 +1,2 @@
-<!DOCTYPE html>
-{% extends 'base.html' %}
-
-{% block content %}
-Hello, {{ user.username|default:'Guest' }}!
-{% endblock %}
+<!DOCTYPE html> {% extends 'base.html' %}
+{% block content %} Hello,{{ user.username|default:'Guest' }}! {% endblock %}
