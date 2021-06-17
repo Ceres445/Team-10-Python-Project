@@ -5,6 +5,17 @@ body {
 	text-align: center;
 	/*color:rgb(201, 209, 217)*/
 }
+:root{
+    --mode: dark;
+
+}
+
+body{
+  font-family: Roboto, Helvetica, sans-serif;
+  background-color: white;
+  text-align: center;
+>>>>>>> Stashed changes:SchoolApp/static/src/registration/login.css
+}
 .redirect {
 	margin-top: 16px;
 	border: #1b1b1b 1px solid;
@@ -50,7 +61,7 @@ input[type='email'] {
 	background-color: #1e6ed6;
 	color: white;
 	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-		0 17px 0px 0 rgba(0, 0, 0, 0.19);
+		0 17px 0 0 rgba(0, 0, 0, 0.19);
 }
 .container {
 	border: #264b5d 1px solid;

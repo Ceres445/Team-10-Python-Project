@@ -1,9 +1,10 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 # Create your views here.
+
 from django.urls import reverse
 
-import home.forms as forms
+from home.forms import CustomUserCreationForm
 
 
 def index(request):
@@ -14,10 +15,10 @@ def register(request):
     if request.method == "GET":
         return render(
             request, "home/register.html",
-            {"form": forms.CustomUserCreationForm}
+            {"form": CustomUserCreationForm}
         )
     elif request.method == "POST":
-        form = forms.CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
