@@ -135,7 +135,6 @@ ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost', 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'npm.finders.NpmFinder',
     'compressor.finders.CompressorFinder']
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
