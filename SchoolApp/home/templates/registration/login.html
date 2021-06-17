@@ -1,64 +1,80 @@
-<!--<!DOCTYPE html>-->
-{#<!--{% extends 'base.html' %}-->#}
-{##}
-{#<!--{% block content %}-->#}
-{#<!--<h2>Login</h2>-->#}
-{#<!--    Hello There-->#}
-{#<form method="post">#}
-{#    {% csrf_token %}#}
-{# {{ form.as_p }}#}
-{#<input type="submit" value="Login">#}
-{##}
-{#</form>#}
-{##}
-{#<!--<a href="{% url 'home_page' %}">Back to dashboard</a>-->#}
-{#<!--    <a href="{% url 'register' %}">Register</a>-->#}
-{#<!--{% endblock %}-->#}
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title> Sign in to portal </title>
-{% load static %}
-<link rel="stylesheet" type="text/css" href=" {% static 'registration/login.css' %} ">
-</head>
-<body>
-<div class="form-container">
-    <div style="text-align: center;"> <h1> Sign in </h1> </div>
-    {% if form.non_field_errors %}
-        {% if form.non_field_errors|length > 1 %}
-            <ul class="errorlist">
-            {% for error in form.non_field_errors %}
-                <li class="error">{{ error|escape }}</li>
-            {% endfor %}
-            </ul>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Sign in to portal</title>
+		{% load static %}
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href=" {% static 'registration/login.css' %} "
+		/>
+	</head>
+	<body>
+		<div class="form-container">
+			<div style="text-align: center"><h1>Sign in</h1></div>
+			{% if form.non_field_errors %} {% if form.non_field_errors|length >
+			1 %}
+			<ul class="errorlist">
+				{% for error in form.non_field_errors %}
+				<li class="error">{{ error|escape }}</li>
+				{% endfor %}
+			</ul>
 
-        {% else %}
-            <div class="errorlist">
-            <p class="error"> {{ form.non_field_errors.0 }}</p>
-            </div>
-        {%  endif %}
-    {% endif %}
-    <form method="post">
-         {% csrf_token %}
-        <div class="container">
-            <div class = 'input-label'> <label for=" {{ form.username.id_for_label }}">Username  </label> </div>
-            <label> <input type="text" placeholder="Enter Username" name="username" autofocus autocomplete="username" required id="{{ form.username.id_for_label }}"></label>
-            <div class = 'input-label'> <label for="{{ form.password.id_for_label }}">Password </label> </div>
-            <label>
-                <input type="password" placeholder="Enter Password" name="password" id=" {{ form.password.id_for_label }}" autocomplete="current-password" required>
-            </label>
-            <br> <input class = 'submit' type="submit" name="Sign in "><br>
-            <a class="forgot-link" tabindex="0" href="{% url 'password_reset' %}">Forgot password?</a>
-        </div>
-    </form>
-<div class="redirect">
-    <a href="{% url 'home_page' %}">Back to dashboard</a>
-</div>
-<div class="redirect">
-    New here? <a href="{% url 'register' %}">Sign up now</a>
-</div>
-</div>
-</body>
+			{% else %}
+			<div class="errorlist">
+				<p class="error">{{ form.non_field_errors.0 }}</p>
+			</div>
+			{% endif %} {% endif %}
+			<form method="post">
+				{% csrf_token %}
+				<div class="container">
+					<div class="input-label">
+						<label for=" {{ form.username.id_for_label }}"
+							>Username
+						</label>
+					</div>
+					<label>
+						<input
+							type="text"
+							placeholder="Enter Username"
+							name="username"
+							autofocus
+							autocomplete="username"
+							required
+							id="{{ form.username.id_for_label }}"
+					/></label>
+					<div class="input-label">
+						<label for="{{ form.password.id_for_label }}"
+							>Password
+						</label>
+					</div>
+					<label>
+						<input
+							type="password"
+							placeholder="Enter Password"
+							name="password"
+							id=" {{ form.password.id_for_label }}"
+							autocomplete="current-password"
+							required
+						/>
+					</label>
+					<br />
+					<input class="submit" type="submit" name="Sign in " /><br />
+					<a
+						class="forgot-link"
+						tabindex="0"
+						href="{% url 'password_reset' %}"
+						>Forgot password?
+					</a>
+				</div>
+			</form>
+			<div class="redirect">
+				<a href="{% url 'home_page' %}">Back to dashboard</a>
+			</div>
+			<div class="redirect">
+				New here? <a href="{% url 'register' %}">Sign up now</a>
+			</div>
+		</div>
+	</body>
 </html>
