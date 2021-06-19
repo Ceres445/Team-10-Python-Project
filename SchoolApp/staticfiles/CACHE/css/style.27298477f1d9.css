@@ -1,5 +1,6 @@
 *{
 	box-sizing: border-box;
+	text-align: center;
 }
 body{
 	background-color: white;
@@ -18,7 +19,7 @@ body{
 	padding: 10px;
 }
 .form-container {
-	width: 340px;
+	width: 420px;
 	padding: 5%;
 	margin: 0 auto 10px;
 }

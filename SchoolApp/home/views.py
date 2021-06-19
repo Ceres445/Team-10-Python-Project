@@ -17,7 +17,7 @@ def register(request):
     if request.method == "GET":
         # User is trying to login
         return render(
-            request, "home/register.html",
+            request, "registration/register.html",
             {"form": CustomUserCreationForm}
         )
     elif request.method == "POST":
@@ -30,6 +30,6 @@ def register(request):
         else:
             # form is invalid, return error
             return render(
-                request, "home/register.html",
+                request, "registration/register.html",
                 {"form": form}
             )
