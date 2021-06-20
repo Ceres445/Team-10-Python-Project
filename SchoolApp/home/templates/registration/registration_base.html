@@ -32,8 +32,10 @@
     <div class="redirect">
         <a href="{% url 'home_page' %}">Back to dashboard</a>
     </div>
+{% block redirect_url %}
     <div class="redirect">
         New here? <a href="{% url 'register' %}">Sign up now</a>
     </div>
+{%  endblock %}
 </div>
 {% endblock %}
