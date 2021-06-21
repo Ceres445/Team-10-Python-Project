@@ -21,6 +21,12 @@
         <label for="{{ form.password.id_for_label }}"
             >Password
         </label>
+        <a
+        class="forgot-link"
+        tabindex="0"
+        href="{% url 'password_reset' %}"
+        >Forgot password?
+    </a>
     </div>
     <label>
         <input
@@ -32,13 +38,6 @@
             required
         />
     </label>
-    <br />
-    <input class="submit" type="submit" name="Sign in " /><br />
-    <a
-        class="forgot-link"
-        tabindex="0"
-        href="{% url 'password_reset' %}"
-        >Forgot password?
-    </a>
+    <input class="submit" type="submit" name="Sign in " />
 </div>
 {% endblock %}
