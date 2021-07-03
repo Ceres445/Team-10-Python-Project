@@ -1,6 +1,101 @@
-<!DOCTYPE html>
-{% extends 'base.html' %}
+<!--<!DOCTYPE html>-->
+<!--{% extends 'base.html' %}-->
 
-{% block content %}
-Hello, {{ user.username|default:'Guest' }}!
-{% endblock %}
+<!--{% block content %}-->
+<!--Hello, {{ user.username|default:'Guest' }}!-->
+<!--{% endblock %}-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Calibri;
+
+}
+
+
+.tablink {
+  background-color: white;
+  width: 175px;
+  color: black;
+  padding: 15px;
+  float: left;
+  margin: 20px 0px;
+  margin-left: 6px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.tablink:hover {
+  background-color: #1e6ed6;
+  color: black;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Home {background-color:white;}
+#News {background-color:white;}
+#Contact {background-color: white;}
+#About {background-color:white;}
+</style>
+</head>
+<body>
+
+<button class="tablink" onclick="openPage('Public', this, 'white')">Public Announcements</button>
+<button class="tablink" onclick="openPage('Teacher', this, 'white')" id="defaultOpen">Teacher Updates</button>
+<button class="tablink" onclick="openPage('Site', this, 'white')">Site Updates</button>
+<button class="tablink" onclick="openPage('Forum', this, 'white')">Public Forum</button>
+
+<div id="Public" class="tabcontent">
+  <h3>Public Announcements</h3>
+  <p>Announcements that anyone can view</p>
+</div>
+
+<div id="Teacher" class="tabcontent">
+  <h3>Teacher Announcements</h3>
+  <p>Updates about teachers !</p>
+</div>
+
+<div id="Site" class="tabcontent">
+  <h3>Site Updates and Announcements</h3>
+  <p>Every update of the site will be announced here.</p>
+</div>
+
+<div id="Forum" class="tabcontent">
+  <h3>Public Forum</h3>
+  <p>Doubts about updates , site and Announcements can be discussed among yourself.</p>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+document.getElementById("defaultOpen").click();
+</script>
+
+</body>
+</html>
