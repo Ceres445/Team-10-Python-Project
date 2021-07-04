@@ -1,78 +1,43 @@
-<!--<!DOCTYPE html>-->
-<!--{% extends 'base.html' %}-->
-
-<!--{% block content %}-->
-<!--<h2>Login</h2>-->
-<!--    Hello There-->
-<!--<form method="post">-->
-<!--    {% csrf_token %}-->
-<!--    {{ form.as_p }}-->
-<!--    <input type="submit" value="Login">-->
-<!--</form>-->
-
-<!--<a href="{% url 'home_page' %}">Back to dashboard</a>-->
-<!--    <a href="{% url 'register' %}">Register</a>-->
-<!--{% endblock %}-->
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title> Login Page </title>
-<style>
-Body {
-  font-family: Calibri, Helvetica, sans-serif;
-  background-color: white;
-  text-align: center;
-}
-button {
-       background-color: white;
-       width: 100px;
-        color: black;
-        padding: 15px;
-        margin: 10px 0px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition-duration: 0.4s;
-        border: 2px solid #1e6ed6
-         }
- form {
-        border: 3px solid #f1f1f1;
-    }
- input[type=text], input[type=password] {
-        width: 50%;
-        margin: 8px 0;
-        padding: 12px 20px;
-        display: inline-block;
-        border: 2px black;
-        box-sizing: border-box;
-        text-align: center;
-    }
- button:hover {
-        background-color: #1e6ed6;
-        color: white;
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    }
-
- .container {
-        padding: 25px;
-        background-color: white;
-
-    }
-</style>
-</head>
-<body>
-    <center> <h1> Login </h1> </center>
-    <form>
-        <div class="container">
-            <center> <label>Username : </label> </center>
-            <input type="text" placeholder="Enter Username" align="center" name="username" required>
-            <center> <label>Password : </label> </center>
-            <input type="password" placeholder="Enter Password" align ="center" name="password" required>
-            <br> <button type="submit">Login</button> <br>
-            <br> <a href="{% url 'home_page' %}">Back to dashboard</a> <br>
-        </div>
-    </form>
-</body>
-</html>
+{% extends 'registration/registration_base.html' %}
+{% block form_title %} Sign in {% endblock %}
+{% block form %}
+<div class="container">
+    <div class="input-label">
+        <label for=" {{ form.username.id_for_label }}"
+            >Username
+        </label>
+    </div>
+    <label>
+        <input
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            autofocus
+            autocomplete="username"
+            required
+            id="{{ form.username.id_for_label }}"
+    /></label>
+    <div class="input-label">
+        <label for="{{ form.password.id_for_label }}"
+            >Password
+        </label>
+        <a
+        class="forgot-link"
+        tabindex="0"
+        href="{% url 'password_reset' %}"
+        >Forgot password?
+    </a>
+    </div>
+    <label>
+        <input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            id=" {{ form.password.id_for_label }}"
+            autocomplete="current-password"
+            required
+        />
+    </label>
+    <input class="submit" type="submit" name="Sign in " />
+</div>
+{% endblock %}

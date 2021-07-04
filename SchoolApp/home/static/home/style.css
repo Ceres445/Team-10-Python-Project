@@ -1,6 +1,13 @@
-.dropdown{
-    margin-left: auto;
+.dropdown {
+	margin-left: auto;
 }
 .collapse {
-    display:flex
+	display: flex;
+}
+body {
+	font-family: "Roboto Mono", serif;
+}
+a {
+	color: #447e9b;
+	text-decoration: none;
 }
