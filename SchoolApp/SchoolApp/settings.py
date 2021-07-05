@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = True
+DEBUG = False
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&nvk9yq0&_*#(=gxgd-*-w')
 # ALLOWED_HOSTS = []
 
@@ -126,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # database for heroku
 
 db_from_env = dj_database_url.config(conn_max_age=500)
