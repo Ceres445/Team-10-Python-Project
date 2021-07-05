@@ -8,8 +8,17 @@ from .models import Post, Comment, Category
 
 
 class PostList(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
+
+    def get_queryset(self):
+        queryset = Post.objects.all()
+        category = self.request.query_params.get('category')
+        if category:
+            # print([(x.category.name == category, list(x.category.name)) for x in queryset], list(category))
+            queryset = queryset.filter(category__name=category.strip("'"))  # filter against given category
+            # print(queryset)
+            # TODO: Filter against classes ( classes not categories) / add permissions
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

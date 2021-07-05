@@ -1,12 +1,16 @@
-import datetime
-
 from django.contrib.auth.models import User
 from django.db import models
+
+from home.models import Classes, Profile
 
 
 # Create your models here.
 class Category(models.Model):
-    name = models.CharField(max_length=40, blank=False, default='Public')
+    name = models.CharField(max_length=40, blank=False, default='Forum')
+    key_class = models.ForeignKey(Classes, blank=True, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name + (str(self.key_class) if self.key_class is not None else '')
 
 
 class Post(models.Model):
