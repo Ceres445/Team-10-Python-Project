@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load compress %}
 {% block extra_head %}
-<link
-			rel="stylesheet"
-			href="{% static 'home/index.css' %}"
-			type="text/css"
-		/>
+{% compress css file style %}
+  <link
+        rel="stylesheet"
+        href="{% static 'home/index.css' %}"
+        type="text/css"
+  />
+{% endcompress %}
 {% endblock %}
 {% block content %}
 
@@ -15,7 +18,7 @@
 <button class="tablink" name= 'Forum'>Public Forum</button>
 
 <div class="tabcontent"></div>
-
-<script src=" {% static 'home/index.js' %}"></script>
-
+  {% compress js  %}
+<script src="{% static 'home/index.js' %}"></script>
+{% endcompress %}
 {% endblock %}
