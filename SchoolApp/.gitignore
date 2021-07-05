@@ -3,3 +3,7 @@ node_modules/*
 .parcel-cache/*
 .vscode/*
 .prettierrc
+media/*
+
+package.json
+package-lock.json

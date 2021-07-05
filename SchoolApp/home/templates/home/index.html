@@ -1,2 +1,21 @@
-<!DOCTYPE html> {% extends 'base.html' %}
-{% block content %} Hello,{{ user.username|default:'Guest' }}! {% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+<link
+			rel="stylesheet"
+			href="{% static 'home/index.css' %}"
+			type="text/css"
+		/>
+{% endblock %}
+{% block content %}
+
+<button class="tablink" name= 'Public' id="defaultOpen">Public Announcements</button>
+<button class="tablink" name= 'Class'>Teacher Updates</button>
+<button class="tablink" name= 'Site'>Site Updates</button>
+<button class="tablink" name= 'Forum'>Public Forum</button>
+
+<div class="tabcontent"></div>
+
+<script src=" {% static 'home/index.js' %}"></script>
+
+{% endblock %}

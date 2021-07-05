@@ -35,6 +35,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&n
 INSTALLED_APPS = [
     'home',
     'compressor',
+    'public_api',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -67,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
             # 'loaders': [
             #     'django.template.loaders.app_directories.Loader'
@@ -116,7 +119,6 @@ USE_I18N = True
 
 USE_L10N = True
 
-
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
@@ -139,7 +141,6 @@ STATICFILES_FINDERS = [
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-
 if os.environ.get('HOST', None) != 'heroku':
     load_dotenv()
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
@@ -149,6 +150,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
+# compressing
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
