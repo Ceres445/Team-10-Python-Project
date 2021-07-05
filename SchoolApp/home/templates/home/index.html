@@ -9,31 +9,13 @@
 {% endblock %}
 {% block content %}
 
-<button class="tablink" name= 'Public' onclick="openPage('Public', this, 'white')" id="defaultOpen">Public Announcements</button>
-<button class="tablink" name= 'Class' onclick="openPage('Teacher', this, 'white')">Teacher Updates</button>
-<button class="tablink" name= 'Site' onclick="openPage('Site', this, 'white')">Site Updates</button>
-<button class="tablink" name= 'Forum' onclick="openPage('Forum', this, 'white')">Public Forum</button>
+<button class="tablink" name= 'Public' id="defaultOpen">Public Announcements</button>
+<button class="tablink" name= 'Class'>Teacher Updates</button>
+<button class="tablink" name= 'Site'>Site Updates</button>
+<button class="tablink" name= 'Forum'>Public Forum</button>
 
-<div id="Public" class="tabcontent">
-  <h3>Public Announcements</h3>
-  <p>Announcements that anyone can view</p>
-</div>
+<div class="tabcontent"></div>
 
-<div id="Teacher" class="tabcontent">
-  <h3>Teacher Announcements</h3>
-  <p>Updates about teachers !</p>
-</div>
-
-<div id="Site" class="tabcontent">
-  <h3>Site Updates and Announcements</h3>
-  <p>Every update of the site will be announced here.</p>
-</div>
-
-<div id="Forum" class="tabcontent">
-  <h3>Public Forum</h3>
-  <p>Doubts about updates , site and Announcements can be discussed among yourself.</p>
-</div>
-
-    <script src=" {% static 'home/index.js' %}"></script>
+<script src=" {% static 'home/index.js' %}"></script>
 
 {% endblock %}

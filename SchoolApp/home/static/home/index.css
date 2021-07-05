@@ -19,7 +19,7 @@
 
 .tabcontent {
   color: black;
-  display: none;
+  display: block;
   padding: 100px 20px;
   height: 100%;
 }
