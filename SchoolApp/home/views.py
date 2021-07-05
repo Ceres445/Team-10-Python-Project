@@ -1,4 +1,5 @@
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -34,6 +35,7 @@ def register(request):
             )
 
 
+@login_required
 def view_profile(request, pk=None):
     if pk:
         user = User.objects.get(pk=pk)
@@ -43,6 +45,7 @@ def view_profile(request, pk=None):
     return render(request, 'home/profile.html', args)
 
 
+@login_required
 def edit_profile(request):
     if request.method == 'POST':
         form = UserChangeForm(request.POST, instance=request.user)
@@ -56,6 +59,7 @@ def edit_profile(request):
         return render(request, 'home/edit_profile.html', args)
 
 
+@login_required
 def change_avatar(request):
     if request.method == 'POST':
         form = AvatarChangeForm(request.POST, request.FILES,
