@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
+from home.models import Classes
 from .models import Post, Comment, Category
 
 
@@ -34,7 +35,9 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    key_class = serializers.PrimaryKeyRelatedField(many=False, required=False, queryset=Classes.objects.all(),
+                                                   allow_null=True)
 
     class Meta:
         model = Category
-        fields = ['id', 'name', 'posts']
+        fields = ['id', 'name', 'posts', 'key_class']
