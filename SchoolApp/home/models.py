@@ -17,6 +17,9 @@ class Classes(models.Model):
     class Meta:
         verbose_name_plural = 'Classes'
 
+    def __str__(self):
+        return self.class_name
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
