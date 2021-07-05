@@ -1,55 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+<link
+			rel="stylesheet"
+			href="{% static 'home/index.css' %}"
+			type="text/css"
+		/>
+{% endblock %}
+{% block content %}
 
-body, html {
-  height: 100%;
-  margin: 0;
-    font-family: Calibri, sans-serif;
-
-}
-
-
-.tablink {
-  background-color: white;
-  width: 175px;
-  color: black;
-  padding: 15px;
-  float: left;
-    margin: 20px 0 20px 6px;
-    border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition-duration: 0.4s;
-}
-
-.tablink:hover {
-  background-color: #1e6ed6;
-  color: black;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-.tabcontent {
-  color: black;
-  display: none;
-  padding: 100px 20px;
-  height: 100%;
-}
-
-#Home {background-color:white;}
-#News {background-color:white;}
-#Contact {background-color: white;}
-#About {background-color:white;}
-</style>
-</head>
-<body>
-
-<button class="tablink" onclick="openPage('Public', this, 'white')">Public Announcements</button>
-<button class="tablink" onclick="openPage('Teacher', this, 'white')" id="defaultOpen">Teacher Updates</button>
-<button class="tablink" onclick="openPage('Site', this, 'white')">Site Updates</button>
-<button class="tablink" onclick="openPage('Forum', this, 'white')">Public Forum</button>
+<button class="tablink" name= 'Public' onclick="openPage('Public', this, 'white')" id="defaultOpen">Public Announcements</button>
+<button class="tablink" name= 'Class' onclick="openPage('Teacher', this, 'white')">Teacher Updates</button>
+<button class="tablink" name= 'Site' onclick="openPage('Site', this, 'white')">Site Updates</button>
+<button class="tablink" name= 'Forum' onclick="openPage('Forum', this, 'white')">Public Forum</button>
 
 <div id="Public" class="tabcontent">
   <h3>Public Announcements</h3>
@@ -71,23 +34,6 @@ body, html {
   <p>Doubts about updates , site and Announcements can be discussed among yourself.</p>
 </div>
 
-<script>
-function openPage(pageName,elmnt,color) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].style.backgroundColor = "";
-  }
-  document.getElementById(pageName).style.display = "block";
-  elmnt.style.backgroundColor = color;
-}
+    <script src=" {% static 'home/index.js' %}"></script>
 
-document.getElementById("defaultOpen").click();
-</script>
-
-</body>
-</html>
+{% endblock %}
