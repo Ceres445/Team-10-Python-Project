@@ -33,6 +33,7 @@ class Profile(models.Model):
         return self.user.username
 
 
+# create and save user profile whenever a new user is registered
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
