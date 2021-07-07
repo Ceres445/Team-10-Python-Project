@@ -2,7 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect
 # Create your views here.
 
@@ -11,6 +11,8 @@ from django.urls import reverse
 from home.forms import CustomUserCreationForm, AvatarChangeForm
 
 
+# TODO: add class creation request
+# TODO: add Post detail view
 def index(request):
     return render(request, "home/index.html")
 
@@ -71,3 +73,7 @@ def change_avatar(request):
         form = AvatarChangeForm(instance=request.user.profile)
 
     return render(request, 'home/avatar_change.html', {'form': form})
+
+
+def view_post(request, pk=1):
+    return JsonResponse({"Yet to be implemented": pk})
