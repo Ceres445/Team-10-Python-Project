@@ -5,6 +5,7 @@ from home.models import Classes
 from .models import Post, Comment, Category
 
 
+# TODO: use this serializer
 class UserSerializer(serializers.ModelSerializer):
     posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
@@ -35,8 +36,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    key_class = serializers.PrimaryKeyRelatedField(many=False, required=False, queryset=Classes.objects.all(),
-                                                   allow_null=True)
+    key_class = serializers.StringRelatedField(many=False, required=False, queryset=Classes.objects.all(),
+                                               allow_null=True)
 
     class Meta:
         model = Category
