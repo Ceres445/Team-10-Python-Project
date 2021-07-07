@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from home.models import Classes, Profile
 
@@ -35,3 +37,15 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['created_at']
+
+
+# create and save category whenever a new course is registered
+@receiver(post_save, sender=Classes)
+def create_category(sender, instance, created, **kwargs):
+    if created:
+        Category.objects.create(key_class=instance, name='Class')
+
+
+@receiver(post_save, sender=Classes)
+def create_category(sender, instance, **kwargs):
+    Category.objects.get(key_class=instance).save()
