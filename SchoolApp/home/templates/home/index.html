@@ -5,10 +5,15 @@
 {% compress css file style %}
   <link
         rel="stylesheet"
-        href="{% static 'home/index.css' %}"
+        href="{% static 'home/css/index.css' %}"
         type="text/css"
   />
 {% endcompress %}
+<link
+			rel="stylesheet"
+			href="{% static 'home/css/index.css' %}"
+			type="text/css"
+		/>
 {% endblock %}
 {% block content %}
 
@@ -18,7 +23,7 @@
 <button class="tablink" name= 'Forum'>Public Forum</button>
 
 <div class="tabcontent"></div>
-  {% compress js  %}
-<script src="{% static 'home/index.js' %}"></script>
+{% compress js  %}
+  <script src="{% static 'home/js/index.js' %}"></script>
 {% endcompress %}
 {% endblock %}
