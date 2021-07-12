@@ -80,4 +80,4 @@ def change_avatar(request):
 
 
 def view_post(request, pk=1):
-    return render(request, 'home/post_vew.html', {"pk": mark_safe(pk)})
+    return render(request, 'home/post_view.html', {"pk": mark_safe(pk)})
