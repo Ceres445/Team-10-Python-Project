@@ -31,13 +31,13 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ['id', 'body', 'author', 'post']
+        fields = ['id', 'body', 'author', 'post', 'created_at']
 
 
 class CategorySerializer(serializers.ModelSerializer):
     posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     key_class = serializers.PrimaryKeyRelatedField(many=False, required=False, queryset=Classes.objects.all(),
-                                               allow_null=True)
+                                                   allow_null=True)
 
     class Meta:
         model = Category
