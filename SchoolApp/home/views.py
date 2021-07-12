@@ -2,17 +2,21 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 # Create your views here.
 
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 from home.forms import CustomUserCreationForm, AvatarChangeForm
 
-
 # TODO: add class creation request
 # TODO: add Post detail view
+from public_api.models import Post
+
+
 def index(request):
     return render(request, "home/index.html")
 
@@ -76,4 +80,4 @@ def change_avatar(request):
 
 
 def view_post(request, pk=1):
-    return JsonResponse({"Yet to be implemented": pk})
+    return render(request, 'home/post_vew.html', {"pk": mark_safe(pk)})
