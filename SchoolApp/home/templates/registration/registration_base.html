@@ -27,7 +27,7 @@
 {% endif %}
     <form method="post">{% csrf_token %} {% block form %}{% endblock %}</form>
     <div class="redirect">
-        <a href="{% url 'home_page' %}">Back to dashboard</a>
+        <a href="{% url 'homePage' %}">Back to dashboard</a>
     </div>
 {% block redirect_url %}
     <div class="redirect">

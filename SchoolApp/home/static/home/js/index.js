@@ -1,3 +1,5 @@
+import addPostToHTML from './utils/functions';
+
 const tabcontent = document.querySelector('.tabcontent');
 const tablinks = document.getElementsByClassName('tablink');
 
@@ -8,14 +10,7 @@ for (const i of tablinks) {
 		);
 		const json = await data.json();
 		tabcontent.innerHTML = '';
-		json.forEach(el => {
-			const html = `<div class='post'>
-													<h1>${el.title}</h1>
-													<p>${el.content}</p>
-													<div class = 'footer'>${el.author}</div>
-											</div>`;
-			tabcontent.insertAdjacentHTML('beforeend', html);
-		});
+		json.forEach(el => addPostToHTML(el, tabcontent));
 	});
 }
 document.getElementById('defaultOpen').click();
