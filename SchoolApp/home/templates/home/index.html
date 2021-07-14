@@ -44,7 +44,9 @@
 </form>
 
 </div>
+  {% if courses %}
 {{ courses| json_script:'courses' }}
+  {% endif %}
 <script src="{% static 'home/js/index.js' %}" type="module"></script>
 
 {% endblock %}
