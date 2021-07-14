@@ -94,4 +94,5 @@ def view_user_posts(request, pk=None):
         pk = request.user.pk
 
     user = get_object_or_404(User, pk=pk)
-    return render(request, 'home/view_user_posts.html', {"pk": mark_safe(pk), "user": user})
+    print(user.username)
+    return render(request, 'home/view_user_posts.html', {"pk": mark_safe(user.username), "user": user})
