@@ -19,7 +19,7 @@ from home.forms import CustomUserCreationForm, AvatarChangeForm
 def index(request):
     # rick roll
     # return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
-    if request.author.is_authenticated:
+    if request.user.is_authenticated:
         return render(request, "home/index.html",
                       {
 
