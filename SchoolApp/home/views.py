@@ -18,7 +18,13 @@ from public_api.models import Post
 
 
 def index(request):
-    return render(request, "home/index.html")
+    return render(request, "home/index.html",
+                  {
+
+                      'courses': list(map(str, request.user.profile.courses.all()))
+
+                  }
+    )
 
 
 def register(request):
@@ -48,7 +54,8 @@ def view_profile(request, pk=None):
         user = User.objects.get(pk=pk)
     else:
         user = request.user
-    args = {'user': user}
+
+    args = {'user': user, 'courses': ", ".join(list(map(str, user.profile.courses.all())))}
     return render(request, 'home/profile.html', args)
 
 
