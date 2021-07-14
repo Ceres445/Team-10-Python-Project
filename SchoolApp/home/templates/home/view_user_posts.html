@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load compress %}
 {% block extra_head %}
-<link
+{% compress css file style %}
+  <link
 			rel="stylesheet"
 			href="{% static 'home/css/index.css' %}"
 			type="text/css"
 		/>
+{% endcompress %}
 {% endblock %}
 {% block content %}
 
