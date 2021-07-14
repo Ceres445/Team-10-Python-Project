@@ -22,11 +22,8 @@ def index(request):
     if request.user.is_authenticated:
         return render(request, "home/index.html",
                       {
-
                           'courses': list(map(str, request.user.profile.courses.all()))
-
-                      }
-                      )
+                      })
     else:
         return render(request, "home/index.html")
 
@@ -95,7 +92,7 @@ def change_avatar(request):
 
 def view_post_detail(request, pk=1):
     """See a post in detail with comments and links"""
-    user = get_object_or_404(User, pk=pk)
+    get_object_or_404(User, pk=pk)  # raise 404 if invalid user
     return render(request, 'home/post_view.html', {"pk": mark_safe(pk)})
 
 
@@ -105,5 +102,4 @@ def view_user_posts(request, pk=None):
         pk = request.user.pk
 
     user = get_object_or_404(User, pk=pk)
-    print(user.username)
-    return render(request, 'home/view_user_posts.html', {"pk": mark_safe(user.username), "user": user})
+    return render(request, 'home/view_user_posts.html', {"pk": user.username, "user": user})
