@@ -13,15 +13,20 @@ from django.utils.safestring import mark_safe
 from home.forms import CustomUserCreationForm, AvatarChangeForm
 
 # TODO: add class creation request
-# TODO: add Post detail view
+# TODO: add css for post detail view
 from public_api.models import Post
 
 
 def index(request):
-    return render(request, "home/index.html")
     # rick roll
     # return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+    return render(request, "home/index.html",
+                  {
 
+                      'courses': list(map(str, request.user.profile.courses.all()))
+
+                  }
+    )
 
 def register(request):
     if request.method == "GET":
@@ -36,7 +41,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect(reverse("home_page"))
+            return redirect(reverse("homePage"))
         else:
             # form is invalid, return error
             return render(
@@ -45,18 +50,21 @@ def register(request):
             )
 
 
+# TODO: ability to see others profiles
 @login_required
 def view_profile(request, pk=None):
     if pk:
         user = User.objects.get(pk=pk)
     else:
         user = request.user
-    args = {'user': user}
+
+    args = {'user': user, 'courses': ", ".join(list(map(str, user.profile.courses.all())))}
     return render(request, 'home/profile.html', args)
 
 
 @login_required
 def edit_profile(request):
+    """Edit your profile"""
     if request.method == 'POST':
         form = UserChangeForm(request.POST, instance=request.user)
 
@@ -71,6 +79,7 @@ def edit_profile(request):
 
 @login_required
 def change_avatar(request):
+    """Form to change avatar/profile (rename needed)"""
     if request.method == 'POST':
         form = AvatarChangeForm(request.POST, request.FILES,
                                 instance=request.user.profile)
@@ -83,5 +92,17 @@ def change_avatar(request):
     return render(request, 'home/avatar_change.html', {'form': form})
 
 
-def view_post(request, pk=1):
+def view_post_detail(request, pk=1):
+    """See a post in detail with comments and links"""
+    user = get_object_or_404(User, pk=pk)
     return render(request, 'home/post_view.html', {"pk": mark_safe(pk)})
+
+
+def view_user_posts(request, pk=None):
+    """View your own posts or others posts"""
+    if pk is None:
+        pk = request.user.pk
+
+    user = get_object_or_404(User, pk=pk)
+    print(user.username)
+    return render(request, 'home/view_user_posts.html', {"pk": mark_safe(user.username), "user": user})

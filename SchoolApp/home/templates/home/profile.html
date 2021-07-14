@@ -12,10 +12,10 @@
     <p>Email: {{ user.email }}</p>
     <p>Bio: {{ user.profile.bio }}</p>
     <p>Type: {{ user.profile.get_user_type_display }}</p>
-
+    <p>Classes joined: {{ courses }}
     {% if user.profile.avatar %}
     <img src="{{ user.profile.avatar.url }}" width="240" alt="Profile Image">
     {% endif %}
 </div>
-<a href="{% url 'edit_profile' %}"> Edit Profile</a>
+<a href="{% url 'editProfile' %}"> Edit Profile</a>
 {% endblock %}

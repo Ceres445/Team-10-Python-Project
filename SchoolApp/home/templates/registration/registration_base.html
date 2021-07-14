@@ -5,7 +5,7 @@
 {% compress css file style %}
     <link
         rel="stylesheet"
-        href="{% static 'registration/login.css' %}"
+        href="{% static 'home/css/forms.css' %}"
         type="text/css"
     />
 {% endcompress %}
@@ -30,7 +30,7 @@
 {% endif %}
     <form method="post">{% csrf_token %} {% block form %}{% endblock %}</form>
     <div class="redirect">
-        <a href="{% url 'home_page' %}">Back to dashboard</a>
+        <a href="{% url 'homePage' %}">Back to dashboard</a>
     </div>
 {% block redirect_url %}
     <div class="redirect">

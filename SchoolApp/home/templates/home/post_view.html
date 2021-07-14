@@ -31,8 +31,7 @@
   </div>
 </div>
   {{ pk| json_script:'post_pk' }}
-  {% compress js  %}
-   <script src="{% static 'home/js/post_view.js' %}"></script>
+{% compress js  %}
+   <script src="{% static 'home/js/post_view_detail.js' %}"></script>
 {% endcompress %}
-
 {% endblock %}
