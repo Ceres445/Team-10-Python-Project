@@ -1,18 +1,7 @@
-from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from home.models import Classes
 from .models import Post, Comment, Category
-
-
-# TODO: use this serializer
-class UserSerializer(serializers.ModelSerializer):
-    posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'posts']
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):

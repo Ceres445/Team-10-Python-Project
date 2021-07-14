@@ -14,9 +14,7 @@ const comments_container = document.querySelector('.comments-container');
 		window.location.origin + `/api/comments?post=${post_pk}`
 	);
 	const commentsJson = await commentsData.json();
-	commentsJson.sort((a, b) => {
-		a.created_at < b.created_at;
-	});
+	commentsJson.sort((a, b) => a.created_at < b.created_at);
 	comments_container.innerHTML = ``;
 	for (const comment of commentsJson) {
 		const html = `<div class="comment-container">
