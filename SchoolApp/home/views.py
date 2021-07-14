@@ -2,31 +2,31 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-# Create your views here.
-
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 from home.forms import CustomUserCreationForm, AvatarChangeForm
 
+
+# Create your views here.
+
 # TODO: add class creation request
 # TODO: add css for post detail view
-from public_api.models import Post
 
 
 def index(request):
     # rick roll
     # return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
-    return render(request, "home/index.html",
-                  {
+    if request.author.is_authenticated:
+        return render(request, "home/index.html", {
+            'courses': list(map(str, request.user.profile.courses.all()))
 
-                      'courses': list(map(str, request.user.profile.courses.all()))
+        })
+    else:
+        return render(request, "home/index.html")
 
-                  }
-    )
 
 def register(request):
     if request.method == "GET":

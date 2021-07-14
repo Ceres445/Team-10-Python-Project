@@ -3,9 +3,7 @@ import addPostToHTML from './modules/functions.js';
 const tabcontent = document.querySelector('.tabcontent');
 const tablinks = document.getElementsByClassName('tablink');
 const courses = JSON.parse(document.getElementById('courses').textContent);
-console.log(courses);
 const post_form = document.getElementById('post-form');
-const selector_div = document.getElementById('selector-div');
 const title = document.getElementById('title-input');
 const content = document.getElementById('content-input');
 const url = `${window.location.origin}/api/`;
@@ -25,7 +23,7 @@ async function changeUI(name, category = false) {
 	tabcontent.innerHTML = '';
 	json.forEach(el => addPostToHTML(el, tabcontent));
 	const new_active = category ? name : active;
-	if (new_active === 'Class' && active !== 'Class') {
+	if (new_active === 'Class' && active !== 'Class' && courses) {
 		tabcontent.insertAdjacentHTML(
 			'beforebegin',
 			`<div class="selector" id="class-selection"><label>Choose a class:</label>
