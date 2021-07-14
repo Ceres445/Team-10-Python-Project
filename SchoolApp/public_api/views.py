@@ -20,7 +20,8 @@ def get_queryset(user, model, category_param=None, user_param=None, **kwargs):
     if model is not Category:
         if category_param in ['Class', 'Public', 'Forum', 'Site']:
             # print([(x.category.name == category, list(x.category.name)) for x in queryset], list(category))
-            queryset = queryset.filter(**{kwargs.get('name'): category_param.strip("'")})  # filter against given category
+            queryset = queryset.filter(
+                **{kwargs.get('name'): category_param.strip("'")})  # filter against given category
             # print(queryset)
             if category_param == 'Class':
                 if user.is_authenticated:
@@ -43,8 +44,12 @@ class PostList(generics.ListCreateAPIView):
     def get_queryset(self):
         category_param = self.request.query_params.get('category')
         user_param = self.request.query_params.get('author')
-        return get_queryset(self.request.user, Post, category_param, user_param, name='category__name',
-                            class_in='category__key_class__in')
+        queryset = get_queryset(self.request.user, Post, category_param, user_param, name='category__name',
+                                class_in='category__key_class__in')
+        class_param = self.request.query_params.get('class')
+        if category_param == 'Class' and class_param is not None:
+            queryset = queryset.filter(category__key_class__class_name=class_param)
+        return queryset
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
