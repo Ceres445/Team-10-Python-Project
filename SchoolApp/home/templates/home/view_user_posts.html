@@ -11,7 +11,7 @@
 
   <h1> {{ user.username }}'s Posts </h1>
 <div class="posts"></div>
-
-<script src=" {% static 'home/js/view_user_posts.js' %}"></script>
+{{ pk| json_script:'user_pk' }}
+<script src="{% static 'home/js/view_user_posts.js' %}" type="module"></script>
 
 {% endblock %}
