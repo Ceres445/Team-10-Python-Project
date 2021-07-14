@@ -1,4 +1,4 @@
-import addPostToHTML from './utils/functions';
+import addPostToHTML from './modules/functions.js';
 
 const tabcontent = document.querySelector('.tabcontent');
 const tablinks = document.getElementsByClassName('tablink');
