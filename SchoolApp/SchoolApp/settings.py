@@ -34,7 +34,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&n
 
 INSTALLED_APPS = [
     'home',
-    'compressor',
     'public_api',
     'rest_framework',
     'django.contrib.admin',
@@ -136,8 +135,7 @@ DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost', '0.0.0.0']
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder']
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder']
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
@@ -150,14 +148,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
-# compressing
-COMPRESS_ENABLED = True
-COMPRESS_OFFLINE = True
-# COMPRESS_PRECOMPILERS = (
-#     ('text/less', 'compressor.filters.parceljs.ParserFilterCSS'),
-#     ('text/x-scss', 'compressor.filters.parceljs.ParserFilterCSS'),
-#     ('module', 'compressor.filters.parceljs.ParserFilterJS')
-# )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # media files

@@ -1,21 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load compress %}
 {% block extra_head %}
-{% compress css file style %}
   <link
         rel="stylesheet"
         href="{% static 'home/css/index.css' %}"
         type="text/css"
   />
-{% endcompress %}
-{% compress css file style %}
 <link
     rel="stylesheet"
     href="{% static 'home/css/forms.css' %}"
     type="text/css"
   />
-{% endcompress %}
 {% endblock %}
 {% block content %}
 <div class="container">
@@ -55,7 +50,5 @@
   {% if courses %}
 {{ courses| json_script:'courses' }}
   {% endif %}
-{% compress parcel file myjs  %}
   <script src="{% static 'home/js/index.js' %}" type="module"></script>
-{% endcompress %}
 {% endblock %}

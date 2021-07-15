@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	{% load static %}
-    {%  load compress %}
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,13 +17,11 @@
 			integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
 			crossorigin="anonymous"
 		></script>
-    {% compress css file style %}
        <link
 			rel="stylesheet"
 			href="{% static 'home/css/base.css' %}"
 			type="text/css"
 		/>
-    {% endcompress %}
 		{% block extra_head %}{% endblock %}
 	</head>
 	<body>
