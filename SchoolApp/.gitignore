@@ -5,6 +5,5 @@ node_modules/*
 .prettierrc
 media/*
 
-package.json
 package-lock.json
 staticfiles/*

@@ -131,3 +131,4 @@ dmypy.json
 # npm
 */node_modules/*
 */.parcel-cache/*
+/node_modules/
