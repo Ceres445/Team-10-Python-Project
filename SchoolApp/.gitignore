@@ -7,3 +7,4 @@ media/*
 
 package.json
 package-lock.json
+staticfiles/*
