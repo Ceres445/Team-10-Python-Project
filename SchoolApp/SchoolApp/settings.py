@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = False
+DEBUG = True
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&nvk9yq0&_*#(=gxgd-*-w')
 # ALLOWED_HOSTS = []
 
@@ -153,6 +153,11 @@ EMAIL_PORT = 587
 # compressing
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
+# COMPRESS_PRECOMPILERS = (
+#     ('text/less', 'compressor.filters.parceljs.ParserFilterCSS'),
+#     ('text/x-scss', 'compressor.filters.parceljs.ParserFilterCSS'),
+#     ('module', 'compressor.filters.parceljs.ParserFilterJS')
+# )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # media files

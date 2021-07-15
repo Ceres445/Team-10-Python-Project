@@ -55,7 +55,7 @@
   {% if courses %}
 {{ courses| json_script:'courses' }}
   {% endif %}
-{% compress js  %}
-  <script src="{% static 'home/js/index.js' %}"></script>
+{% compress parcel file myjs  %}
+  <script src="{% static 'home/js/index.js' %}" type="module"></script>
 {% endcompress %}
 {% endblock %}

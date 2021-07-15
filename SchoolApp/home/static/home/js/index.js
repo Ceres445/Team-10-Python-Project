@@ -1,5 +1,6 @@
 import { addPostToHTML, getCookie } from './modules/functions.js';
-
+import 'regenerator-runtime/runtime';
+import '@babel/polyfill';
 const tabContent = document.querySelector('.tabcontent');
 const tabLinks = document.getElementsByClassName('tablink');
 const courses = document.getElementById('courses')?.textContent
