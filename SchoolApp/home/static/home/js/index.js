@@ -2,7 +2,9 @@ import addPostToHTML from './modules/functions.js';
 
 const tabcontent = document.querySelector('.tabcontent');
 const tablinks = document.getElementsByClassName('tablink');
-const courses = JSON.parse(document.getElementById('courses').textContent);
+const courses = document.getElementById('courses')?.textContent
+	? JSON.parse(document.getElementById('courses')?.textContent)
+	: null;
 const post_form = document.getElementById('post-form');
 const title = document.getElementById('title-input');
 const content = document.getElementById('content-input');
@@ -17,6 +19,9 @@ async function changeUI(name, category = false) {
 			? `${url}posts?category=${name}`
 			: `${url}posts?category=Class&class=${name}`
 	);
+	if (Math.floor(data.status / 100) !== 2) {
+		return (tabcontent.innerHTML = 'No Posts');
+	}
 	console.log(data);
 	const json = await data.json();
 	console.log(json);
@@ -53,6 +58,7 @@ async function get_category() {
 }
 // Promise.all(get_category()).then(r => r + 1);
 post_form.addEventListener('submit', async function (e) {
+	e.preventDefault();
 	const data = {
 		title: title.innerText,
 		content: content.innerText,
