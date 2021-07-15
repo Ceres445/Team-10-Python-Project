@@ -52,7 +52,7 @@ class PostList(generics.ListCreateAPIView):
         return queryset
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(author=self.request.user)  # TODO: block users from creating posts in wrong categories
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
