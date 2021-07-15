@@ -52,7 +52,7 @@ class PostList(generics.ListCreateAPIView):
         return queryset
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(author=self.request.user)  # TODO: block users from creating posts in wrong categories
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -101,7 +101,14 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class CategoryList(generics.ListAPIView):
     def get_queryset(self):
-        return get_queryset(self.request.user, Category, class_in='key_class__in', name='name')
+        queryset = get_queryset(self.request.user, Category, class_in='key_class__in', name='name')
+        name = self.request.query_params.get('name')
+        if name is not None:
+            queryset = queryset.filter(name=name)
+        class_param = self.request.query_params.get('class')
+        if name == 'Class' and class_param is not None:
+            queryset = queryset.filter(key_class__class_name=class_param)
+        return queryset
 
     serializer_class = serializers.CategorySerializer
 
