@@ -103,3 +103,8 @@ input[type='email'] {
 	margin-left: auto;
 	margin-right: auto;
 }
+.header{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
