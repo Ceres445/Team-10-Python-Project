@@ -1,32 +1,34 @@
 import { addPostToHTML, getCookie } from './modules/functions.js';
 
-const tabcontent = document.querySelector('.tabcontent');
-const tablinks = document.getElementsByClassName('tablink');
+const tabContent = document.querySelector('.tabcontent');
+const tabLinks = document.getElementsByClassName('tablink');
 const courses = document.getElementById('courses')?.textContent
 	? JSON.parse(document.getElementById('courses')?.textContent)
 	: null;
-const post_form = document.getElementById('post-form');
-const selector_div = document.getElementById('selector-div');
-const title = document.getElementById('title-input');
-const content = document.getElementById('content-input');
-const url = `${window.location.origin}/api/`;
+const postForm = document.getElementById('post-form');
+const selectorDiv = document.getElementById('selector-div');
+const inputTitle = document.getElementById('title-input');
+const inputContent = document.getElementById('content-input');
+
 const submitForm = document.getElementById('post-form');
 
 let buttonHidden = false;
 function hideButton(hide = true) {
+	if (!courses) {
+		submitForm.style.display = 'none';
+		buttonHidden = true;
+		return false;
+	}
 	if (buttonHidden === hide) return;
 	if (hide) {
-		console.log('hiding');
-		console.log(submitForm.style);
 		submitForm.style.display = 'none';
 	} else {
-		console.log('showing');
 		submitForm.style.display = 'block';
 	}
 	buttonHidden = !buttonHidden;
 }
+const url = `${window.location.origin}/api/`;
 
-// let active = 'Public';
 const active = {
 	_value: 'Public',
 	set value(field) {
@@ -59,14 +61,14 @@ async function changeUI(name, category = false) {
 			: `${url}posts?category=Class&class=${name}`
 	);
 	if (Math.floor(data.status / 100) !== 2) {
-		return (tabcontent.innerHTML = 'No Posts');
+		return (tabContent.innerHTML = 'No Posts');
 	}
 	const json = await data.json();
-	tabcontent.innerHTML = '';
-	json.forEach(el => addPostToHTML(el, tabcontent));
+	tabContent.innerHTML = '';
+	json.forEach(el => addPostToHTML(el, tabContent));
 	const new_active = category ? name : active.value;
 	if (new_active === 'Class' && active.value !== 'Class' && courses) {
-		selector_div.insertAdjacentHTML(
+		selectorDiv.insertAdjacentHTML(
 			'afterbegin',
 			`<div class="selector" id="class-selection"><label>Choose a class:</label>
 									<select id="class-selection-select">
@@ -79,17 +81,11 @@ async function changeUI(name, category = false) {
 			.getElementById('class-selection')
 			.addEventListener('change', el => changeUI(el.target.value));
 	}
-	if (new_active !== 'Class') selector_div.innerText = '';
+	if (new_active !== 'Class') selectorDiv.innerText = '';
 	active.value = new_active;
 }
-for (const i of tablinks) {
-	i.addEventListener('click', async function () {
-		await changeUI(this.name, true);
-	});
-}
-document.getElementById('defaultOpen').click();
 
-async function get_category() {
+async function getCategory() {
 	let get_url = `${url}categories?name=${active.value}`;
 	if (active.value === 'Class') {
 		if (document.getElementById('class-selection-select').value !== 'all') {
@@ -113,12 +109,14 @@ async function get_category() {
 	return json[0].id;
 }
 // Promise.all(get_category()).then(r => r + 1);
-post_form.addEventListener('submit', async function (e) {
+
+// add event listener to post form so we can get input and submit with extra variables
+postForm.addEventListener('submit', async function (e) {
 	e.preventDefault();
 	const data = {
-		title: title.value,
-		content: content.value,
-		category: await get_category(),
+		title: inputTitle.value,
+		content: inputContent.value,
+		category: await getCategory(),
 	};
 	const fetchResults = await fetch(`${url}posts/`, {
 		method: 'POST',
@@ -129,10 +127,9 @@ post_form.addEventListener('submit', async function (e) {
 		},
 		body: JSON.stringify(data),
 	});
-	console.log(fetchResults);
 	const oldHtml = submitForm.innerHTML;
-	title.value = '';
-	content.value = '';
+	inputTitle.value = '';
+	inputContent.value = '';
 	document.getElementsByName(active.value)[0].click();
 	if (String(fetchResults.status)[0] === '2')
 		submitForm.innerText = 'Success';
@@ -140,3 +137,13 @@ post_form.addEventListener('submit', async function (e) {
 	setTimeout(() => (submitForm.innerHTML = oldHtml), 5000);
 });
 // TODO: implement timer for posting
+
+// Add event listeners to categories
+for (const i of tabLinks) {
+	i.addEventListener('click', async function () {
+		await changeUI(this.name, true);
+	});
+}
+
+// Open default category
+document.getElementById('defaultOpen').click();
