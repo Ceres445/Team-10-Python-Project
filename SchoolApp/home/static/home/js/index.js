@@ -93,7 +93,7 @@ async function getCategory() {
 				document.getElementById('class-selection-select').value
 			}`;
 		} else {
-			return 'all'; // # TODO: Don't show post if all is enabled
+			return 'all';
 		}
 	}
 	const categoryData = await fetch(get_url);

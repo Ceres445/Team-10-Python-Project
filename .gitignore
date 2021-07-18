@@ -131,5 +131,5 @@ dmypy.json
 .pyre/
 
 # npm
-*/node_modules/*
+/node_modules/*
 */.parcel-cache/*
