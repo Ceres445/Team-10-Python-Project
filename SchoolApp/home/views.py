@@ -13,7 +13,6 @@ from home.forms import CustomUserCreationForm, AvatarChangeForm
 # Create your views here.
 
 # TODO: add class creation request
-# TODO: add css for post detail view
 
 
 def index(request):
