@@ -17,5 +17,6 @@
     <img src="{{ user.profile.avatar.url }}" width="240" alt="Profile Image">
     {% endif %}
 </div>
+<a href="{% url 'viewPosts' %}"> View Posts</a>
 <a href="{% url 'editProfile' %}"> Edit Profile</a>
 {% endblock %}
