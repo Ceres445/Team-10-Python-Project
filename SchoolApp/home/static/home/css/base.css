@@ -54,5 +54,6 @@ button {
   font-size: 15px;
 }
 .active{
+  color: black;
   background-color: #79aec8 !important;
 }
