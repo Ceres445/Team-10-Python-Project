@@ -53,3 +53,6 @@ button {
   width: 100%;
   font-size: 15px;
 }
+.active{
+  background-color: #79aec8 !important;
+}
