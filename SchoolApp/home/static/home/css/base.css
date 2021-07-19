@@ -54,7 +54,6 @@ button {
   font-size: 15px;
 }
 .active{
-  color: black;
+  color: black !important;
   background-color: #79aec8 !important;
->>>>>>> Stashed changes
 }
