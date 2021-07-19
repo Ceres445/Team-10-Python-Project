@@ -1,5 +1,4 @@
 import { addPostToHTML, getCookie } from './modules/functions.js';
-
 const tabContent = document.querySelector('.tabcontent');
 const tabLinks = document.getElementsByClassName('tablink');
 const courses = document.getElementById('courses')?.textContent
@@ -33,6 +32,8 @@ const active = {
 	_value: 'Public',
 	set value(field) {
 		this._value = field;
+		for (const el of tabLinks) el.classList.remove('active');
+		document.getElementsByName(field)[0].classList.add('active')
 		if (field === 'Class') {
 			if (!courses) hideButton();
 			else if (
