@@ -1,4 +1,4 @@
-import addPostToHTML from './modules/functions.js';
+import { addPostToHTML } from './modules/functions.js';
 
 const user_pk = JSON.parse(document.getElementById('user_pk').textContent);
 
