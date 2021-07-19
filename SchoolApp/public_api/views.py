@@ -13,8 +13,11 @@ def get_queryset(user, model, category_param=None, user_param=None, **kwargs):
     if user.is_staff:
         queryset = model.objects.all()  # return all objects
     elif user.is_authenticated:
-        queryset = model.objects.all().exclude(
-            **{kwargs.get('class_in'): user.profile.courses.all()})  # return class objects for user
+        # include all categories except class
+        queryset = model.objects.all().exclude(**{kwargs.get('name'): 'Class'}) | \
+                   model.objects.all().filter(
+                       **{kwargs.get('class_in'): user.profile.courses.all(),  # include classes in which user is in
+                          kwargs.get('name'): 'Class'})  # return class objects for user
     else:
         queryset = model.objects.all().exclude(**{kwargs.get('name'): 'Class'})  # block class objects
     if model is not Category:
