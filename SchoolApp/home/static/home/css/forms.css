@@ -26,6 +26,7 @@ textarea,
 input[type='text'],
 input[type='password'],
 input[type='email'] {
+	color: white;
 	width: 100%;
 	padding: 8px 20px;
 	background-color: rgb(33, 32, 45);

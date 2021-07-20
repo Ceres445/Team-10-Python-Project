@@ -6,7 +6,7 @@
 	type="text/css"
 	href=" {% static 'home/css/forms.css' %}"
 />
-{% endblock %} {% block navbar %}{% endblock %}
+{% endblock %}
 {% block content %}
 <div class="form-container">
     <div style="text-align: center"><h2>{% block form_title %}{% endblock %}</h2></div>
@@ -26,6 +26,7 @@
     {% endif %}
 {% endif %}
     <form method="post">{% csrf_token %} {% block form %}{% endblock %}</form>
+  {% block extra %}{% endblock %}
     <div class="redirect">
         <a href="{% url 'homePage' %}">Back to dashboard</a>
     </div>

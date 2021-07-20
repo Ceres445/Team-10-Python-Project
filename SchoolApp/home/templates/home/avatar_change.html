@@ -1,17 +1,10 @@
-{% extends 'base.html' %}
-
-
-{% block head %}
-<title>Avatar</title>
-{% endblock %}
-
-{% block content %}
-<div class="container card">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input class="submit" type="submit" name="Update " />
-    </form>
+{% extends 'registration/registration_base.html' %}
+{% block form_title %} Change data {% endblock %}
+{% block form %}
+<div class="container">
+  {{ form.as_p }}
+    <input class="submit" type="submit" name="Sign in " />
 </div>
-
 {% endblock %}
+{% block redirect_url %}
+{%  endblock %}
