@@ -61,12 +61,12 @@ async function changeUI(name, category = false) {
 			? `${url}posts?category=${name}`
 			: `${url}posts?category=Class&class=${name}`
 	);
-	if (Math.floor(data.status / 100) !== 2) {
-		return (tabContent.innerHTML = 'No Posts');
+	if (Math.floor(data.status / 100) !== 2) tabContent.innerHTML = 'No Posts'
+	else {
+		const json = await data.json();
+		tabContent.innerHTML = '';
+		json.forEach(el => addPostToHTML(el, tabContent));
 	}
-	const json = await data.json();
-	tabContent.innerHTML = '';
-	json.forEach(el => addPostToHTML(el, tabContent));
 	const new_active = category ? name : active.value;
 	if (new_active === 'Class' && active.value !== 'Class' && courses) {
 		selectorDiv.insertAdjacentHTML(
