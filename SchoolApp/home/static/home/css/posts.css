@@ -1,1 +1,9 @@
 /*CSS for all posts and comments related*/
+.post{
+    border: #264b5d 1px solid;
+    margin: 5px;
+    padding: 10px;
+}
+.posts-container{
+    padding: 20px 24px;
+}
