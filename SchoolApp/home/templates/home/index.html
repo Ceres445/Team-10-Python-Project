@@ -11,9 +11,15 @@
     href="{% static 'home/css/forms.css' %}"
     type="text/css"
   />
+  <link
+    rel="stylesheet"
+    href="{% static 'home/css/forms.css' %}"
+    type="text/css"
+  />
 {% endblock %}
 {% block content %}
-<div class="container">
+<div style="display: flex;flex-direction: row;align-items: flex-start; margin-top: 20px">
+  <div class="container" style="width: 60%">
   <div class="header">
     <button class="tablink" name='Public' id="defaultOpen">Public Announcements</button>
     <button class="tablink" name='Class'>Teacher Updates</button>
@@ -24,7 +30,8 @@
   <div class="selector" id = 'selector-div'></div>
   <div class="tabcontent"></div>
 
-  <div class="light-container" id="post-form">
+</div>
+<div class="container" style= 'width: 400px;' id="post-form">
   <form enctype="multipart/form-data"   novalidate>
       <div class="form-group ">
         <label class="input-label">
@@ -47,7 +54,6 @@
 
   </div>
 </div>
-
   {% if courses %}
 {{ courses| json_script:'courses' }}
   {% endif %}
