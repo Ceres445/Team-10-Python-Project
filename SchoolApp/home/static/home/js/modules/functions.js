@@ -1,8 +1,9 @@
 function addPostToHTML(el, container) {
 	const html = `<div class='post'>
+													<div class="post-header">Posted by <a href="/profile/${el.author}">${el.author}</a></div>
 													<h1>${el.title}</h1>
 													<p>${el.content}</p>
-													<div class = 'footer'>${el.author}</div>
+													<div class = 'footer'>${el.comments?.length ?? 0 } Comments</div>
 											</div>`;
 	container.insertAdjacentHTML('beforeend', html);
 }

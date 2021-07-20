@@ -51,13 +51,15 @@ def register(request):
 
 # TODO: ability to see others profiles
 @login_required
-def view_profile(request, pk=None):
-    if pk:
-        user = User.objects.get(pk=pk)
+def view_profile(request, username=None):
+    current = False
+    if username:
+        user = get_object_or_404(User, username=username)
+        current = True
     else:
         user = request.user
 
-    args = {'user': user, 'courses': ", ".join(list(map(str, user.profile.courses.all())))}
+    args = {'user': user, 'courses': ", ".join(list(map(str, user.profile.courses.all()))), 'current': current}
     return render(request, 'home/profile.html', args)
 
 

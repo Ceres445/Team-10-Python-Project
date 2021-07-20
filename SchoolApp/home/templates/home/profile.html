@@ -18,5 +18,7 @@
     {% endif %}
 </div>
 <a href="{% url 'viewPosts' %}"> View Posts</a>
-<a href="{% url 'editProfile' %}"> Edit Profile</a>
+{% if current %}
+    <a href="{% url 'editProfile' %}"> Edit Profile</a>
+{% endif %}
 {% endblock %}
