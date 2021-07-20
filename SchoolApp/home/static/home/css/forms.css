@@ -1,11 +1,6 @@
 *{
 	box-sizing: border-box;
 }
-body{
-	background-color: white;
-	/*rgb(13, 17, 23);*/
-	/*color:rgb(201, 209, 217)*/
-}
 :root{
     --mode: dark;
 
@@ -33,8 +28,8 @@ input[type='password'],
 input[type='email'] {
 	width: 100%;
 	padding: 8px 20px;
-	background-color: rgb(225, 228, 232);
-	border: 1px solid inherit;
+	background-color: rgb(33, 32, 45);
+	border: 1px solid #264b5d;
 	border-top: 0;
 	border-radius: 6px;
 	margin-bottom: 10px;
@@ -45,10 +40,10 @@ input[type='email'] {
 	padding: 25px;
 	display: flex;
 	flex-direction: column;
-	background-color: #79aec8;
+	background-color: rgb(22, 27, 34);
 	justify-content: space-around;
-	/*rgb(22, 27, 34);*/
 	border-radius: 16px;
+	flex: 0 0 auto;
 }
 
 .errorlist {
@@ -83,7 +78,7 @@ input[type='email'] {
 	border-radius: 8px;
 	cursor: pointer;
 	transition-duration: 0.4s;
-	border: 2px solid #1e6ed6;
+	border: 2px solid #264b5d;
 }
 .submit:hover {
 	background-color: #1e6ed6;
