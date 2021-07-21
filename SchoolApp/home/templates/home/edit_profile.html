@@ -1,18 +1,45 @@
-{% extends 'base.html' %}
+<!--{% extends 'base.html' %}-->
 
 
-{% block head %}
-<title>Profile</title>
-{% endblock %}
+<!--{% block head %}-->
+<!--<title>Profile</title>-->
+<!--{% endblock %}-->
 
-{% block content %}
-<div class="container card">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input class="submit" type="submit" name="Update " />
-    </form>
-<a href=" {% url 'changeAvatar' %}"> Change avatar</a>
+<!--{% block content %}-->
+<!--<div class="container card">-->
+<!--    <form method="post">-->
+<!--        {% csrf_token %}-->
+<!--        {{ form.as_p }}-->
+<!--        <input class="submit" type="submit" name="Update " />-->
+<!--    </form>-->
+<!--<a href=" {% url 'changeAvatar' %}"> Change avatar</a>-->
+<!--</div>-->
+
+<!--{% endblock %}-->
+
+<div id="profile">
+  <h1 style="text-align:center;">Edit Profile</h1>
+  <div class="container" align="center">
+    <input style="text-align:center;" size=50px type="text" placeholder="First Name" required/>
+
+    <br><br>
+
+    <input style="text-align:center;" size=50px type="text" placeholder="Last Name" required/>
+
+    <br><br>
+
+    <input style="text-align:center;" size=50px type="text" placeholder="Username" required/>
+
+    <br><br>
+
+    <input style="text-align:center;" size=50px type="email" placeholder="Email Address" required/>
+
+    <br><br>
+
+    <input style="text-align:center;" size=50px type="password" placeholder="Password" required/>
+
+    <br><br>
+
+    <input align="center" type="submit" value="Save" />
+  </div>
 </div>
-
-{% endblock %}
