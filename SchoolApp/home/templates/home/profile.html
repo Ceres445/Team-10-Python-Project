@@ -13,19 +13,24 @@
 {% endblock %}
 
 {% block content %}
-<div class="form-container container">
-    <h1>Profile</h1>
+<div class="form-container">
+  <div class="container">
+    <h1 align="center">Profile</h1>
     <p>Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Bio: {{ user.profile.bio }}</p>
     <p>Type: {{ user.profile.get_user_type_display }}</p>
     <p>Classes joined: {{ courses }}
-    {% if user.profile.avatar %}
-    <img src="{{ user.profile.avatar.url }}" width="240" alt="Profile Image">
-    {% endif %}
-</div>
-<a href="{% url 'viewPosts' %}"> View Posts</a>
+  </div>
+
+  <div class="redirect">
+    <a href="{% url 'viewPosts' %}"> View Posts</a>
+  </div>
 {% if current %}
+  <div class="redirect">
     <a href="{% url 'editProfile' %}"> Edit Profile</a>
+  </div>
 {% endif %}
+</div>
+
 {% endblock %}
