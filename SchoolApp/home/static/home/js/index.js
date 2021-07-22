@@ -10,6 +10,7 @@ const inputTitle = document.getElementById('title-input');
 const inputContent = document.getElementById('content-input');
 
 const submitForm = document.getElementById('post-form');
+const FormHeading = document.getElementById('submit-form-heading');
 
 let buttonHidden = false;
 function hideButton(hide = true) {
@@ -22,6 +23,7 @@ function hideButton(hide = true) {
 	if (hide) {
 		submitForm.style.display = 'none';
 	} else {
+
 		submitForm.style.display = 'block';
 	}
 	buttonHidden = !buttonHidden;
@@ -35,14 +37,18 @@ const active = {
 		for (const el of tabLinks) el.classList.remove('active');
 		document.getElementsByName(field)[0].classList.add('active')
 		if (field === 'Class') {
-			if (!courses) hideButton();
+			if (!courses || courses.length === 0) hideButton();
 			else if (
 				document.getElementById('class-selection-select').value ===
 				'all'
 			) {
 				hideButton();
-			} else hideButton(false);
+			} else {
+				FormHeading.innerText = `Posting to Class ${document.getElementById('class-selection-select').value}`
+				hideButton(false);
+			}
 		} else if (field in { Site: 0, Public: 0 }) {
+			FormHeading.innerText = `Posting to ${field}`
 			hideButton(true);
 		} else {
 			hideButton(false);
@@ -69,18 +75,21 @@ async function changeUI(name, category = false) {
 	}
 	const new_active = category ? name : active.value;
 	if (new_active === 'Class' && active.value !== 'Class' && courses) {
-		selectorDiv.insertAdjacentHTML(
-			'afterbegin',
-			`<div class="selector" id="class-selection"><label>Choose a class:</label>
-									<select id="class-selection-select">
-									<option value="all"> all </option>
-										${courses.map(el => `<option value="${el}"> ${el} </option>`).join('\n')}
-									</select>
-				</div>`
-		);
-		document
-			.getElementById('class-selection')
-			.addEventListener('change', el => changeUI(el.target.value));
+		if (courses.length === 0) tabContent.innerHTML = 'Join a class to view class posts'
+		else {
+					selectorDiv.insertAdjacentHTML(
+						'afterbegin',
+						`<div class="selector" id="class-selection"><label>Choose a class:</label>
+											<select id="class-selection-select">
+											<option value="all"> all </option>
+												${courses.map(el => `<option value="${el}"> ${el} </option>`).join('\n')}
+											</select>
+						</div>`
+					);
+					document
+						.getElementById('class-selection')
+						.addEventListener('change', el => changeUI(el.target.value));
+				}
 	}
 	if (new_active !== 'Class') selectorDiv.innerText = '';
 	active.value = new_active;
