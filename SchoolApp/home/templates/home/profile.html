@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
-{% block head %}
-<title>Profile</title>
+{% block title %}Profile {% endblock %}
+{% block extra_head %}
+
+  <link
+	rel="stylesheet"
+	type="text/css"
+	href=" {% static 'home/css/forms.css' %}"
+/>
 {% endblock %}
 
 {% block content %}
-<div class="container card">
+<div class="form-container container">
     <h1>Profile</h1>
     <p>Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>

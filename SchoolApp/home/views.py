@@ -1,13 +1,12 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
-from home.forms import CustomUserCreationForm, AvatarChangeForm
+from home.forms import CustomUserCreationForm, AvatarChangeForm, CustomUserChangeForm
 
 
 # Create your views here.
@@ -29,11 +28,7 @@ def index(request):
 
 def register(request):
     if request.method == "GET":
-        # User is trying to login
-        return render(
-            request, "registration/register.html",
-            {"form": CustomUserCreationForm}
-        )
+        form = CustomUserCreationForm
     elif request.method == "POST":
         # User has submitted login details
         form = CustomUserCreationForm(request.POST)
@@ -41,9 +36,9 @@ def register(request):
             user = form.save()
             login(request, user)
             return redirect(reverse("homePage"))
-        else:
-            # form is invalid, return error
-            return render(
+    else:
+        return HttpResponseForbidden(f"Method {request.method} not allowed")
+    return render(
                 request, "registration/register.html",
                 {"form": form}
             )
@@ -55,9 +50,9 @@ def view_profile(request, username=None):
     current = False
     if username:
         user = get_object_or_404(User, username=username)
-        current = True
     else:
         user = request.user
+        current = True
 
     args = {'user': user, 'courses': ", ".join(list(map(str, user.profile.courses.all()))), 'current': current}
     return render(request, 'home/profile.html', args)
@@ -66,27 +61,28 @@ def view_profile(request, username=None):
 @login_required
 def edit_profile(request):
     """Edit your profile"""
+    second_form = AvatarChangeForm(instance=request.user.profile)
     if request.method == 'POST':
-        form = UserChangeForm(request.POST, instance=request.user)
-
+        form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect(reverse('home:view_profile'))
+            return redirect(reverse('profile'))
     else:
-        form = UserChangeForm(instance=request.user)
-        args = {'form': form}
-        return render(request, 'home/edit_profile.html', args)
+        form = CustomUserChangeForm(instance=request.user)
+
+    return render(request, 'home/edit_profile.html', {'form': form, 'second_form': second_form})
 
 
 @login_required
 def change_avatar(request):
     """Form to change avatar/profile (rename needed)"""
+
     if request.method == 'POST':
-        form = AvatarChangeForm(request.POST, request.FILES,
+        form = AvatarChangeForm(request.POST,
                                 instance=request.user.profile)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/profile/')
+            return redirect(reverse('profile'))
     else:
         form = AvatarChangeForm(instance=request.user.profile)
 
