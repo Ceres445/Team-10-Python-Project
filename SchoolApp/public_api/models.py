@@ -2,9 +2,12 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.core.exceptions import PermissionDenied
 
 from home.models import Classes, Profile
-
+import os
+from time import time
+RATELIMIT = 15 #15 seconds
 
 # Create your models here.
 class Category(models.Model):
@@ -48,4 +51,13 @@ def create_category(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Classes)
 def create_category(sender, instance, **kwargs):
-    Category.objects.get(key_class=instance).save()
+    #insert ratelimiting here
+    
+    with open('.ratelimit', 'r') as f:
+        last_post_timestamp = int(f.read())
+    
+    if time() - last_post_timestamp > RATELIMIT:
+        Category.objects.get(key_class=instance).save()
+    
+    else:
+        raise PermissionDenied

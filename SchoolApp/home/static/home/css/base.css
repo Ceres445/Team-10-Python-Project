@@ -1,5 +1,8 @@
 /*Base CSS*/
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+/*add roboto mono to fonts*/
+
 .dropdown {
 	margin-left: auto;
 }
