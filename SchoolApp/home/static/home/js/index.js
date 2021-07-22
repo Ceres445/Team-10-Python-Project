@@ -48,9 +48,9 @@ const active = {
 				hideButton(false);
 			}
 		} else if (field in { Site: 0, Public: 0 }) {
-			FormHeading.innerText = `Posting to ${field}`
 			hideButton(true);
 		} else {
+			FormHeading.innerText = `Posting to ${field}`
 			hideButton(false);
 		}
 	},
