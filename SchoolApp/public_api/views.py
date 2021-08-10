@@ -4,9 +4,11 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions
 
+from classes.models import Assignment
 from . import serializers
 from .models import Post, Comment, Category
 from .permissions import IsAuthorOrReadOnly, IsInClass
+from .serializers import Upload
 
 
 def get_queryset(user, model, category_param=None, user_param=None, **kwargs):
@@ -120,3 +122,25 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = serializers.CategorySerializer
     permission_classes = [permissions.IsAdminUser]  # only admin users can create new categories manually
+
+
+class AssignmentList(generics.ListAPIView):
+    queryset = Assignment.objects.all()
+    serializer_class = serializers.AssignmentSerializer
+
+
+class AssignmentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Assignment.objects.all()
+    serializer_class = serializers.AssignmentSerializer
+
+
+class UploadList(generics.ListAPIView):
+    queryset = Upload.objects.all()
+    serializer_class = serializers.UploadSerializer
+
+
+class UploadDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Upload.objects.all()
+    serializer_class = serializers.UploadSerializer
+
+# TODO: add perms for uploads and assignments
