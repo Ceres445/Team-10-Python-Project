@@ -17,7 +17,7 @@ class Assignment(models.Model):
 
 
 class Upload(models.Model):
-    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE, related_name='upload')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     file = models.FileField(upload_to='uploads', null=False)
 
