@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
+from django.db import models
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions
@@ -128,19 +129,47 @@ class AssignmentList(generics.ListAPIView):
     queryset = Assignment.objects.all()
     serializer_class = serializers.AssignmentSerializer
 
+    def get_queryset(self):
+        return assignment_query_set(self.request.user, Assignment,
+                                    {'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})
+
 
 class AssignmentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Assignment.objects.all()
     serializer_class = serializers.AssignmentSerializer
+
+    def get_queryset(self):
+        return assignment_query_set(self.request.user, Assignment,
+                                    {'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})
 
 
 class UploadList(generics.ListAPIView):
     queryset = Upload.objects.all()
     serializer_class = serializers.UploadSerializer
 
+    def get_queryset(self):
+        return assignment_query_set(self.request.user, Upload)
+
 
 class UploadDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Upload.objects.all()
     serializer_class = serializers.UploadSerializer
 
-# TODO: add perms for uploads and assignments
+    def get_queryset(self):
+        return assignment_query_set(self.request.user, Upload)
+
+
+def assignment_query_set(user, model, kwarg=None):
+    if kwarg is None:
+        kwarg = {'courses': 'assignment__key_class__in', 'teacher': 'assignment__key_class__teacher_id'}
+    if user.is_staff:
+        queryset = model.objects.all()  # return all objects
+    elif user.is_authenticated:
+        # include all categories except class
+        queryset = model.objects.all().filter(**{kwarg['courses']: user.profile.courses}) | \
+                   model.objects.all().filter(**{kwarg['teacher']: user})
+    else:
+        raise PermissionDenied("Non authenticated users cannot see assignments")
+    return queryset
+
+# TODO: Add filtering based on needs
