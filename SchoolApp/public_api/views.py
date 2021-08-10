@@ -1,57 +1,25 @@
-from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied, ObjectDoesNotExist
-from django.db import models
-from django.http import Http404
-from django.shortcuts import get_object_or_404
 from rest_framework import generics, permissions
 
-from classes.models import Assignment
-from . import serializers
+from classes.models import Assignment, Upload
+from .filters import filter_queryset, authenticated_home, anon_home, authenticated_classes, anon_classes, parse_args
 from .models import Post, Comment, Category
 from .permissions import IsAuthorOrReadOnly, IsInClass
-from .serializers import Upload
-
-
-def get_queryset(user, model, category_param=None, user_param=None, **kwargs):
-    if user.is_staff:
-        queryset = model.objects.all()  # return all objects
-    elif user.is_authenticated:
-        # include all categories except class
-        queryset = model.objects.all().exclude(**{kwargs.get('name'): 'Class'}) | \
-                   model.objects.all().filter(
-                       **{kwargs.get('class_in'): user.profile.courses.all(),  # include classes in which user is in
-                          kwargs.get('name'): 'Class'})  # return class objects for user
-    else:
-        queryset = model.objects.all().exclude(**{kwargs.get('name'): 'Class'})  # block class objects
-    if model is not Category:
-        if category_param in ['Class', 'Public', 'Forum', 'Site']:
-            # print([(x.category.name == category, list(x.category.name)) for x in queryset], list(category))
-            queryset = queryset.filter(
-                **{kwargs.get('name'): category_param.strip("'")})  # filter against given category
-            # print(queryset)
-            if category_param == 'Class':
-                if user.is_authenticated:
-                    if not user.is_staff:
-                        queryset = queryset.filter(**{kwargs.get('class_in'): user.profile.courses.all()})
-                else:
-                    raise PermissionDenied("Non authenticated users cannot see classes")
-        elif category_param is not None:
-            raise Http404
-    if user_param is not None:
-        get_object_or_404(User, username=user_param)  # raise error if author not found
-        # print('filtering', user)
-        queryset = queryset.filter(author__username=user_param)
-    return queryset
+from .serializers import PostSerializer, CommentSerializer, CategorySerializer, AssignmentSerializer, UploadSerializer
 
 
 class PostList(generics.ListCreateAPIView):
-    serializer_class = serializers.PostSerializer
+    serializer_class = PostSerializer
 
     def get_queryset(self):
         category_param = self.request.query_params.get('category')
         user_param = self.request.query_params.get('author')
-        queryset = get_queryset(self.request.user, Post, category_param, user_param, name='category__name',
-                                class_in='category__key_class__in')
+        queryset = filter_queryset(self.request.user, Post, {'authenticated': authenticated_home, 'anon': anon_home},
+                                   name='category__name',
+                                   class_in='category__key_class__in'
+                                   )
+        queryset = parse_args(queryset, self.request.user, Post, category_param, user_param, name='category__name',
+                              class_in='category__key_class__in')
         class_param = self.request.query_params.get('class')
         if category_param == 'Class' and class_param is not None:
             queryset = queryset.filter(category__key_class__class_name=class_param)
@@ -63,13 +31,13 @@ class PostList(generics.ListCreateAPIView):
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
-    serializer_class = serializers.PostSerializer
+    serializer_class = PostSerializer
     permission_classes = [IsAuthorOrReadOnly, IsInClass]
 
 
 class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
-    serializer_class = serializers.CommentSerializer
+    serializer_class = CommentSerializer
     permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
@@ -77,9 +45,13 @@ class CommentList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user_param = self.request.query_params.get('author')
-        queryset = get_queryset(self.request.user, Comment, None, user_param,
-                                class_in='post__category__key_class__in',
-                                name='post__category__name')
+        queryset = filter_queryset(self.request.user, Comment, {'authenticated': authenticated_home, 'anon': anon_home},
+                                   class_in='post__category__key_class__in',
+                                   name='post__category__name'
+                                   )
+        queryset = parse_args(queryset, self.request.user, Comment, None, user_param,
+                              class_in='post__category__key_class__in',
+                              name='post__category__name')
         post = self.request.query_params.get('post', '')
         if post != '':
             queryset = queryset.filter(post__id=post.strip("'"))
@@ -101,13 +73,17 @@ class CommentList(generics.ListCreateAPIView):
 
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = serializers.CommentSerializer
+    serializer_class = CommentSerializer
     permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticatedOrReadOnly, IsInClass]
 
 
 class CategoryList(generics.ListAPIView):
     def get_queryset(self):
-        queryset = get_queryset(self.request.user, Category, class_in='key_class__in', name='name')
+        queryset = filter_queryset(self.request.user, Category,
+                                   {'authenticated': authenticated_home, 'anon': anon_home},
+                                   class_in='key_class__in', name='name'
+                                   )
+        queryset = parse_args(queryset, self.request.user, Category, class_in='key_class__in', name='name')
         name = self.request.query_params.get('name')
         if name is not None:
             queryset = queryset.filter(name=name)
@@ -116,60 +92,54 @@ class CategoryList(generics.ListAPIView):
             queryset = queryset.filter(key_class__class_name=class_param)
         return queryset
 
-    serializer_class = serializers.CategorySerializer
+    serializer_class = CategorySerializer
 
 
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
-    serializer_class = serializers.CategorySerializer
+    serializer_class = CategorySerializer
     permission_classes = [permissions.IsAdminUser]  # only admin users can create new categories manually
 
 
 class AssignmentList(generics.ListAPIView):
     queryset = Assignment.objects.all()
-    serializer_class = serializers.AssignmentSerializer
+    serializer_class = AssignmentSerializer
 
     def get_queryset(self):
-        return assignment_query_set(self.request.user, Assignment,
-                                    {'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})
+        return filter_queryset(self.request.user, Assignment,
+                               {'authenticated': authenticated_classes,
+                                'anon': anon_classes},
+                               **{'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})
 
 
 class AssignmentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Assignment.objects.all()
-    serializer_class = serializers.AssignmentSerializer
+    serializer_class = AssignmentSerializer
 
     def get_queryset(self):
-        return assignment_query_set(self.request.user, Assignment,
-                                    {'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})
+        return filter_queryset(self.request.user, Assignment,
+                               {'authenticated': authenticated_classes,
+                                'anon': anon_classes},
+                               **{'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})
 
 
 class UploadList(generics.ListAPIView):
     queryset = Upload.objects.all()
-    serializer_class = serializers.UploadSerializer
+    serializer_class = UploadSerializer
 
     def get_queryset(self):
-        return assignment_query_set(self.request.user, Upload)
+        return filter_queryset(self.request.user, Upload,
+                               {'authenticated': authenticated_classes,
+                                'anon': anon_classes},
+                               **{'courses': 'assignment_key_class__in', 'teacher': 'assignment_key_class__teacher_id'})
 
 
 class UploadDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Upload.objects.all()
-    serializer_class = serializers.UploadSerializer
+    serializer_class = UploadSerializer
 
     def get_queryset(self):
-        return assignment_query_set(self.request.user, Upload)
-
-
-def assignment_query_set(user, model, kwarg=None):
-    if kwarg is None:
-        kwarg = {'courses': 'assignment__key_class__in', 'teacher': 'assignment__key_class__teacher_id'}
-    if user.is_staff:
-        queryset = model.objects.all()  # return all objects
-    elif user.is_authenticated:
-        # include all categories except class
-        queryset = model.objects.all().filter(**{kwarg['courses']: user.profile.courses}) | \
-                   model.objects.all().filter(**{kwarg['teacher']: user})
-    else:
-        raise PermissionDenied("Non authenticated users cannot see assignments")
-    return queryset
-
-# TODO: Add filtering based on needs
+        return filter_queryset(self.request.user, Upload,
+                               {'authenticated': authenticated_classes,
+                                'anon': anon_classes},
+                               **{'courses': 'assignment_key_class__in', 'teacher': 'assignment_key_class__teacher_id'})
