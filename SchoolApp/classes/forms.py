@@ -6,7 +6,7 @@ from classes.models import Assignment, Upload
 class AssignmentCreationForm(ModelForm):
     class Meta:
         model = Assignment
-        fields = ['key_class', 'title', 'questions', 'ends_at']
+        fields = ['title', 'questions', 'ends_at']
 
 
 class UploadCreationForm(ModelForm):
