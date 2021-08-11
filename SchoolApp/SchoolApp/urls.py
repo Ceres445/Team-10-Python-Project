@@ -22,6 +22,7 @@ from SchoolApp import settings
 
 urlpatterns = [
     path('', include("home.urls")),
+    path('classes/', include("classes.urls")),
     path('admin/', admin.site.urls),
     path('api/', include('public_api.urls')),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
