@@ -20,6 +20,7 @@ class Upload(models.Model):
     assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE, related_name='upload')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     file = models.FileField(upload_to='uploads', null=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.author.username} - {self.assignment}"
