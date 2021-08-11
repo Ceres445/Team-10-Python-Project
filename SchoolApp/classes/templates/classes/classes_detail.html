@@ -37,7 +37,11 @@
 
     {% endfor %}
 <div class="redirect">
+  {% if teacher %}
+        Create Assignment <a href='{% url 'assignmentCreate' class.id %}'>here</a>
+  {% else %}
         Submit Assignment <a href="{% url 'assignmentSubmit' class.id %}">here</a>
+  {% endif %}
 </div>
 </div>
 {% endblock %}
