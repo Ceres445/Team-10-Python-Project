@@ -33,7 +33,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'home',
     'public_api',
+    'classes',
     'rest_framework',
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -128,7 +130,6 @@ STATICFILES_FINDERS = [
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-
 if os.environ.get('HOST', None) != 'heroku':
     load_dotenv()
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
@@ -146,3 +147,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication'
     ]
 }
+
+# static file storage
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_ACCESS_TOKEN")
+
+# Auto fields
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
