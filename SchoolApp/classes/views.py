@@ -30,7 +30,9 @@ def assignment_creation(request, pk):
 @login_required
 def classes_view(request):
     joined = request.user.profile.courses.all()
-    public = Classes.objects.all().filter(public=True).exclude(id__in=[x.id for x in joined])
+    public = Classes.objects.all().filter(public=True).\
+        exclude(id__in=[x.id for x in joined]).\
+        exclude(teacher_id=request.user)
     teacher = Classes.objects.all().filter(teacher_id=request.user)
     print(joined, public, teacher)
     return render(request, 'classes/classes_view.html', {'joined': joined, 'public': public, 'teacher': teacher})
