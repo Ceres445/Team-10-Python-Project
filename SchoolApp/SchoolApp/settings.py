@@ -84,12 +84,6 @@ WSGI_APPLICATION = 'SchoolApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -130,9 +124,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # database for heroku
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
 # set allowed hosts for heroku
 ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost', '0.0.0.0']
 STATICFILES_FINDERS = [
@@ -168,3 +159,14 @@ DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_ACCESS_TOKEN")
 
 # Auto fields
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('QOVERY_POSTGRESQL_Z52595EED_DEFAULT_DATABASE_NAME', 'postgres'),
+        'USER': os.environ.get('QOVERY_POSTGRESQL_Z52595EED_LOGIN', 'postgres'),
+        'PASSWORD': os.environ.get('QOVERY_POSTGRESQL_Z52595EED_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('QOVERY_POSTGRESQL_Z52595EED_HOST', 'localhost'),
+        'PORT': os.environ.get('QOVERY_POSTGRESQL_Z52595EED_PORT', 5432),
+    }
+}
