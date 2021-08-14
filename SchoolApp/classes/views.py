@@ -29,13 +29,22 @@ def assignment_creation(request, pk):
 
 @login_required
 def classes_view(request):
-    joined = request.user.profile.courses.all()
+    joined = request.user.profile.courses.all()  # classes user has joined
     public = Classes.objects.all().filter(public=True).\
         exclude(id__in=[x.id for x in joined]).\
-        exclude(teacher_id=request.user)
-    teacher = Classes.objects.all().filter(teacher_id=request.user)
-    print(joined, public, teacher)
+        exclude(teacher_id=request.user)   # public classes user has not joined
+    teacher = Classes.objects.all().filter(teacher_id=request.user)  # User teaches these classes
+    print([c.assignments.all() for c in teacher])
     return render(request, 'classes/classes_view.html', {'joined': joined, 'public': public, 'teacher': teacher})
+
+
+def get_status(user):
+    def predicate(assignment: Assignment):
+        if user in [x.author for x in assignment.upload.all()]:
+            return Upload.objects.get(author=user, assignment=assignment)
+        else:
+            return None
+    return predicate
 
 
 @login_required
@@ -43,9 +52,10 @@ def classes_detail(request, pk=1):
     class_object = get_object_or_404(Classes, id=pk)
     if class_object in request.user.profile.courses.all() or class_object.teacher_id == request.user:
         assignments = Assignment.objects.all().filter(key_class=class_object)[::-1]
+        submitted = map(get_status(request.user), assignments)
         teacher = class_object.teacher_id == request.user
         return render(request, 'classes/classes_detail.html', {'class': class_object,
-                                                               'assignments': assignments,
+                                                               'assignments': tuple(zip(assignments, submitted)),
                                                                'teacher': teacher})
     else:
         raise PermissionDenied("You are not in this class")
@@ -56,6 +66,8 @@ def assignment_submit(request, pk=1):
     class_object = get_object_or_404(Classes, id=pk)
     if class_object in request.user.profile.courses.all():
         assignments = Assignment.objects.all().filter(key_class=class_object)
+        submitted = [x.assignment for x in request.user.uploads.all()]
+        assignments = [x for x in assignments if x not in submitted]   # remove submitted assignments from list
         if request.method == 'POST':
             form = UploadCreationForm(request.POST, request.FILES)
             if form.is_valid():

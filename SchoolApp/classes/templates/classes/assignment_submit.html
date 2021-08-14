@@ -1,10 +1,16 @@
 {% extends 'registration/registration_base.html' %}
 {% block navbar %}{% endblock %}
-{% block form_title %} Submit Assignment {% endblock %}
+{% block form_title %} Submit Assignment to class {{ class }}{% endblock %}
 {% block form %}
-<div class="container">
-  {{ form.as_p}}
-        <input class="submit" type="submit" name="Submit" />
+  <div class="container">
+  <p><label for="id_assignment">Assignment:</label> <select name="assignment" required="" id="id_assignment">
+  <option value="" selected="">---------</option>
+  {% for i in assignments %}
+    <option value="{{ i.id }}">{{ i.title }}</option>
+  {% endfor %}
+</select></p>
+<p><label for="id_file">File:</label> <input type="file" name="file" required="" id="id_file"></p>
+        <input class="submit" type="submit" name="Submit">
 </div>
 {% endblock %}
 {% block redirect_url %} {% endblock %}

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load tags %}
 {% load static %}
 {% block extra_head %}
 <link
@@ -17,7 +18,11 @@
     <div class='post'>
           <h1>Class: {{ i.class_name }}</h1>
           <p>Teacher: {{ i.teacher_id }}</p>
+      {% if i.assignments.all %}
+          <div class = 'footer'>{{ i.assignments.all|length_active }} Assignments</div>
+      {% else %}
           <div class = 'footer'>0 Assignments</div>
+      {% endif %}
       </div>
     </a>
   {% endfor %}
@@ -30,7 +35,11 @@
     <div class='post'>
           <h1>Class: {{ i.class_name }}</h1>
           <p>Teacher: {{ i.teacher_id }}</p>
+      {% if i.assignments.all %}
+          <div class = 'footer'>{{ i.assignments.all|length_active }} Assignments</div>
+      {% else %}
           <div class = 'footer'>0 Assignments</div>
+      {% endif %}
       </div>
     </a>
   {% endfor %}
@@ -43,7 +52,11 @@
     <div class='post'>
           <h1>Class: {{ i.class_name }}</h1>
           <p>Teacher: {{ i.teacher_id }}</p>
+      {% if i.assignments.all %}
+          <div class = 'footer'>{{ i.assignments.all|length_active }} Assignments</div>
+      {% else %}
           <div class = 'footer'>0 Assignments</div>
+      {% endif %}
       </div>
     </a>
   {% endfor %}

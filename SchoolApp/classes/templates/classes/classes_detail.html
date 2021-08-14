@@ -18,7 +18,7 @@
   <h1> Class: {{ class.class_name }}</h1>
   <h2> Teacher: {{ class.teacher_id }}</h2>
 
-  {% for i in assignments %}
+  {% for i, j in assignments %}
     <div class="post">
       <p>Title: {{ i.title }} </p>
       <p>
@@ -30,6 +30,9 @@
     </p>
       <p>Created at: {{ i.created_at}}</p>
       <p>Ends at: {{ i.ends_at|default_if_none:'Not Provided' }}</p>
+    {% if j %}
+    <p>Submitted:<a href="{{ j.file.url }}" >File</a> </p>
+    {% endif %}
     {% if teacher %}
       <a href={% url 'assignmentView' i.pk %}>View Uploads</a>
     {% endif %}
