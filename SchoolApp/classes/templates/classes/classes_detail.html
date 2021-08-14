@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+<link
+    rel="stylesheet"
+    href="{% static 'home/css/posts.css' %}"
+    type="text/css"
+  />
+<link
+    rel="stylesheet"
+    href="{% static 'home/css/forms.css' %}"
+    type="text/css"
+  />
+{% endblock %}
+
+{% block content %}
+<div class="form-container" style="left: auto">
+  <h1> Class: {{ class.class_name }}</h1>
+  <h2> Teacher: {{ class.teacher_id }}</h2>
+
+  {% for i, j in assignments %}
+    <div class="post">
+      <p>Title: {{ i.title }} </p>
+      <p>
+        {% if i.questions %}
+        Questions: <a href="{{ i.questions.url }}" >File</a>
+        {% else %}
+        No Questions Provided
+        {% endif %}
+    </p>
+      <p>Created at: {{ i.created_at}}</p>
+      <p>Ends at: {{ i.ends_at|default_if_none:'Not Provided' }}</p>
+    {% if j %}
+    <p>Submitted:<a href="{{ j.file.url }}" >File</a> </p>
+    {% endif %}
+    {% if teacher %}
+      <a href={% url 'assignmentView' i.pk %}>View Uploads</a>
+    {% endif %}
+    </div>
+
+    {% endfor %}
+<div class="redirect">
+  {% if teacher %}
+        Create Assignment <a href='{% url 'assignmentCreate' class.id %}'>here</a>
+  {% else %}
+        Submit Assignment <a href="{% url 'assignmentSubmit' class.id %}">here</a>
+  {% endif %}
+</div>
+</div>
+{% endblock %}

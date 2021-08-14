@@ -35,7 +35,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&n
 INSTALLED_APPS = [
     'home',
     'public_api',
+    'classes',
     'rest_framework',
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -159,3 +161,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication'
     ]
 }
+
+# static file storage
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_ACCESS_TOKEN")
+
+# Auto fields
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

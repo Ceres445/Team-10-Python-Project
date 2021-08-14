@@ -1,0 +1,31 @@
+{% extends 'registration/registration_base.html' %}
+{% block navbar %}{% endblock %}
+{% block form_title %} Create Assignment for {{ class.class_name }}{% endblock %}
+{% block form %}
+<div class="container">
+{#  <p><label for="id_key_class">Class:</label> <select name="key_class" required="" id="id_key_class">#}
+{#  <option value="" selected="">---------</option>#}
+{#  {% for value in classes %}#}
+{##}
+{#  <option value="1">Test</option>#}
+{##}
+{#  <option value="2">Private</option>#}
+{##}
+{#  <option value="3">Special</option>#}
+{##}
+{#  <option value="5">New Class</option>#}
+{##}
+{#  <option value="6">New class testing</option>#}
+{##}
+{#  <option value="7">test public</option>#}
+{#  {% endfor %}#}
+{#</select></p>#}
+{#<p><label for="id_title">Title:</label> <textarea name="title" cols="40" rows="10" maxlength="400" required="" id="id_title">Title</textarea></p>#}
+{#<p><label for="id_questions">Questions:</label> <input type="file" name="questions" id="id_questions"></p>#}
+{#<p><label for="id_ends_at">Ends at:</label> <input type="text" name="ends_at" id="id_ends_at"></p>#}
+{#        <input class="submit" type="submit" name="Sign in ">#}
+  {{ form.as_p}}
+        <input class="submit" type="submit" name="Sign in " />
+</div>
+{% endblock %}
+{% block redirect_url %} {% endblock %}
