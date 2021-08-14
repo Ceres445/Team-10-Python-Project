@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from home.models import Classes
 from .models import Post, Comment, Category
+from classes.models import Assignment, Upload
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
@@ -32,3 +33,19 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name', 'posts', 'key_class']
+
+
+class AssignmentSerializer(serializers.ModelSerializer):
+    upload = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
+    class Meta:
+        model = Assignment
+        fields = ['id', 'title', 'key_class', 'upload']
+
+
+class UploadSerializer(serializers.ModelSerializer):
+    assignment = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+
+    class Meta:
+        model = Upload
+        fields = ['id', 'author', 'file', 'assignment']
