@@ -37,14 +37,18 @@ INSTALLED_APPS = [
     'public_api',
     'classes',
     'rest_framework',
+    'invitations',
     'storages',
     'django.contrib.admin',
+    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -168,3 +172,9 @@ DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_ACCESS_TOKEN")
 
 # Auto fields
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# INVITATIONS app settings
+INVITATIONS_SIGNUP_REDIRECT = ''
+INVITATIONS_INVITATION_EXPIRY = 0
+INVITATIONS_GONE_ON_ACCEPT_ERROR = False
+INVITATIONS_EMAIL_SUBJECT_PREFIX = "Team10- "

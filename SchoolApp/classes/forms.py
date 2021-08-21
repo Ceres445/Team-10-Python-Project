@@ -1,4 +1,5 @@
-from django.forms import ModelForm
+from django import forms
+from django.forms import ModelForm, Form
 
 from classes.models import Assignment, Upload
 
@@ -13,3 +14,7 @@ class UploadCreationForm(ModelForm):
     class Meta:
         model = Upload
         fields = ['assignment', 'file']
+
+
+class InviteEmailForm(Form):
+    email = forms.EmailField()
