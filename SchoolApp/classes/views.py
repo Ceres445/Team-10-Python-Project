@@ -103,7 +103,8 @@ def invite_users(request, pk):
         if request.method == 'POST':
             form = InviteEmailForm(request.POST)
             if form.is_valid():
-                invite = ClassInvitation.create(form.cleaned_data['email'], inviter=request.user, invited_class=class_object)
+                invite = ClassInvitation.create(form.cleaned_data['email'], inviter=request.user,
+                                                invited_class=class_object)
                 invite.send_invitation(request)
                 message = f"Success! Invited {form.cleaned_data['email']}"
             else:
@@ -127,4 +128,4 @@ def accept_invite(request, key):
         request.user.profile.courses.add(class_object)
         return redirect(reverse('classesDetail', args=[class_object.id]))
     else:
-        return JsonResponse(f"You are not logged in with the correct email, invitation was sent to {invite.email}")
+        return render(request, 'classes/wrong_email.html', {"email": invite.email})
