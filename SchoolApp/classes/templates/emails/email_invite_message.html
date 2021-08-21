@@ -1,0 +1,14 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans %}
+
+Hello,
+
+You ({{ email }}) have been invited to join the class {{ site_name }}
+<br>
+If you'd like to join, please go <a href="{{ invite_url }}">here</a>
+<br>
+If you don't already have an account, create an account <a href="{{ register_url }}">here</a>
+
+{% endblocktrans %}
+{% endautoescape %}
