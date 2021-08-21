@@ -39,12 +39,18 @@
     </div>
 
     {% endfor %}
-<div class="redirect">
-  {% if teacher %}
-        Create Assignment <a href='{% url 'assignmentCreate' class.id %}'>here</a>
-  {% else %}
-        Submit Assignment <a href="{% url 'assignmentSubmit' class.id %}">here</a>
-  {% endif %}
-</div>
+{% if teacher %}
+  <div class="redirect">
+      Create Assignment <a href='{% url 'assignmentCreate' class.id %}'>here</a>
+  </div>
+  <div class="redirect">
+      Invite Students <a href=" {% url 'InviteUser' class.id %}">here</a>
+  </div>
+{% else %}
+  <div class="redirect">
+      Submit Assignment <a href="{% url 'assignmentSubmit' class.id %}">here</a>
+  </div>
+{% endif %}
+
 </div>
 {% endblock %}
