@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'home',
     'public_api',
     'classes',
+    'timetable',
     'rest_framework',
     'invitations',
     'storages',

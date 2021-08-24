@@ -3,6 +3,7 @@ from rest_framework import serializers
 from home.models import Classes
 from .models import Post, Comment, Category
 from classes.models import Assignment, Upload
+from timetable.models import ClassTime
 
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
@@ -49,3 +50,13 @@ class UploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Upload
         fields = ['id', 'author', 'file', 'assignment']
+
+
+class TimeTableSerializer(serializers.ModelSerializer):
+    key_class = serializers.SlugRelatedField(many=False, required=False, queryset=Classes.objects.all(),
+                                             slug_field='class_name',
+                                             allow_null=True)
+
+    class Meta:
+        model = ClassTime
+        fields = ["pk", "key_class", "subject", "day", "time", "link"]
