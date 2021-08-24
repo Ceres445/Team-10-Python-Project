@@ -1,11 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
-
-# Create your views here.
 from django.urls import reverse
-from invitations.utils import get_invitation_model
 
 from classes.forms import AssignmentCreationForm, UploadCreationForm, InviteEmailForm
 from classes.models import Assignment, Upload, ClassInvitation
