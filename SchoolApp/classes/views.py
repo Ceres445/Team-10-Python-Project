@@ -36,7 +36,7 @@ def classes_view(request):
         exclude(id__in=[x.id for x in joined]). \
         exclude(teacher_id=request.user)  # public classes user has not joined
     teacher = Classes.objects.all().filter(teacher_id=request.user)  # User teaches these classes
-    print([c.assignments.all() for c in teacher])
+    # print([c.assignments.all() for c in teacher])
     return render(request, 'classes/classes_view.html', {'joined': joined, 'public': public, 'teacher': teacher})
 
 

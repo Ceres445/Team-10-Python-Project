@@ -13,7 +13,6 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
 
 class IsInClass(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
-        print(obj, request.user)
         if not isinstance(obj, Post):
             try:
                 obj = obj.post
