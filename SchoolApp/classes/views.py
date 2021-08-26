@@ -22,7 +22,7 @@ def assignment_creation(request, pk):
         if form.is_valid():
             form.instance.key_class = class_object
             form.save()
-            return redirect(reverse('classesDetail', args=[pk]))
+            return redirect(reverse('ClassesDetail', args=[pk]))
     else:
         form = AssignmentCreationForm()
 
@@ -36,7 +36,7 @@ def classes_view(request):
         exclude(id__in=[x.id for x in joined]). \
         exclude(teacher_id=request.user)  # public classes user has not joined
     teacher = Classes.objects.all().filter(teacher_id=request.user)  # User teaches these classes
-    print([c.assignments.all() for c in teacher])
+    # print([c.assignments.all() for c in teacher])
     return render(request, 'classes/classes_view.html', {'joined': joined, 'public': public, 'teacher': teacher})
 
 
@@ -76,7 +76,7 @@ def assignment_submit(request, pk=1):
             if form.is_valid():
                 form.instance.author = request.user
                 form.save()
-                return redirect(reverse('classesDetail', args=[pk]))
+                return redirect(reverse('ClassesDetail', args=[pk]))
         else:
             form = UploadCreationForm()
 
@@ -126,6 +126,16 @@ def accept_invite(request, key):
     class_object = get_object_or_404(Classes, id=invite.invited_class.id)
     if request.user.email == invite.email:
         request.user.profile.courses.add(class_object)
-        return redirect(reverse('classesDetail', args=[class_object.id]))
+        return redirect(reverse('ClassesDetail', args=[class_object.id]))
     else:
         return render(request, 'classes/wrong_email.html', {"email": invite.email})
+
+
+@login_required()
+def join_class(request, pk):
+    class_object = get_object_or_404(Classes, id=pk)
+    if class_object not in request.user.profile.courses.all() and class_object.public:
+        request.user.profile.courses.add(class_object)
+        return redirect(reverse("ClassesDetail", args=[pk]))
+    else:
+        raise PermissionDenied("You can't join this class")

@@ -44,7 +44,7 @@ def register(request):
             )
 
 
-# TODO: ability to see others profiles
+# DONE: ability to see others profiles
 @login_required
 def view_profile(request, username=None):
     current = False
