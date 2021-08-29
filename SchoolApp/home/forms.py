@@ -14,7 +14,7 @@ class CustomUserCreationForm(UserCreationForm):
 class AvatarChangeForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio']
+        fields = ['bio', 'avatar']
 
 
 class CustomUserChangeForm(UserChangeForm):

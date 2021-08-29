@@ -24,7 +24,7 @@ class Classes(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
-    # avatar = models.ImageField(upload_to='profile_image', blank=True)
+    avatar = models.ImageField(upload_to='profile_image', blank=True)
     courses = models.ManyToManyField(Classes, default=1)
     user_type_data = ((1, "Student"), (2, "Teacher"))
     user_type = models.IntegerField(default=1, choices=user_type_data)
