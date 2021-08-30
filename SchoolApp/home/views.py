@@ -44,7 +44,7 @@ def register(request):
             )
 
 
-# TODO: ability to see others profiles
+# DONE: ability to see others profiles
 @login_required
 def view_profile(request, username=None):
     current = False
@@ -70,7 +70,7 @@ def edit_profile(request):
     else:
         form = CustomUserChangeForm(instance=request.user)
 
-    return render(request, 'home/edit_profile.html', {'form': form, 'second_form': second_form})
+    return render(request, 'home/edit_profile.html', {'form': form, 'second_form': second_form, 'files': True})
 
 
 @login_required
@@ -78,7 +78,7 @@ def change_avatar(request):
     """Form to change avatar/profile (rename needed)"""
 
     if request.method == 'POST':
-        form = AvatarChangeForm(request.POST,
+        form = AvatarChangeForm(request.POST, request.FILES,
                                 instance=request.user.profile)
         if form.is_valid():
             form.save()

@@ -34,21 +34,21 @@
     <p>Submitted:<a href="{{ j.file.url }}" >File</a> </p>
     {% endif %}
     {% if teacher %}
-      <a href={% url 'assignmentView' i.pk %}>View Uploads</a>
+      <a href={% url 'AssignmentView' i.pk %}>View Uploads</a>
     {% endif %}
     </div>
 
     {% endfor %}
 {% if teacher %}
   <div class="redirect">
-      Create Assignment <a href='{% url 'assignmentCreate' class.id %}'>here</a>
+      Create Assignment <a href='{% url 'AssignmentCreate' class.id %}'>here</a>
   </div>
   <div class="redirect">
       Invite Students <a href=" {% url 'InviteUser' class.id %}">here</a>
   </div>
 {% else %}
   <div class="redirect">
-      Submit Assignment <a href="{% url 'assignmentSubmit' class.id %}">here</a>
+      Submit Assignment <a href="{% url 'AssignmentSubmit' class.id %}">here</a>
   </div>
 {% endif %}
 

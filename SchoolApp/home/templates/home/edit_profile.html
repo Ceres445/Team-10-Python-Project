@@ -70,7 +70,7 @@
     {% endif %}
 {% endif %}
 <div class="container">
-    <form method="post" action="{% url 'changeAvatar' %}">
+    <form method="post" action="{% url 'changeAvatar' %}" enctype="multipart/form-data">
       {% csrf_token %}
        {{ second_form.as_p }}
        <input class="submit" type="submit" name="Change " />
