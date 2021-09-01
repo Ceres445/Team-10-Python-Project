@@ -1,8 +1,9 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
 from home.models import Classes
-
+DEFAULT_MESSAGE = """Class - {0}\nSubject - {1}\nDay - {2}\nLink - [here]({3})"""
 
 class ClassTime(models.Model):
     key_class = models.ForeignKey(Classes, on_delete=models.CASCADE)
@@ -21,3 +22,10 @@ class ClassTime(models.Model):
     day = models.IntegerField(choices=Day.choices)
     time = models.TimeField(auto_now=False)
     link = models.TextField(max_length=400)
+
+
+class PostAnnouncementDiscord(models.Model):
+    link = models.TextField(max_length=400)
+    key_class = models.ForeignKey(Classes, on_delete=models.CASCADE, related_name='announcements')
+    message = models.TextField(max_length=120, default=DEFAULT_MESSAGE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)

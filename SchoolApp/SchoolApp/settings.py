@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'home',
     'public_api',
     'classes',
-    'timetable',
+    'timetable.apps.TimetableConfig',
     'rest_framework',
     'invitations',
     'storages',
@@ -165,3 +165,7 @@ INVITATIONS_SIGNUP_REDIRECT = ''
 INVITATIONS_INVITATION_EXPIRY = 0
 INVITATIONS_GONE_ON_ACCEPT_ERROR = False
 INVITATIONS_EMAIL_SUBJECT_PREFIX = "Team10- "
+
+# TIME ZONE
+TIME_ZONE = 'Asia/Kolkata'
+USE_TZ = True
