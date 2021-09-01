@@ -1,5 +1,8 @@
 /*Base CSS*/
-
+:root{
+    --light-blue: hsl(199, 80%, 63%);
+    --dark-blue: hsl(200, 39%, 44%);
+}
 .dropdown {
 	margin-left: auto;
 }
@@ -12,12 +15,12 @@ body {
 	color:rgb(201, 209, 217)
 }
 a {
-	color: hsl(199, 80%, 63%);
+	color: var(--light-blue);
 	text-decoration: none;
 }
 
 a:hover {
-    color: hsl(200, 39%, 44%);
+    color: var(--dark-blue);
 }
 
 .loader {
@@ -61,5 +64,5 @@ button {
 }
 .active{
   color: black !important;
-  background-color: #79aec8 !important;
+  background-color: var(--light-blue) !important;
 }
