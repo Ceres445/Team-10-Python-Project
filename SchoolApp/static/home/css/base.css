@@ -12,8 +12,12 @@ body {
 	color:rgb(201, 209, 217)
 }
 a {
-	color: #447e9b;
+	color: hsl(199, 80%, 63%);
 	text-decoration: none;
+}
+
+a:hover {
+    color: hsl(200, 39%, 44%);
 }
 
 .loader {

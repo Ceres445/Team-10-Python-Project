@@ -1,42 +1,19 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block extra_head %}
+  <link
+	rel="stylesheet"
+	type="text/css"
+	href="{% static 'timetable/css/timetable.css' %}"
+/>
+{% endblock %}
 {% block content %}
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Class Timetable</title>
-<style>
-#table {
-    font-family: Arial;
-    border-collapse: collapse;
-    width: 100%;
-    text-align: center;
-}
-
-#table td, #table th {
-  border: 1px solid gray;
-  padding: 8px;
-}
-
-#table tr:nth-child(even){background-color: #f2f2f2;}
-#table tr:hover {background-color: #ddd;}
-
-#table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #03bafc;
-  color: white;
-</style>
-</head>
-<body>
 <table id="table">
     <tr>
+        <th>Day</th>
         <th>Subject</th>
         <th>Time</th>
         <th>Link</th>
-        <th>Days</th>
     </tr>
 
     <tr>
@@ -81,7 +58,5 @@
         <td>Everyday</td>
     </tr>
 </table>
-</body>
-</html>
   {{ records| json_script:'records' }}
 {% endblock %}
