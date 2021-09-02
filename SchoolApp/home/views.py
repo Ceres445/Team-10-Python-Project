@@ -12,6 +12,7 @@ from home.forms import CustomUserCreationForm, AvatarChangeForm, CustomUserChang
 # Create your views here.
 
 # TODO: add class creation request
+# TODO: add css for post detail view
 
 
 def index(request):
@@ -28,19 +29,19 @@ def index(request):
 
 def register(request):
     if request.method == "GET":
-        form = CustomUserCreationForm
+        creation_form = CustomUserCreationForm
     elif request.method == "POST":
         # User has submitted login details
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
+        creation_form = CustomUserCreationForm(request.POST)
+        if creation_form.is_valid():
+            user = creation_form.save()
             login(request, user)
             return redirect(reverse("homePage"))
     else:
         return HttpResponseForbidden(f"Method {request.method} not allowed")
     return render(
                 request, "registration/register.html",
-                {"form": form}
+                {"form": creation_form}
             )
 
 
@@ -63,14 +64,14 @@ def edit_profile(request):
     """Edit your profile"""
     second_form = AvatarChangeForm(instance=request.user.profile)
     if request.method == 'POST':
-        form = CustomUserChangeForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
+        first_form = CustomUserChangeForm(request.POST, instance=request.user)
+        if first_form.is_valid():
+            first_form.save()
             return redirect(reverse('profile'))
     else:
-        form = CustomUserChangeForm(instance=request.user)
+        first_form = CustomUserChangeForm(instance=request.user)
 
-    return render(request, 'home/edit_profile.html', {'form': form, 'second_form': second_form})
+    return render(request, 'home/edit_profile.html', {'form': first_form, 'second_form': second_form, 'files': True})
 
 
 @login_required
@@ -78,7 +79,7 @@ def change_avatar(request):
     """Form to change avatar/profile (rename needed)"""
 
     if request.method == 'POST':
-        form = AvatarChangeForm(request.POST,
+        form = AvatarChangeForm(request.POST, request.FILES,
                                 instance=request.user.profile)
         if form.is_valid():
             form.save()

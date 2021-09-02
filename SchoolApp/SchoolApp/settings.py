@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = True
+DEBUG = False
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&nvk9yq0&_*#(=gxgd-*-w')
 # ALLOWED_HOSTS = []
 
@@ -130,7 +130,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # database for heroku
 
@@ -153,8 +153,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # media files
 MEDIA_URL = '/media/'

@@ -22,15 +22,19 @@
     <p>Type: {{ user.profile.get_user_type_display }}</p>
     <p>Classes joined: {{ courses }}
   </div>
+    {% if user.profile.avatar %}
+     <img src="{{ user.profile.avatar.url }}" width="240" alt="Profile Image">
+    {% endif %}
+
 
   <div class="redirect">
     <a href="{% url 'viewPosts' %}"> View Posts</a>
   </div>
-{% if current %}
-  <div class="redirect">
-    <a href="{% url 'editProfile' %}"> Edit Profile</a>
-  </div>
-{% endif %}
+  {% if current %}
+    <div class="redirect">
+     <a href="{% url 'editProfile' %}"> Edit Profile</a>
+    </div>
+  {% endif %}
 </div>
 
 {% endblock %}

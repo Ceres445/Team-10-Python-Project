@@ -82,7 +82,11 @@ input[type='email'] {
 	border: 2px solid #264b5d;
 }
 .submit:hover {
+<<<<<<< HEAD
 	background-color: #1e6ed6 ;
+=======
+	background-color: #1e6ed6;
+>>>>>>> master
 	color: white;
 	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
 		0 17px 0 0 rgba(0, 0, 0, 0.19);

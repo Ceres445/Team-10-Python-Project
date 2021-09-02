@@ -2,10 +2,18 @@
 __pycache__/
 *.py[cod]
 *$py.class
+<<<<<<< HEAD
 # C extensions
 *.nso
 bin/.idea/*
 /*.idea/*
+=======
+
+# C extensions
+*.so
+
+.idea/*
+>>>>>>> master
 # Distribution / packaging
 .Python
 build/
@@ -60,6 +68,10 @@ coverage.xml
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
+<<<<<<< HEAD
+=======
+SchoolApp/staticfiles
+>>>>>>> master
 
 # Flask stuff:
 instance/
@@ -130,4 +142,8 @@ dmypy.json
 
 # npm
 /node_modules/*
+<<<<<<< HEAD
 */.parcel-cache/*
+=======
+*/.parcel-cache/*
+>>>>>>> master

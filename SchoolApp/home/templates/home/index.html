@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extra_head %}
-  <link
-        rel="stylesheet"
-        href="{% static 'home/css/index.css' %}"
-        type="text/css"
-  />
+<link
+			rel="stylesheet"
+			href="{% static 'home/css/index.css' %}"
+			type="text/css"
+		/>
 <link
     rel="stylesheet"
     href="{% static 'home/css/forms.css' %}"
@@ -46,7 +46,6 @@
         </label>
         <label for='content-input'></label><textarea name="content" cols="40" rows="10" maxlength="500" class="input-label" id = 'content-input'></textarea>
       </div>
-
       <div class="form-actions" id = 'button-space'>
       <button class="submit" title="" type="submit">Post</button>
       </div>
@@ -57,5 +56,5 @@
   {% if courses is not None %}
 {{ courses| json_script:'courses' }}
   {% endif %}
-  <script src="{% static 'home/js/index.js' %}" type="module"></script>
+<script src="{% static 'home/js/index.js' %}" type="module"></script>
 {% endblock %}
