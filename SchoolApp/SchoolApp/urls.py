@@ -25,6 +25,7 @@ urlpatterns = [
     path('classes/', include("classes.urls")),
     path('admin/', admin.site.urls),
     path('api/', include('public_api.urls')),
+    path('timetable/', include('timetable.urls')),
     url(r'^invitations/', include('invitations.urls', namespace='invitations')),
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ]

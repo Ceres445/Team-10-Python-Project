@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'home',
     'public_api',
     'classes',
+    'timetable.apps.TimetableConfig',
     'rest_framework',
     'invitations',
     'storages',
@@ -141,7 +142,9 @@ DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost', '0.0.0.0']
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder']
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
@@ -176,3 +179,7 @@ INVITATIONS_SIGNUP_REDIRECT = ''
 INVITATIONS_INVITATION_EXPIRY = 0
 INVITATIONS_GONE_ON_ACCEPT_ERROR = False
 INVITATIONS_EMAIL_SUBJECT_PREFIX = "Team10- "
+
+# TIME ZONE
+TIME_ZONE = 'Asia/Kolkata'
+USE_TZ = True

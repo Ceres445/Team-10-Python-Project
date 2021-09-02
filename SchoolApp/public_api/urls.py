@@ -15,7 +15,7 @@ urlpatterns = [
     # path('assignments/', views.AssignmentList.as_view()),
     path('uploads/', views.UploadList.as_view()),
     path('uploads/<int:pk>', views.UploadDetail.as_view()),
-
+    path('time_table/', views.TimeTableList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
