@@ -23,8 +23,9 @@ HOST='local'
 EMAIL_HOST_USER='google_smtp_email'
 EMAIL_HOST_PASSWORD='google_smtp_password'
 ```
-`EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` are only required if you are going to reset password, the website works without those options
-6. Run the local server
+`EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` are only required if you are going to reset password, the website works without those options. 
+
+7. Run the local server
     `python manage.py runserver`
 
 
