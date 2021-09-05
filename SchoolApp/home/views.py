@@ -1,7 +1,7 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponseRedirect, HttpResponseForbidden, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -103,3 +103,7 @@ def view_user_posts(request, pk=None):
 
     user = get_object_or_404(User, pk=pk)
     return render(request, 'home/view_user_posts.html', {"pk": user.username, "user": user})
+
+
+def test(request):
+    return render(request, 'home/test.xml', content_type="application/xhtml+xml")
