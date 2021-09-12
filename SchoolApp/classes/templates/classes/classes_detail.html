@@ -46,9 +46,13 @@
   <div class="redirect">
       Invite Students <a href=" {% url 'InviteUser' class.id %}">here</a>
   </div>
-{% else %}
+{% elif assignments %}
   <div class="redirect">
       Submit Assignment <a href="{% url 'AssignmentSubmit' class.id %}">here</a>
+  </div>
+{% else %}
+  <div class="redirect errorlist">
+      No assignments
   </div>
 {% endif %}
 
