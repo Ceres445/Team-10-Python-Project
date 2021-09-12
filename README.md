@@ -16,15 +16,19 @@ A simple website
     `python manage.py migrate`
     `python manage.py createsuperuser`
 6. Setup config
-Create a `.env` file to load environment variables. You can skip this 
+Create a `.env` file to load environment variables.
 
 ```
 HOST='local'
 EMAIL_HOST_USER='google_smtp_email'
 EMAIL_HOST_PASSWORD='google_smtp_password'
+DROPBOX_ACCESS_TOKEN='dropbox_token'
 ```
-`EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD` are only required if you are going to reset password, the website works without those options
-6. Run the local server
+`EMAIL_HOST_USER` and `EMAIL_HOST_PASSWORD`  are only required if you are going to reset password, 
+`DROPBOX_ACCESS_TOKEN` is required for any file operations,
+the website works without those options. 
+
+7. Run the local server
     `python manage.py runserver`
 
 
