@@ -49,6 +49,9 @@
 				>
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0 bg-dark">
 						{% if user.is_authenticated %}
+            <a class="nav-link bg-dark" style='color: rgba(255,255,255,.55)' href="{% url 'TimeTable' %}"
+							>Timetable
+						</a>
 						<li class="nav-item dropdown flex-d ms-auto">
 							<a
 								class="nav-link dropdown-toggle"
@@ -87,10 +90,10 @@
 							</ul>
 						</li>
 						{% else %}
-						  <a class="nav-item bg-dark" style='margin-right: 5px' href="{% url 'login' %}"
+						  <a class="nav-link bg-dark" style='margin-right: 5px' href="{% url 'login' %}"
 							>Sign in
 						</a>
-						<a class="nav-item bg-dark" href="{% url 'register' %}"
+						<a class="nav-link bg-dark" href="{% url 'register' %}"
 							>Sign up
 						</a>
 						{% endif %}
