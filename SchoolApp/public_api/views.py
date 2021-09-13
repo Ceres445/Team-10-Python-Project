@@ -3,10 +3,11 @@ from rest_framework import generics, permissions
 
 from classes.models import Assignment, Upload
 from timetable.models import ClassTime
-from .filters import filter_queryset, authenticated_home, anon_home, authenticated_classes, anon_classes, parse_args
+from .filters import filter_queryset, authenticated_home, anon_home, authenticated_classes, anon, parse_args
 from .models import Post, Comment, Category
 from .permissions import IsAuthorOrReadOnly, IsInClass
-from .serializers import PostSerializer, CommentSerializer, CategorySerializer, AssignmentSerializer, UploadSerializer, \
+from .serializers import PostSerializer, CommentSerializer, CategorySerializer, \
+    AssignmentSerializer, UploadSerializer, \
     TimeTableSerializer
 
 
@@ -110,7 +111,7 @@ class AssignmentList(generics.ListAPIView):
     def get_queryset(self):
         return filter_queryset(self.request.user, Assignment,
                                {'authenticated': authenticated_classes,
-                                'anon': anon_classes},
+                                'anon': anon},
                                **{'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})
 
 
@@ -121,7 +122,7 @@ class AssignmentDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return filter_queryset(self.request.user, Assignment,
                                {'authenticated': authenticated_classes,
-                                'anon': anon_classes},
+                                'anon': anon},
                                **{'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})
 
 
@@ -132,7 +133,7 @@ class UploadList(generics.ListAPIView):
     def get_queryset(self):
         return filter_queryset(self.request.user, Upload,
                                {'authenticated': authenticated_classes,
-                                'anon': anon_classes},
+                                'anon': anon},
                                **{'courses': 'assignment_key_class__in', 'teacher': 'assignment_key_class__teacher_id'})
 
 
@@ -143,11 +144,16 @@ class UploadDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return filter_queryset(self.request.user, Upload,
                                {'authenticated': authenticated_classes,
-                                'anon': anon_classes},
+                                'anon': anon},
                                **{'courses': 'assignment_key_class__in', 'teacher': 'assignment_key_class__teacher_id'})
 
 
-class TimeTableList(generics.ListCreateAPIView):
+class TimeTableList(generics.ListAPIView):
     queryset = ClassTime.objects.all()
     serializer_class = TimeTableSerializer
-    # TODO: do queryset
+
+    def get_queryset(self):
+        return filter_queryset(self.request.user, ClassTime,
+                               {'authenticated': authenticated_classes,
+                                'anon': anon},
+                               **{'courses': 'key_class__in', 'teacher': 'key_class__teacher_id'})

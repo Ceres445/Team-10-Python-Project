@@ -31,7 +31,7 @@ def authenticated_classes(user, model, **kwarg):
            model.objects.all().filter(**{kwarg['teacher']: user})
 
 
-def anon_classes(*args, **kwargs):
+def anon(*args, **kwargs):
     raise PermissionDenied("Non authenticated users cannot see assignments")
 
 
