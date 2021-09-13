@@ -3,7 +3,9 @@ from django.db import models
 
 # Create your models here.
 from home.models import Classes
+
 DEFAULT_MESSAGE = """Class - {0}\nSubject - {1}\nDay - {2}\nLink - [here]({3})"""
+
 
 class ClassTime(models.Model):
     key_class = models.ForeignKey(Classes, on_delete=models.CASCADE)
