@@ -5,7 +5,7 @@
     margin: auto;
 }
 .span{
-    pointer-events: none;
+    background-color: hsl(222, 50%, 18%);
 }
 
 #table td, #table th {
@@ -16,7 +16,7 @@
 }
 
 #table tr:nth-child(even){background-color: hsl(222, 50%, 18%);}
-#table tr:hover :not {background-color: hsl(222, 60%, 40%);}
+#table tr:hover {background-color: hsl(222, 60%, 40%);}
 
 #table th {
     padding-top: 12px;

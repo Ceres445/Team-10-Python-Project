@@ -1,6 +1,7 @@
 const records = JSON.parse(document.getElementById('records').textContent);
 
 const table_element = document.getElementById('table');
+const table_body = table_element.getElementsByTagName('tbody')[0];
 function render_html(map, field) {
 	for (const [grouped_field, list] of map) {
 		list.forEach((record, i) => {
@@ -11,7 +12,7 @@ function render_html(map, field) {
 						string += `<td><a href="${record[key]}">Link</a> </td>`;
 					else string += `<td>${record[key]}</td>`;
 			}
-			const row = table_element.insertRow(table_element.rows.length);
+			const row = table_body.insertRow();
 			if (i === 0) {
 				row.innerHTML = `
                <td rowspan="${list.length}" class="span">${grouped_field}</td>
