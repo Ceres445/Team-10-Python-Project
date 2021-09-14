@@ -1,16 +1,22 @@
 #table {
     border-collapse: collapse;
-    width: 100%;
+    width: 70%;
     text-align: center;
+    margin: auto;
+}
+.span{
+    pointer-events: none;
 }
 
 #table td, #table th {
-  border: #264b5d 1px solid;
-  padding: 8px;
+
+    border: #264b5d 1px solid;
+    padding: 8px;
+
 }
 
 #table tr:nth-child(even){background-color: hsl(222, 50%, 18%);}
-#table tr:hover {background-color: hsl(222, 60%, 40%);}
+#table tr:hover :not {background-color: hsl(222, 60%, 40%);}
 
 #table th {
     padding-top: 12px;

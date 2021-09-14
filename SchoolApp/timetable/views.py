@@ -14,6 +14,7 @@ def view_timetable(request):
               ClassTime.objects.all().filter(key_class__teacher_id=request.user)
     print(ClassTime.objects.all().filter(key_class__in=request.user.profile.courses.all()),ClassTime.objects.all().filter(key_class__teacher_id=request.user),
           ClassTime.objects.all())
+    records = sorted(records, key=lambda x: (x.day, x.time))
     records = [{
         'day': record.get_day_display(),
         'subject': record.subject,
