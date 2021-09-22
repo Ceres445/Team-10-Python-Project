@@ -117,7 +117,3 @@ def view_user_posts(request, pk=None):
 
     user = get_object_or_404(User, pk=pk)
     return render(request, 'home/view_user_posts.html', {"pk": user.username, "user": user})
-
-
-def test(request):
-    return render(request, 'home/test.xml', content_type="application/xhtml+xml")
