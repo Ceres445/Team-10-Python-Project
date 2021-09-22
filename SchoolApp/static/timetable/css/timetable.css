@@ -37,3 +37,6 @@ table th {
     background-color: var(--background);
     color: white;
 }
+.min {
+    width: auto !important;
+}
