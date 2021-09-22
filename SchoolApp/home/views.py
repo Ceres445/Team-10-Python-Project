@@ -1,18 +1,18 @@
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect, HttpResponseForbidden, HttpResponse
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 from home.forms import CustomUserCreationForm, AvatarChangeForm, CustomUserChangeForm
+# TODO: add class creation request
+# TODO: add css for post detail view
+from public_api.models import Post, Comment
 
 
 # Create your views here.
-
-# TODO: add class creation request
-# TODO: add css for post detail view
 
 
 def index(request):
@@ -92,8 +92,23 @@ def change_avatar(request):
 
 def view_post_detail(request, pk=1):
     """See a post in detail with comments and links"""
-    get_object_or_404(User, pk=pk)  # raise 404 if invalid user
-    return render(request, 'home/post_view.html', {"pk": mark_safe(pk)})
+    post = get_object_or_404(Post, pk=pk)  # raise 404 if invalid user
+    comments = Comment.objects.all().filter(post__id=post.id)
+    return render(request, 'home/posts_detail.html', {"pk": mark_safe(pk),
+                                                      'post': post, 'user': request.user,
+                                                      'comments': comments,
+                                                      'author': post.author})
+
+
+def view_posts(request):
+    """See all posts """
+    if request.user.is_authenticated:
+        return render(request, "home/posts.html",
+                      {
+                          'courses': list(map(str, request.user.profile.courses.all()))
+                      })
+    else:
+        return render(request, "home/posts.html")
 
 
 def view_user_posts(request, pk=None):
@@ -103,7 +118,3 @@ def view_user_posts(request, pk=None):
 
     user = get_object_or_404(User, pk=pk)
     return render(request, 'home/view_user_posts.html', {"pk": user.username, "user": user})
-
-
-def test(request):
-    return render(request, 'home/test.xml', content_type="application/xhtml+xml")

@@ -1,27 +1,12 @@
 /*CSS for index page*/
 
 
-.tablink {
-  background-color: white;
-  width: 175px;
-  color: black;
-  padding: 15px;
-  float: left;
-    margin: 20px 0 20px 6px;
-    border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition-duration: 0.4s;
-}
-
-.tablink:hover {
-  background-color: var(--dark-blue);
-  color: white;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
-.tabcontent {
-  display: block;
-  padding: 20px;
-  height: 100%;
+#main-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    height: calc(100vh - 130px);
 }
