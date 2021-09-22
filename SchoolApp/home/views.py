@@ -8,7 +8,6 @@ from django.utils.safestring import mark_safe
 
 from home.forms import CustomUserCreationForm, AvatarChangeForm, CustomUserChangeForm
 # TODO: add class creation request
-# TODO: add css for post detail view
 from public_api.models import Post, Comment
 
 

@@ -11,7 +11,7 @@ const selectorDiv = document.getElementById('selector-div');
 const inputTitle = document.getElementById('title-input');
 const inputContent = document.getElementById('content-input');
 
-const submitForm = document.getElementById('post-form');
+const submitBtn = document.getElementById('submit-btn');
 const FormHeading = document.getElementById('submit-form-heading');
 
 let buttonHidden = false;
@@ -19,15 +19,17 @@ const url = URL + '/api/';
 
 function hideButton(hide = true) {
 	if (!courses) {
-		submitForm.style.display = 'none';
+		submitBtn.disabled = true;
+		FormHeading.innerText = `Can't submit posts here`;
 		buttonHidden = true;
 		return false;
 	}
 	if (buttonHidden === hide) return;
 	if (hide) {
-		submitForm.style.display = 'none';
+		submitBtn.disabled = true;
+		FormHeading.innerText = `Can't submit posts here`;
 	} else {
-		submitForm.style.display = 'block';
+		submitBtn.disabled = false;
 	}
 	buttonHidden = !buttonHidden;
 }
@@ -147,14 +149,13 @@ postForm.addEventListener('submit', async function (e) {
 		body: JSON.stringify(data),
 	});
 	// Update html
-	const oldHtml = submitForm.innerHTML;
+	const oldHtml = postForm.innerHTML;
 	inputTitle.value = '';
 	inputContent.value = '';
 	document.getElementsByName(active.value)[0].click(); // Switch tab to active
-	if (String(fetchResults.status)[0] === '2')
-		submitForm.innerText = 'Success';
-	else submitForm.innerText = 'Failure';
-	setTimeout(() => (submitForm.innerHTML = oldHtml), 5000);
+	if (String(fetchResults.status)[0] === '2') postForm.innerText = 'Success';
+	else postForm.innerText = 'Failure';
+	setTimeout(() => (postForm.innerHTML = oldHtml), 5000);
 });
 // TODO: implement timer for posting
 

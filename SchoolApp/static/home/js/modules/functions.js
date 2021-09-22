@@ -6,8 +6,8 @@ function addPostToHTML(el, container) {
 	const html = `<a href="${URL}/posts/${el.id}" class="no-hover">
 									<div class="post">
 									<div class="content">
-												<h3>${el.title}</h3>
-												<p class="post-content" style="color: #afafaf;">${el.content}</p>
+												<h3 class="post-content">${el.title}</h3>
+												<p class="post-content post-body" style="color: #afafaf;">${el.content}</p>
 									</div>
 														
 									<div class = "footer"> ${COMMENT} ${el.comments?.length ?? 0} Comments</div>
