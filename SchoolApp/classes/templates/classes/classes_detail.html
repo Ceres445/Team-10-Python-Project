@@ -31,7 +31,9 @@
         <p>Created at: {{ i.created_at }}</p>
         <p>Ends at: {{ i.ends_at|default_if_none:'Not Provided' }}</p>
         {% if j %}
-          <p>Submitted:<a href="{{ j.file.url }}">File</a></p>
+          {% for k in j %}
+            <p>Submitted:<a href="{{ k.file.url }}">File</a></p>
+          {% endfor %}
         {% endif %}
         {% if teacher %}
           <a href={% url 'AssignmentView' i.pk %}>View Uploads</a>

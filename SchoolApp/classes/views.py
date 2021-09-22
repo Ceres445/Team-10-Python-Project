@@ -39,7 +39,7 @@ def classes_view(request):
 def get_status(user):
     def predicate(assignment: Assignment):
         if user in [x.author for x in assignment.upload.all()]:
-            return Upload.objects.get(author=user, assignment=assignment)
+            return Upload.objects.filter(author=user, assignment=assignment)
         else:
             return None
 
