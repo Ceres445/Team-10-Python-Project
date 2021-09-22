@@ -25,7 +25,7 @@ class StaticSitemap(Sitemap):
     protocol = 'https'
 
     def items(self):
-        return ['main:homePage', 'main:register']
+        return ['home:homePage', 'home:register']
 
     def location(self, item):
         return reverse(item)
