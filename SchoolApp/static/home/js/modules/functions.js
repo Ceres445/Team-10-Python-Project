@@ -7,7 +7,7 @@ function addPostToHTML(el, container) {
 									<div class="post">
 									<div class="content">
 												<h3>${el.title}</h3>
-												<p style="color: #afafaf;">${el.content}</p>
+												<p class="post-content" style="color: #afafaf;">${el.content}</p>
 									</div>
 														
 									<div class = "footer"> ${COMMENT} ${el.comments?.length ?? 0} Comments</div>
