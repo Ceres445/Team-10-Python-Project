@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 ]
 
 SITE_ID = 1
@@ -170,3 +171,11 @@ INVITATIONS_EMAIL_SUBJECT_PREFIX = "Team10- "
 # TIME ZONE
 TIME_ZONE = 'Asia/Kolkata'
 USE_TZ = True
+
+# Caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+        'LOCATION': 'unix:/tmp/memcached.sock',
+    }
+}
