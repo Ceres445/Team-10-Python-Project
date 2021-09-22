@@ -115,3 +115,11 @@
 .comment-container:nth-child(2n) {
     background: var(--background-focus);
 }
+
+.post-content {
+    word-wrap: break-word;
+    word-break: break-word;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+}
