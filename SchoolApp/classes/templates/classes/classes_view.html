@@ -3,64 +3,81 @@
 {% load tags %}
 {% load static %}
 {% block extra_head %}
-<link
+  <link
     rel="stylesheet"
     href="{% static 'home/css/posts.css' %}"
     type="text/css"
   />
-{#<link#}
-{#  rel="stylesheet"#}
-{#  href="{% static 'home/css/forms.css' %}"#}
-{#  type="text/css"#}
-{#/>#}
+  <link
+    rel="stylesheet"
+    href="{% static 'timetable/css/timetable.css' %}"
+    type="text/css"
+  />
 {% endblock %}
 {% block content %}
-<div class="container" style="display: flex">
-<div class="container" style="width: 300px; margin-top: 20px">
-<h2> Classes you have joined</h2>
-  {% for i in joined %}
-    <a href={% url 'ClassesDetail'  i.id  %}>
-    <div class='post'>
-          <h1>Class: {{ i.class_name }}</h1>
-          <p>Teacher: {{ i.teacher_id }}</p>
-      {% if i.assignments.all %}
-          <div class = 'footer'>{{ i.assignments.all|length_active }} Assignments</div>
-      {% else %}
-          <div class = 'footer'>0 Assignments</div>
-      {% endif %}
-      </div>
-    </a>
-  {% endfor %}
-</div>
+  <div class="container" style="display: flex">
+    <table style="width: 300px; margin-top: 20px">
+      <caption> Classes you have joined</caption>
+      <tr>
+        <th>Class</th>
+        <th>Teacher</th>
+        <th>Assignments</th>
+      </tr>
+      {% for i in joined %}
+        <tr id="{{ i.id }}">
 
-<div class="container" style="width: 300px; margin-top: 20px">
-<h2>Classes you teach</h2>
-  {% for i in teacher %}
-    <a href={% url 'ClassesDetail'  i.id  %}>
-    <div class='post'>
-          <h1>Class: {{ i.class_name }}</h1>
-          <p>Teacher: {{ i.teacher_id }}</p>
-      {% if i.assignments.all %}
-          <div class = 'footer'>{{ i.assignments.all|length_active }} Assignments</div>
-      {% else %}
-          <div class = 'footer'>0 Assignments</div>
-      {% endif %}
-      </div>
-    </a>
-  {% endfor %}
-</div>
+          <td class="class-name">{{ i.class_name }}</td>
+          <td>{{ i.teacher_id }}</td>
+          {% if i.assignments.all %}
+            <td>{{ i.assignments.all|length_active }}</td>
+          {% else %}
+            <td>0</td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </table>
+    <table style="width: 300px; margin-top: 20px">
 
-<div class="container" style="width: 300px; margin-top: 20px">
-<h2>Public classes you can join</h2>
-  {% for i in public %}
-    <a href="">
-    <div class='post'>
-          <h1>Class: {{ i.class_name }}</h1>
-          <p>Teacher: {{ i.teacher_id }}</p>
-      <a class="redirect" href={% url 'JoinClass' i.id %}>Join</a>
-      </div>
-    </a>
-  {% endfor %}
-</div>
+      <caption> Classes you teach</caption>
+      <tr>
+        <th>Class</th>
+        <th>Teacher</th>
+        <th>Assignments</th>
+      </tr>
+      {% for i in teacher %}
+        <tr id="{{ i.id }}">
+
+          <td class="class-name">{{ i.class_name }}</td>
+          <td>{{ i.teacher_id }}</td>
+          {% if i.assignments.all %}
+            <td>{{ i.assignments.all|length_active }}</td>
+          {% else %}
+            <td>0</td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </table>
+
+    <table style="width: 300px; margin-top: 20px">
+      <caption> Public classes you can join</caption>
+      <tr>
+        <th>Class</th>
+        <th>Teacher</th>
+        <th>Assignments</th>
+      </tr>
+      {% for i in public %}
+        <tr id="{{ i.id }}">
+
+          <td class="class-name">{{ i.class_name }}</td>
+          <td>{{ i.teacher_id }}</td>
+          {% if i.assignments.all %}
+            <td>{{ i.assignments.all|length_active }}</td>
+          {% else %}
+            <td>0</td>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </table>
   </div>
+  <script src="{% static 'home/js/classes_view.js' %}" type="module"></script>
 {% endblock %}

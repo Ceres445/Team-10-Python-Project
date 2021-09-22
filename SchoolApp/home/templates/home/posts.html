@@ -15,9 +15,9 @@
     type="text/css"
   />
 {% endblock %} {% block content %}
-  <div
+  <div style="display: flex"
   >
-    <div>
+    <div style="flex: 0.9">
       <div class="header">
         <button class="tablink" name="Public" id="defaultOpen">
           Public
@@ -30,7 +30,7 @@
       <div class="selector" id="selector-div"></div>
       <div class="tabcontent"></div>
     </div>
-    <div class="container" style="width: 400px" id="post-form">
+    <div class="container submit-form" id="post-form">
       <form enctype="multipart/form-data" novalidate>
         <div id="submit-form-heading" align="center"></div>
         <div class="form-group">
@@ -58,7 +58,7 @@
         </div>
 
         <div class="form-actions" id="button-space">
-          <button class="submit" title="" type="submit">Post</button>
+          <button class="submit" id='submit-btn' title="" type="submit">Post</button>
         </div>
       </form>
     </div>

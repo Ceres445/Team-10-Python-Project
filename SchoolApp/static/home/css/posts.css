@@ -16,10 +16,11 @@
     background-color: var(--background);
     margin-bottom: 30px;
     display: flex;
+    width: 95%;
     justify-content: space-between;
     align-items: baseline;
-    min-height: 80px;
-    height: 80px;
+    min-height: 100px;
+    height: 100px;
     max-height: 80px;
     padding: 5px 15px;
     cursor: pointer;
@@ -66,15 +67,18 @@
 }
 
 .tabcontent {
-    display: block;
+    display: flex;
     padding: 20px;
     height: 100%;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .header {
     font-size: 2em;
     margin: 20px;
     display: grid;
+    width: 90%;
     gap: 25px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -116,10 +120,28 @@
     background: var(--background-focus);
 }
 
+.post-body {
+    width: 80%;
+    -webkit-line-clamp: 2 !important;
+}
+
 .post-content {
     word-wrap: break-word;
     word-break: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    
+    text-overflow: ellipsis;
+}
+
+.class-name {
+    width: 80px;
+    border-right: 1px solid #304430;
+}
+
+.submit-form {
+    margin: 2em;
+    width: 20%;
+    height: 20%;
 }

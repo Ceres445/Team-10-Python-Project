@@ -1,32 +1,36 @@
 @import "../../home/css/posts.css";
 
-#table {
+table {
     border-collapse: collapse;
     width: 70%;
     text-align: center;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .span {
     background-color: hsl(222, 50%, 18%);
 }
 
-#table td, #table th {
+table td, table th {
 
     border: #264b5d 1px solid;
     padding: 8px;
 
 }
 
-#table tr:nth-child(even) {
+table tr:nth-child(even) {
     background-color: hsl(222, 50%, 18%);
 }
 
-#table tr:hover {
+table tr:hover {
     background-color: hsl(222, 60%, 40%);
+    cursor: pointer;
 }
 
-#table th {
+table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
