@@ -14,6 +14,5 @@ urlpatterns = [
     path('avatar_change/', views.change_avatar, name="changeAvatar"),
     path('posts', views.view_posts, name="postView"),
     path('posts/<int:pk>/', views.view_post_detail, name="postDetail"),
-    path('test', views.test),
     path("robots.txt", TemplateView.as_view(template_name="home/robots.txt", content_type="text/plain")),
 ]
