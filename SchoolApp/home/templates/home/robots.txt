@@ -1,4 +1,4 @@
-Sitemap: http://www.school-portal-ceres.herokuapp.com/sitemap.xml
+Sitemap: http://school-portal-ceres.herokuapp.com/sitemap.xml
 User-Agent: *
 
 Disallow: /accounts/
