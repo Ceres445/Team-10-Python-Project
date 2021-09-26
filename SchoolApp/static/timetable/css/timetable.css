@@ -1,6 +1,8 @@
 @import "../../home/css/posts.css";
+@import url('https://fonts.googleapis.com/css2?family=Yaldevi:wght@500&display=swap');
 
 table {
+    font-family: 'Yaldevi', sans-serif;
     border-collapse: collapse;
     width: 70%;
     text-align: center;

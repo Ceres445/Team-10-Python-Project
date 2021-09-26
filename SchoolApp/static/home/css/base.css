@@ -1,4 +1,6 @@
 /*Base CSS*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
 :root {
     --light-blue: hsl(199, 80%, 63%);
     --dark-blue: hsl(200, 39%, 44%);
@@ -13,7 +15,7 @@
 }
 
 body {
-    font-family: "Roboto Mono", serif;
+    font-family: "Roboto", serif;
     background-color: hsl(216, 28%, 7%);
     color: rgb(201, 209, 217)
 }

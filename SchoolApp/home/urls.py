@@ -1,8 +1,14 @@
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views.generic import TemplateView
 
 import home.views as views
+from home.map import PostSitemap, StaticSitemap
 
+sitemaps = {
+    'blog': PostSitemap,
+    'static': StaticSitemap
+}
 urlpatterns = [
     path('', views.index, name="homePage"),
     path("accounts/", include("django.contrib.auth.urls")),
@@ -15,4 +21,6 @@ urlpatterns = [
     path('posts', views.view_posts, name="postView"),
     path('posts/<int:pk>/', views.view_post_detail, name="postDetail"),
     path("robots.txt", TemplateView.as_view(template_name="home/robots.txt", content_type="text/plain")),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
 ]
