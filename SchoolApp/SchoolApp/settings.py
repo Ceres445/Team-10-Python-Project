@@ -33,10 +33,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&n
 # Application definition
 
 INSTALLED_APPS = [
-    'home',
-    'public_api',
-    'classes',
-    'timetable.apps.TimetableConfig',
+    'apps.home',
+    'apps.public_api',
+    'apps.classes',
+    'apps.timetable',
     'rest_framework',
     'invitations',
     'storages',
@@ -68,7 +68,7 @@ ROOT_URLCONF = 'SchoolApp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
