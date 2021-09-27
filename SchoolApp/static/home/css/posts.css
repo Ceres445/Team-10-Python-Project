@@ -1,4 +1,5 @@
 /*CSS for all posts and comments related*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 :root {
     --background: hsl(216, 50%, 12%);
     --background-focus: hsl(216, 30%, 4%);
@@ -11,6 +12,7 @@
 }
 
 .post {
+    font-family: 'Roboto', sans-serif;
     color: white;
     border-radius: 5px;
     background-color: var(--background);
@@ -126,6 +128,7 @@
 }
 
 .post-content {
+    color: white !important;
     word-wrap: break-word;
     word-break: break-word;
     display: -webkit-box;
@@ -144,4 +147,11 @@
     margin: 2em;
     width: 20%;
     height: 20%;
+}
+#class-selection{
+    display: flex;
+    justify-content: center;
+}
+#class-selection-select{
+    width: unset;
 }
