@@ -1,32 +1,35 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block extra_head %}
+{% extends 'base.html' %} {% load static %} {% block extra_head %}
   <link
     rel="stylesheet"
     type="text/css"
     href=" {% static 'home/css/forms.css' %}"
   />
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
   <div class="form-container">
-    <div style="text-align: center"><h2>{% block form_title %}{% endblock %}</h2></div>
+    <div style="text-align: center">
+      <h2>{% block form_title %}{% endblock %}</h2>
+    </div>
 
-    {% if form.non_field_errors %}
-      {% if form.non_field_errors|length > 1 %}
-        <ul class="errorlist">
-          {% for error in form.non_field_errors %}
-            <li class="error">{{ error|escape }}</li>
-          {% endfor %}
-        </ul>
+    {% if form.non_field_errors %} {% if form.non_field_errors|length > 1 %}
+      <ul class="errorlist">
+        {% for error in form.non_field_errors %}
+          <li class="error">{{ error|escape }}</li>
+        {% endfor %}
+      </ul>
 
-      {% else %}
-        <div class="errorlist">
-          <p class="error">{{ form.non_field_errors.0 }}</p>
-        </div>
+    {% else %}
+      <div class="errorlist">
+        <p class="error">{{ form.non_field_errors.0 }}</p>
+      </div>
+    {% endif %} {% endif %}
+    <form
+      method="post"
+      {% if files %}
+      enctype="multipart/form-data"
       {% endif %}
-    {% endif %}
-    <form method="post" {% if files %} enctype="multipart/form-data" {% endif %}>{% csrf_token %}
-      {% block form %}{% endblock %}</form>
+    >
+      {% csrf_token %} {% block form %}{% endblock %}
+    </form>
     {% block extra %}{% endblock %}
     <div class="redirect">
       <a href="{% url 'homePage' %}">Back to dashboard</a>
