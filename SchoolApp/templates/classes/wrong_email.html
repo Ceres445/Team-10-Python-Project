@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href=" {% static 'home/css/forms.css' %}"
+  />
+{% endblock %}
+{% block content %}
+  <div class="form-container">
+    <div class="errorlist">
+      <h1>You are logged in with the wrong email {{ request.user.email }}, {{ email }} was invited to join this
+        class</h1>
+
+    </div>
+    <div class="redirect">
+      <a href="{% url 'logout' %}">Logout</a>
+    </div>
+  </div>
+{% endblock %}
