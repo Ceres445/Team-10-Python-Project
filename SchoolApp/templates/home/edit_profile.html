@@ -40,7 +40,8 @@
     </label>
     <input class="submit" type="submit" name="Change " />
   </div>
-{% endblock %} {% block extra %}
+{% endblock %}
+{% block extra %}
   <br />
   <div style="text-align: center"><h2>Edit Other Data</h2></div>
 
@@ -66,19 +67,26 @@
       {% csrf_token %}
       <div class="input-label">
         <label for="{{ second_form.bio.id_for_label }}">Bio</label>
-        <textarea name="{{ second_form.bio.name }}" cols="40" rows="10" maxlength="500"
-                  id="{{ second_form.bio.id_for_label }}"></textarea>
+        <textarea
+          name="{{ second_form.bio.name }}"
+          cols="40"
+          rows="10"
+          maxlength="500"
+          id="{{ second_form.bio.id_for_label }}"
+        ></textarea>
         {{ second_form.bio.errors }}
       </div>
-      <p><label for="{{ second_form.avatar.id_for_label }}">Avatar</label>
-        {% if user.profile.avatar %}
-          Currently
-          <img src="{{ user.profile.avatar.url }}" alt="Profile photo">
-          <input type="checkbox" name="avatar-clear" id="avatar-clear_id">
+      <p>
+        <label for="{{ second_form.avatar.id_for_label }}">Avatar</label>
+        {% if user.profile.avatar %} Currently
+          <img src="{{ user.profile.avatar.url }}" alt="Profile photo" />
+          <input type="checkbox" name="avatar-clear" id="avatar-clear_id" />
           <label for="avatar-clear_id">Clear</label>
         {% endif %}
+      </p>
+
       <p>Change</p>
-      <input type="file" name="avatar" accept="image/*" id="id_avatar"></p>
+      <input type="file" name="avatar" accept="image/*" id="id_avatar" />
       <input class="submit" type="submit" name="Change " />
     </div>
   </form>

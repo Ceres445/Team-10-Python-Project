@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'invitations',
     'storages',
+    'django_simple_bulma',
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.auth',
@@ -143,8 +144,12 @@ DATABASES['default'].update(db_from_env)
 ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost', '0.0.0.0']
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django_simple_bulma.finders.SimpleBulmaFinder',
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
@@ -191,4 +196,16 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
         'LOCATION': 'unix:/tmp/memcached.sock',
     }
+}
+
+BULMA_SETTINGS = {
+    "variables": {
+        'scheme-main': 'hsl(210, 11%, 15%)',
+        'scheme-main-bis': 'hsla(0, 0%, 100%, 0.15)',
+        'link': 'white',
+        'link-invert': 'hsla(0, 0%, 100%, 0.15)',
+        'background': 'hsla(0, 0%, 100%, 0.15)',
+        "size-1": "6rem",
+    },
+    "output_style": "compressed",
 }

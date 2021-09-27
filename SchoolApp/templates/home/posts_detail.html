@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Post {{ post.title }} {% endblock %}
-{% block extra_head %}
+{% extends 'base.html' %} {% load static %} {% block title %} Post {{ post.title
+  }} {% endblock %} {% block extra_head %}
   <link
     rel="stylesheet"
     href="{% static 'home/css/posts.css' %}"
@@ -10,18 +10,26 @@
     href="{% static 'home/css/forms.css' %}"
     type="text/css"
   />
-{% endblock %}
-{% block content %}
+{% endblock %} {% block content %}
   <div class="post-container">
     <div class="post-header">
       <div class="post-title">
         <h1>{{ post.title }}</h1>
-        <p>Posted by <a href="{% url 'profileView' author.username %}">{{ post.author }}</a> at {{ post.created_at }}
+        <p>
+          Posted by
+          <a href="{% url 'profileView' author.username %}"
+          >{{ post.author }}</a
+          >
+          at {{ post.created_at }}
         </p>
       </div>
       <div class="author">
         {% if author.profile.avatar %}
-          <img src="{{ author.profile.avatar.url }}" width="50" alt="Profile Image">
+          <img
+            src="{{ author.profile.avatar.url }}"
+            width="50"
+            alt="Profile Image"
+          />
         {% endif %}
       </div>
     </div>
@@ -31,7 +39,7 @@
       {% if not user.is_authenticated %}
         <p class="inactive">You are not signed in, login to comment</p>
       {% endif %}
-      <textarea id='comment-new' maxlength="255"> </textarea>
+      <textarea id="comment-new" maxlength="255"> </textarea>
       <button
         class="submit"
         id="submit-comment"
@@ -43,15 +51,21 @@
     <div class="comments-container">
       {% for comment in comments %}
         <div class="comment-container">
-          <p class="comment-header"><a href="{% url 'profileView' comment.author.username %}">{{ comment.author }}</a>
-            <span
-              class="inactive"> at {{ comment.created_at }}</span></p>
+          <p class="comment-header">
+            <a href="{% url 'profileView' comment.author.username %}"
+            >{{ comment.author }}</a
+            >
+            <span class="inactive"> at {{ comment.created_at }}</span>
+          </p>
           <p class="comment-body">{{ comment.body }}</p>
         </div>
       {% endfor %}
     </div>
   </div>
-  {{ comments | length |  json_script:'comment_length' }}
+  {{ comments | length | json_script:'comment_length' }}
   {{ pk| json_script:'post_pk' }}
-  <script src=" {% static 'home/js/post_view_detail.js' %}" type="module"></script>
+  <script
+    src=" {% static 'home/js/post_view_detail.js' %}"
+    type="module"
+  ></script>
 {% endblock %}
