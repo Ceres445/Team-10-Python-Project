@@ -10,7 +10,7 @@ django-appconf==1.0.5
 django-invitations==1.9.3
 django-storages==1.11.1
 djangorestframework==3.12.4
-dropbox==11.19.0
+dropbox==11.20.0
 flake8==3.9.2
 gunicorn==20.1.0
 idna==2.10
