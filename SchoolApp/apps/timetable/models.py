@@ -25,9 +25,8 @@ class ClassTime(models.Model):
     time = models.TimeField(auto_now=False)
     link = models.TextField(max_length=400)
 
-
-class PostAnnouncementDiscord(models.Model):
-    link = models.TextField(max_length=400)
-    key_class = models.ForeignKey(Classes, on_delete=models.CASCADE, related_name='announcements')
-    message = models.TextField(max_length=120, default=DEFAULT_MESSAGE)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+# class PostAnnouncementDiscord(models.Model):
+#     link = models.TextField(max_length=400)
+#     key_class = models.ForeignKey(Classes, on_delete=models.CASCADE, related_name='announcements')
+#     message = models.TextField(max_length=120, default=DEFAULT_MESSAGE)
+#     owner = models.ForeignKey(User, on_delete=models.CASCADE)
