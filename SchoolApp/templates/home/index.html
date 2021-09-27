@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% load static %} {% block extra_head %}
+  <link
+    rel="stylesheet"
+    href="{% static 'home/css/index.css' %}"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    href="{% static 'home/css/forms.css' %}"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    href="{% static 'home/css/posts.css' %}"
+    type="text/css"
+  />
+{% endblock %} {% block content %}
+  <div id="main-container">
+    <p style="font-size: 5em">School Portal app</p>
+  </div>
+{% endblock %}

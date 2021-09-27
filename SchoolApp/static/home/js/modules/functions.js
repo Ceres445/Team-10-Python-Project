@@ -10,7 +10,9 @@ function addPostToHTML(el, container) {
 												<p class="post-content post-body" style="color: #afafaf;">${el.content}</p>
 									</div>
 														
-									<div class = "footer"> ${COMMENT} ${el.comments?.length ?? 0} Comments</div>
+									<div class = "comment-footer"> ${COMMENT} ${
+		el.comments?.length ?? 0
+	} Comments</div>
 								</div></a>`;
 	container.insertAdjacentHTML('beforeend', html);
 }

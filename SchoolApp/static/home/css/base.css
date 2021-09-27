@@ -1,9 +1,13 @@
 /*Base CSS*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
 :root {
     --light-blue: hsl(199, 80%, 63%);
     --dark-blue: hsl(200, 39%, 44%);
+}
+html{
+    background-color: unset;
 }
 
 .dropdown {
@@ -15,7 +19,7 @@
 }
 
 body {
-    font-family: "Roboto", serif;
+    font-family: "Inter", serif;
     background-color: hsl(216, 28%, 7%);
     color: rgb(201, 209, 217)
 }
@@ -83,20 +87,17 @@ button {
     align-items: center;
     flex-direction: column;
 }
-
-.navbar {
-    width: 95%;
-    margin-top: 25px;
-    height: 75px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 0 20px;
+@media screen and (min-width: 1024px) {
+    .navbar {
+        flex-wrap: wrap;
+        width: 95%;
+        height: 75px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        padding: 0 20px;
+    }
 }
-
-.link-nav {
+.navbar-item {
     font-size: 1.2rem;
     padding-right: .5rem;
     padding-left: 0.5rem;
@@ -109,9 +110,9 @@ button {
 
 .submit {
     align-self: center;
-    background-color: white;
+    background-color: #3e8ed0;
     width: auto;
-    color: black;
+    color: white;
     padding: 5px 15px;
     font-weight: 500;
     margin-top: 10px;
@@ -122,13 +123,21 @@ button {
 }
 
 .submit[disabled] {
+    color: black;
     background-color: grey;
     cursor: unset;
 }
 
 .submit:hover:enabled {
-    background-color: #1e6ed6;
+    background-color: #3e8ed0;
     color: white;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
     0 17px 0 0 rgba(0, 0, 0, 0.19);
+}
+.navbar-divider{
+    height: 1px;
+    opacity: .25;
+}
+p{
+    font-family: 'Roboto', sans-serif;
 }

@@ -1,0 +1,94 @@
+{% extends 'registration/registration_base.html' %}
+{% block form_title %} Edit Profile {% endblock %}
+{% block form %} {{ form.errors }}
+  <div class="container">
+    <div class="input-label">
+      <label for="{{ form.email.id_for_label }}">Email </label>
+      {{ form.email.errors }}
+    </div>
+    <label>
+      <input
+        type="email"
+        name="{{ form.email.name }}"
+        id=" {{ form.email.id_for_label }}"
+        value="{{ form.email.value }}"
+      />
+    </label>
+    <div class="input-label">
+      <label for="{{ form.first_name.id_for_label }}">First Name </label>
+      {{ form.first_name.errors }}
+    </div>
+    <label>
+      <input
+        type="text"
+        name="{{ form.first_name.name }}"
+        id=" {{ form.first_name.id_for_label }}"
+        value="{{ form.first_name.value }}"
+      />
+    </label>
+    <div class="input-label">
+      <label for="{{ form.last_name.id_for_label }}">Last Name </label>
+      {{ form.last_name.errors }}
+    </div>
+    <label>
+      <input
+        type="text"
+        name="{{ form.last_name.name }}"
+        id=" {{ form.last_name.id_for_label }}"
+        value="{{ form.last_name.value }}"
+      />
+    </label>
+    <input class="submit" type="submit" name="Change " />
+  </div>
+{% endblock %}
+{% block extra %}
+  <br />
+  <div style="text-align: center"><h2>Edit Other Data</h2></div>
+
+  {% if form.non_field_errors %} {% if form.non_field_errors|length > 1 %}
+    <ul class="errorlist">
+      {% for error in form.non_field_errors %}
+        <li class="error">{{ error|escape }}</li>
+      {% endfor %}
+    </ul>
+
+  {% else %}
+    <div class="errorlist">
+      <p class="error">{{ form.non_field_errors.0 }}</p>
+    </div>
+  {% endif %} {% endif %}
+
+  <form
+    method="post"
+    action="{% url 'changeAvatar' %}"
+    enctype="multipart/form-data"
+  >
+    <div class="container">
+      {% csrf_token %}
+      <div class="input-label">
+        <label for="{{ second_form.bio.id_for_label }}">Bio</label>
+        <textarea
+          name="{{ second_form.bio.name }}"
+          cols="40"
+          rows="10"
+          maxlength="500"
+          id="{{ second_form.bio.id_for_label }}"
+        ></textarea>
+        {{ second_form.bio.errors }}
+      </div>
+      <p>
+        <label for="{{ second_form.avatar.id_for_label }}">Avatar</label>
+        {% if user.profile.avatar %} Currently
+          <img src="{{ user.profile.avatar.url }}" alt="Profile photo" />
+          <input type="checkbox" name="avatar-clear" id="avatar-clear_id" />
+          <label for="avatar-clear_id">Clear</label>
+        {% endif %}
+      </p>
+
+      <p>Change</p>
+      <input type="file" name="avatar" accept="image/*" id="id_avatar" />
+      <input class="submit" type="submit" name="Change " />
+    </div>
+  </form>
+
+{% endblock %} {% block redirect_url %} {% endblock %}

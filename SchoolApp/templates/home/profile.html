@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %}
+{% block title %}Profile {% endblock %}
+
+{% block extra_head %}
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href=" {% static 'home/css/forms.css' %}"
+  />
+{% endblock %} {% block content %}
+  <div class="form-container">
+    <div class="container">
+      <h1 style="text-align: center;">Profile</h1>
+      <p>Username: {{ user.username }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Bio: {{ user.profile.bio }}</p>
+      <p>Type: {{ user.profile.get_user_type_display }}</p>
+      <p>
+        Classes joined: {{ courses }} {% if user.profile.avatar %}
+        <img
+          src="{{ user.profile.avatar.url }}"
+          width="240"
+          alt="Profile Image"
+        />
+      {% endif %}
+      </p>
+    </div>
+
+    <div class="redirect">
+      <a href="{% url 'viewPosts' %}"> View Posts</a>
+    </div>
+    {% if current %}
+      <div class="redirect">
+        <a href="{% url 'editProfile' %}"> Edit Profile</a>
+      </div>
+    {% endif %}
+  </div>
+
+{% endblock %}
