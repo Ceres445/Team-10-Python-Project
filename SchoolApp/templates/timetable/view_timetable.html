@@ -4,8 +4,14 @@
     type="text/css"
     href="{% static 'timetable/css/timetable.css' %}"
   />
-{% endblock %} {% block content %}
-  <table id="table" style="display: table">
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href=" {% static 'home/css/forms.css' %}"
+  />
+{% endblock %}
+{% block content %}
+  <table id="table" style="margin-top: 1.5rem" class="table is-striped is-hoverable is-bordered">
     <thead>
     <tr>
       <th>Day</th>
@@ -14,9 +20,118 @@
       <th>Link</th>
     </tr>
     </thead>
+    {#    <tr>#}
+    {#        <td>Physics</td>#}
+    {#        <td>10:00am - 12:00 noon</td>#}
+    {#        <td><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Physics Class Link</a></td>#}
+    {#        <td>Monday , Wednesday and Friday</td>#}
+    {#    </tr>#}
     <tbody></tbody>
 
   </table>
+  <div class="form-container">
+{#    <div class="accordion " id="accordionExample">#}
+{#      <div class="accordion-item">#}
+{#        <h2 class="accordion-header" id="headingOne">#}
+{#          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"#}
+{#                  aria-expanded="true" aria-controls="collapseOne">#}
+{#            Filter by#}
+{#          </button>#}
+{#        </h2>#}
+{#        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"#}
+{#             data-bs-parent="#accordionExample">#}
+{#          <div class="accordion-body">#}
+{#            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin#}
+{#            adds the appropriate classes that we use to style each element. These classes control the overall#}
+{#            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom#}
+{#            CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the#}
+{#            <code>.accordion-body</code>, though the transition does limit overflow.#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#      <div class="accordion-item">#}
+{#        <h2 class="accordion-header" id="headingTwo">#}
+{#          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"#}
+{#                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">#}
+{#            Group by#}
+{#          </button>#}
+{#        </h2>#}
+{#        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"#}
+{#             data-bs-parent="#accordionExample">#}
+{#          <div class="accordion-body">#}
+{#            <button class='submit min' name="day">Day</button>#}
+{#            <button class='submit min' name="subject">Subject</button>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#      <div class="accordion-item">#}
+{#        <h2 class="accordion-header" id="headingThree">#}
+{#          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"#}
+{#                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">#}
+{#            Sort by#}
+{#          </button>#}
+{#        </h2>#}
+{#        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"#}
+{#             data-bs-parent="#accordionExample">#}
+{#          <div class="accordion-body">#}
+{#            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin#}
+{#            adds the appropriate classes that we use to style each element. These classes control the overall#}
+{#            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom#}
+{#            CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the#}
+{#            <code>.accordion-body</code>, though the transition does limit overflow.#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+    <div class="redirect">
+      <p>Group by</p>
+      <button class='submit min' name="day">Day</button>
+      <button class='submit min' name="subject">Subject</button>
+    </div>
+  <div id="accordion_first">
+	<article class="message">
+		<div class="message-header">
+      <a href="#collapsible-message-accordion-1" data-action="collapse">Filter by</a>
+		</div>
+		<div id="collapsible-message-accordion-1" class="message-body is-collapsible" data-parent="accordion_first">
+			<div class="field is-grouped">
+        <button class='button filterby is-danger' name="day">Day</button>
+        <button class='button filterby' name="subject">Subject</button>
+			</div>
+		</div>
+	</article>
+	<article class="message">
+		<div class="message-header">
+			<a href="#collapsible-message-accordion-2" data-action="collapse">Group By</a>
+		</div>
+		<div id="collapsible-message-accordion-2" class="message-body is-collapsible" data-parent="accordion_first">
+			<div class="field is-grouped ">
+				<button class='button groupby' name="day">Day</button>
+        <button class='button groupby' name="subject">Subject</button>
+			</div>
+		</div>
+	</article>
+	<article class="message">
+		<div class="message-header">
+			<a href="#collapsible-message-accordion-3" data-action="collapse">Sort By</a>
+		</div>
+		<div id="collapsible-message-accordion-3" class="message-body is-collapsible" data-parent="accordion_first">
+			<div class="message-body-content">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis
+				placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum
+				<a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et
+				sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et
+				sem eget, facilisis sodales sem.
+			</div>
+		</div>
+	</article>
+  </div>
+</div>
   {{ records| json_script:'records' }}
   <script src=" {% static 'timetable/js/timetable.js' %}"></script>
+  <script>
+  window.addEventListener('load', () => {
+  bulmaCollapsible.attach();
+});
+  </script>
 {% endblock %}

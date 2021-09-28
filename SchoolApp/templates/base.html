@@ -42,14 +42,14 @@
     <a class="navbar-item" href="/" style="font-size: 1.3rem">
         Home
       </a>
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div class="navbar-menu">
+  <div id ="navbarMain" class="navbar-menu">
     <div class="navbar-start">
 
       {% if user.is_authenticated %}
@@ -112,14 +112,5 @@
   content="iDQL3060-udG_CC8R-kNSEDe5D1_teAcxzguYmd4H1Y"
 />
 {# Verify by google#}
-<script>
-  (function() {
-    const burger = document.querySelector('.navbar-burger');
-    const menu = document.querySelector('.navbar-menu');
-    burger.addEventListener('click', function() {
-        burger.classList.toggle('is-active');
-        menu.classList.toggle('is-active');
-    });})();
-</script>
 </body>
 </html>

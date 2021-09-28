@@ -186,10 +186,21 @@ CACHES = {
 }
 
 BULMA_SETTINGS = {
+    "extensions": [
+        "bulma-collapsible",
+        "bulma-navbar-burger",
+        "bulma-collapsible-runner"
+    ],
     "variables": {
-        'scheme-main': 'hsl(210, 11%, 15%)',
-        'scheme-main-bis': 'hsla(0, 0%, 100%, 0.15)',
+        'table-row-hover-background-color': 'hsl(222, 50%, 25%)',
+        'scheme-main': 'hsl(222, 50%, 18%)',
+        'scheme-main-bis': 'hsla(0, 0%, 100%, 0.11)',
+        'scheme-main-ter': 'hsl(222, 50%, 25%)',
+        'border': 'hsl(200, 42%, 26%)',
         'link': 'white',
+        'link-hover': 'white',
+        'text': 'white',
+        'text-strong': 'white',
         'link-invert': 'hsla(0, 0%, 100%, 0.15)',
         'background': 'hsla(0, 0%, 100%, 0.15)',
         "size-1": "6rem",
