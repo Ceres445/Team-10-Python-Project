@@ -4,12 +4,8 @@
 table {
     font-family: 'Inter', sans-serif;
     border-collapse: collapse;
-    width: 70%;
     text-align: center;
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .span {
@@ -17,20 +13,13 @@ table {
 }
 
 table td, table th {
-
+    vertical-align: inherit;
     border: #264b5d 1px solid;
     padding: 8px;
 
 }
 
-table tr:nth-child(even) {
-    background-color: hsl(222, 50%, 18%);
-}
 
-table tr:hover {
-    background-color: hsl(222, 60%, 40%);
-    cursor: pointer;
-}
 
 table th {
     padding-top: 12px;
@@ -39,6 +28,16 @@ table th {
     background-color: var(--background);
     color: white;
 }
+
 .min {
     width: auto !important;
+}
+
+.accordion-collapse {
+    display: grid;
+}
+
+.accordion-body {
+    display: flex;
+    justify-content: space-evenly;
 }

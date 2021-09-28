@@ -51,7 +51,7 @@ function groupby(list, field) {
 const grouped = groupby(records, 'day');
 render_html(grouped, 'day');
 
-Array.from(document.getElementsByClassName('submit')).forEach(el =>
+Array.from(document.getElementsByClassName('groupby')).forEach(el =>
 	el.addEventListener('click', () => {
 		render_html(groupby(records, el.name), el.name);
 	})
