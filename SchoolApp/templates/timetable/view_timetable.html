@@ -129,9 +129,4 @@
 </div>
   {{ records| json_script:'records' }}
   <script src=" {% static 'timetable/js/timetable.js' %}"></script>
-  <script>
-  window.addEventListener('load', () => {
-  bulmaCollapsible.attach();
-});
-  </script>
 {% endblock %}
