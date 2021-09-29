@@ -157,8 +157,6 @@ postForm.addEventListener('submit', async function (e) {
 	else postForm.innerText = 'Failure';
 	setTimeout(() => (postForm.innerHTML = oldHtml), 5000);
 });
-// TODO: implement timer for posting
-
 // Add event listeners to categories
 for (const i of tabLinks) {
 	i.addEventListener('click', async function () {
