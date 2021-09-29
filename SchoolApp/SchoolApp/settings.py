@@ -212,6 +212,7 @@ BULMA_SETTINGS = {
         'border': 'hsl(200, 42%, 26%)',
         'link': 'white',
         'link-hover': 'white',
+        'link-active': 'white',
         'link-focus': 'white',
         'text': 'white',
         'text-strong': 'white',
