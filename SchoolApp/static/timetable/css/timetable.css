@@ -1,52 +1,52 @@
-@import "../../home/css/posts.css";
+@import '../../home/css/posts.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
 table {
-    font-family: 'Inter', sans-serif;
-    border-collapse: collapse;
-    text-align: center;
-    margin: auto;
+	font-family: 'Inter', sans-serif;
+	border-collapse: collapse;
+	text-align: center;
+	margin: auto;
 }
 
 .span {
-    background-color: hsl(222, 50%, 18%);
+	background-color: hsl(222, 50%, 18%);
 }
 
-table td, table th {
-    vertical-align: middle;
-    border: #264b5d 1px solid;
-    padding: 8px;
-
+table td,
+table th {
+	vertical-align: middle;
+	border: #264b5d 1px solid;
+	padding: 8px;
 }
-
-
 
 table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: var(--background);
-    color: white;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: var(--background);
+	color: white;
 }
 
 .min {
-    width: auto !important;
+	width: auto !important;
 }
 
 .accordion-collapse {
-    display: grid;
+	display: grid;
 }
 
 .accordion-body {
-    display: flex;
-    justify-content: space-evenly;
+	display: flex;
+	justify-content: space-evenly;
 }
-.filterby-checklists{
-    display: grid;
+.filterby-checklists {
+	display: grid;
+	justify-content: center;
+	justify-items: start;
 }
-.hide{
-    display: none;
+.hide {
+	display: none;
 }
 .field.is-grouped {
-    justify-content: space-evenly;
+	justify-content: space-evenly;
 }
