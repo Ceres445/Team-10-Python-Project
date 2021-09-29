@@ -41,3 +41,12 @@ table th {
     display: flex;
     justify-content: space-evenly;
 }
+.filterby-checklists{
+    display: grid;
+}
+.hide{
+    display: none;
+}
+.field.is-grouped {
+    justify-content: space-evenly;
+}
