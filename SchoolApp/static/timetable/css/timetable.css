@@ -13,7 +13,7 @@ table {
 }
 
 table td, table th {
-    vertical-align: inherit;
+    vertical-align: middle;
     border: #264b5d 1px solid;
     padding: 8px;
 
