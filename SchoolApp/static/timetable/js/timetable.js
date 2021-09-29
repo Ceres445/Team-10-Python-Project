@@ -73,7 +73,7 @@ Array.from(document.getElementsByClassName('filterbutton')).forEach(el =>
 		filterby_checklist.innerHTML = '';
 		[...new Set(records.map(el => el[_filterby]))].forEach(el => {
 			filterby_checklist.insertAdjacentHTML(
-				'afterbegin',
+				'beforeend',
 				`<label class="checkbox">
 									<input type="checkbox" class="filterby load" name="${el}">${el}
 								</label>`
