@@ -75,7 +75,7 @@ Array.from(document.getElementsByClassName('filterbutton')).forEach(el =>
 			filterby_checklist.insertAdjacentHTML(
 				'beforeend',
 				`<label class="checkbox">
-									<input type="checkbox" class="filterby load" name="${el}">${el}
+									<input type="checkbox" class="filterby load" name="${el}"><p>"${el}"</p>
 								</label>`
 			);
 		});
