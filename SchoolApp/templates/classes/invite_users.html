@@ -1,10 +1,9 @@
 {% extends 'registration/registration_base.html' %}
-{% block navbar %}{% endblock %}
-{% block form_title %} Invite users to class {{ class }} {{ message }}{% endblock %}
+{% block navbar %}{%endblock %}
+{% block form_title %} Invite users to class {{ class }} {{ message}}{% endblock %}
 {% block form %}
-  <div class="container">
-    {{ form.as_p }}
-        <input class="submit" type="submit" name="Submit">
+<div class="container">
+	{{ form.as_p }}
+	<input class="submit" type="submit" name="Submit" />
 </div>
-{% endblock %}
-{% block redirect_url %} {% endblock %}
+{% endblock %} {% block redirect_url %} {% endblock %}

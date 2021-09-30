@@ -1,10 +1,9 @@
 {% extends 'registration/registration_base.html' %}
-{% block navbar %}{% endblock %}
-{% block form_title %} Create Assignment for {{ class.class_name }}{% endblock %}
+{% block navbar %}{endblock %}
+{% block form_title %} Create Assignment for {{ class.class_name}}{% endblock %}
 {% block form %}
 <div class="container">
-    {{ form.as_p}}
-    <input class="submit" type="submit" name="Sign in " />
+	{{ form.as_p}}
+	<input class="submit" type="submit" name="Sign in " />
 </div>
-{% endblock %}
-{% block redirect_url %} {% endblock %}
+{% endblock %} {% block redirect_url %} {% endblock %}
