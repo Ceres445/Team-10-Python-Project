@@ -14,7 +14,7 @@ table {
 
 table td,
 table th {
-	vertical-align: middle;
+	vertical-align: middle !important;
 	border: #264b5d 1px solid;
 	padding: 8px;
 }
