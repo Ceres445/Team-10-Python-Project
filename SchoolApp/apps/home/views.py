@@ -36,7 +36,7 @@ def register(request):
             login(request, user)
             return redirect(reverse("homePage"))
     else:
-        return HttpResponseForbidden(f"Method {request.method} not allowed")
+        return HttpResponseForbidden()
     return render(
         request, "registration/register.html",
         {"form": form}
