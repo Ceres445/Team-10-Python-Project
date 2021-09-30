@@ -1,70 +1,70 @@
 {% extends 'base.html' %} {% load static %} {% block extra_head %}
-  <link
-    rel="stylesheet"
-    href="{% static 'home/css/index.css' %}"
-    type="text/css"
-  />
-  <link
-    rel="stylesheet"
-    href="{% static 'home/css/forms.css' %}"
-    type="text/css"
-  />
-  <link
-    rel="stylesheet"
-    href="{% static 'home/css/posts.css' %}"
-    type="text/css"
-  />
+<link
+	rel="stylesheet"
+	href="{% static 'home/css/index.css' %}"
+	type="text/css"
+/>
+<link
+	rel="stylesheet"
+	href="{% static 'home/css/forms.css' %}"
+	type="text/css"
+/>
+<link
+	rel="stylesheet"
+	href="{% static 'home/css/posts.css' %}"
+	type="text/css"
+/>
 {% endblock %} {% block content %}
-  <div style="display: flex">
-    <div style="flex: 0.9">
-      <div class="header">
-        <button class="tablink" name="Public" id="defaultOpen">
-          Public
-        </button>
-        <button class="tablink" name="Class">Class</button>
-        <button class="tablink" name="Site">Site</button>
-        <button class="tablink" name="Forum">Forum</button>
-      </div>
+<div style="display: flex">
+	<div style="flex: 0.9">
+		<div class="header">
+			<button class="tablink" name="Public" id="defaultOpen">
+				Public
+			</button>
+			<button class="tablink" name="Class">Class</button>
+			<button class="tablink" name="Site">Site</button>
+			<button class="tablink" name="Forum">Forum</button>
+		</div>
 
-      <div class="selector" id="selector-div"></div>
-      <div class="tabcontent"></div>
-    </div>
-    <div class="container submit-form" id="post-form">
-      <form enctype="multipart/form-data" novalidate>
-        <div id="submit-form-heading" align="center"></div>
-        <div class="form-group">
-          <label class="input-label"> Title </label>
-          <label for="title-input"></label
-          ><input
-          name="title"
-          class="form-control"
-          type="text"
-          value=""
-          id="title-input"
-        />
-        </div>
-        <div class="form-group">
-          <label class="input-label"> Content </label>
-          <label for="content-input"></label
-          ><textarea
-          name="content"
-          cols="40"
-          rows="10"
-          maxlength="500"
-          class="input-label"
-          id="content-input"
-        ></textarea>
-        </div>
+		<div class="selector" id="selector-div"></div>
+		<div class="tabcontent"></div>
+	</div>
+	<div class="container submit-form" id="post-form">
+		<form enctype="multipart/form-data" novalidate>
+			<div id="submit-form-heading" align="center"></div>
+			<div class="form-group">
+				<label class="input-label"> Title </label>
+				<label for="title-input"></label
+				><input
+					name="title"
+					class="form-control"
+					type="text"
+					value=""
+					id="title-input"
+				/>
+			</div>
+			<div class="form-group">
+				<label class="input-label"> Content </label>
+				<label for="content-input"></label
+				><textarea
+					name="content"
+					cols="40"
+					rows="10"
+					maxlength="500"
+					class="input-label"
+					id="content-input"
+				></textarea>
+			</div>
 
-        <div class="form-actions" id="button-space">
-          <button class="submit" id="submit-btn" title="" type="submit">
-            Post
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-  {% if courses is not None %} {{ courses| json_script:'courses' }} {% endif %}
-  <script src="{% static 'home/js/posts.js' %}" type="module"></script>
+			<div class="form-actions" id="button-space">
+				<button class="submit" id="submit-btn" title="" type="submit">
+					Post
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
+{% if courses is not None %} {{ courses| json_script:'courses' }} {% endif %}
+<script src="{% static 'home/js/posts.js' %}" type="module"></script>
 
 {% endblock %}

@@ -1,12 +1,11 @@
 /*CSS for index page*/
 
-
 #main-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5vh;
-    height: calc(100vh - 130px);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 5vh;
+	height: calc(100vh - 130px);
 }

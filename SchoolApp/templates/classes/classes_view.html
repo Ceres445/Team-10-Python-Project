@@ -1,83 +1,81 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load tags %} {% load static %}
+{% block extra_head%}
+<link
+	rel="stylesheet"
+	href="{% static 'home/css/posts.css' %}"
+	type="text/css"
+/>
+<link
+	rel="stylesheet"
+	href="{% static 'timetable/css/timetable.css' %}"
+	type="text/css"
+/>
+{% endblock %} {% block content %}
+<div class="container" style="display: flex">
+	<table style="width: 300px; margin-top: 20px">
+		<caption>
+			Classes you have joined
+		</caption>
+		<tr>
+			<th>Class</th>
+			<th>Teacher</th>
+			<th>Assignments</th>
+		</tr>
+		{% for i in joined %}
+		<tr id="{{ i.id }}">
+			<td class="class-name">{{ i.class_name }}</td>
+			<td>{{ i.teacher_id }}</td>
+			{% if i.assignments.all %}
+			<td>{{ i.assignments.all|length_active }}</td>
+			{% else %}
+			<td>0</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</table>
+	<table style="width: 300px; margin-top: 20px">
+		<caption>
+			Classes you teach
+		</caption>
+		<tr>
+			<th>Class</th>
+			<th>Teacher</th>
+			<th>Assignments</th>
+		</tr>
+		{% for i in teacher %}
+		<tr id="{{ i.id }}">
+			<td class="class-name">{{ i.class_name }}</td>
+			<td>{{ i.teacher_id }}</td>
+			{% if i.assignments.all %}
+			<td>{{ i.assignments.all|length_active }}</td>
+			{% else %}
+			<td>0</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</table>
 
-{% load tags %}
-{% load static %}
-{% block extra_head %}
-  <link
-    rel="stylesheet"
-    href="{% static 'home/css/posts.css' %}"
-    type="text/css"
-  />
-  <link
-    rel="stylesheet"
-    href="{% static 'timetable/css/timetable.css' %}"
-    type="text/css"
-  />
-{% endblock %}
-{% block content %}
-  <div class="container" style="display: flex">
-    <table style="width: 300px; margin-top: 20px">
-      <caption> Classes you have joined</caption>
-      <tr>
-        <th>Class</th>
-        <th>Teacher</th>
-        <th>Assignments</th>
-      </tr>
-      {% for i in joined %}
-        <tr id="{{ i.id }}">
-
-          <td class="class-name">{{ i.class_name }}</td>
-          <td>{{ i.teacher_id }}</td>
-          {% if i.assignments.all %}
-            <td>{{ i.assignments.all|length_active }}</td>
-          {% else %}
-            <td>0</td>
-          {% endif %}
-        </tr>
-      {% endfor %}
-    </table>
-    <table style="width: 300px; margin-top: 20px">
-
-      <caption> Classes you teach</caption>
-      <tr>
-        <th>Class</th>
-        <th>Teacher</th>
-        <th>Assignments</th>
-      </tr>
-      {% for i in teacher %}
-        <tr id="{{ i.id }}">
-
-          <td class="class-name">{{ i.class_name }}</td>
-          <td>{{ i.teacher_id }}</td>
-          {% if i.assignments.all %}
-            <td>{{ i.assignments.all|length_active }}</td>
-          {% else %}
-            <td>0</td>
-          {% endif %}
-        </tr>
-      {% endfor %}
-    </table>
-
-    <table style="width: 300px; margin-top: 20px">
-      <caption> Public classes you can join</caption>
-      <tr>
-        <th>Class</th>
-        <th>Teacher</th>
-        <th>Assignments</th>
-      </tr>
-      {% for i in public %}
-        <tr id="{{ i.id }}">
-
-          <td class="class-name">{{ i.class_name }}</td>
-          <td>{{ i.teacher_id }}</td>
-          {% if i.assignments.all %}
-            <td>{{ i.assignments.all|length_active }}</td>
-          {% else %}
-            <td>0</td>
-          {% endif %}
-        </tr>
-      {% endfor %}
-    </table>
-  </div>
-  <script src="{% static 'home/js/classes_view.js' %}" type="module"></script>
+	<table style="width: 300px; margin-top: 20px">
+		<caption>
+			Public classes you can join
+		</caption>
+		<tr>
+			<th>Class</th>
+			<th>Teacher</th>
+			<th>Assignments</th>
+		</tr>
+		{% for i in public %}
+		<tr id="{{ i.id }}">
+			<td class="class-name">{{ i.class_name }}</td>
+			<td>{{ i.teacher_id }}</td>
+			{% if i.assignments.all %}
+			<td>{{ i.assignments.all|length_active }}</td>
+			{% else %}
+			<td>0</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+<script src="{% static 'home/js/classes_view.js' %}" type="module"></script>
 {% endblock %}

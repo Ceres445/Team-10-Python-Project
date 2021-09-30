@@ -1,157 +1,157 @@
 /*CSS for all posts and comments related*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 :root {
-    --background: hsl(216, 50%, 12%);
-    --background-focus: hsl(216, 30%, 4%);
-    --background-active: hsl(212, 30%, 14%);
-    --border: hsl(200, 42%, 26%);
+	--background: hsl(216, 50%, 12%);
+	--background-focus: hsl(216, 30%, 4%);
+	--background-active: hsl(212, 30%, 14%);
+	--border: hsl(200, 42%, 26%);
 }
 
 .inactive {
-    color: hsl(0, 0%, 69%);
+	color: hsl(0, 0%, 69%);
 }
 
 .post {
-    font-family: 'Roboto', sans-serif;
-    color: white;
-    border-radius: 5px;
-    background-color: var(--background);
-    margin-bottom: 30px;
-    display: flex;
-    width: 95%;
-    justify-content: space-between;
-    align-items: baseline;
-    min-height: 100px;
-    height: 100px;
-    max-height: 80px;
-    padding: 5px 15px;
-    cursor: pointer;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	border-radius: 5px;
+	background-color: var(--background);
+	margin-bottom: 30px;
+	display: flex;
+	width: 95%;
+	justify-content: space-between;
+	align-items: baseline;
+	min-height: 100px;
+	height: 100px;
+	max-height: 80px;
+	padding: 5px 15px;
+	cursor: pointer;
 }
 
 .post:hover {
-    border: var(--border) 1px solid;
+	border: var(--border) 1px solid;
 }
 
 .posts-container {
-    padding: 20px 24px;
+	padding: 20px 24px;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5em;
+	display: flex;
+	flex-direction: column;
+	padding: 0.5em;
 }
 
 .tablink {
-    font-size: 0.8em;
-    display: flex;
-    background-color: var(--background);
-    padding: 15px;
-    float: left;
-    margin: 20px 0 20px 6px;
-    border-radius: 5px;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    height: 120px;
-    border: 1px solid #0000;
-    transition: border-color 0.2s ease-in-out;
-    user-select: none;
+	font-size: 0.8em;
+	display: flex;
+	background-color: var(--background);
+	padding: 15px;
+	float: left;
+	margin: 20px 0 20px 6px;
+	border-radius: 5px;
+	cursor: pointer;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: 120px;
+	border: 1px solid #0000;
+	transition: border-color 0.2s ease-in-out;
+	user-select: none;
 }
 
 .tablink:hover {
-    border-color: var(--border);
-    background: var(--background-focus);
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+	border-color: var(--border);
+	background: var(--background-focus);
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+		0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .tabcontent {
-    display: flex;
-    padding: 20px;
-    height: 100%;
-    flex-direction: column;
-    align-items: stretch;
+	display: flex;
+	padding: 20px;
+	height: 100%;
+	flex-direction: column;
+	align-items: stretch;
 }
 
 .header {
-    font-size: 2em;
-    margin: 20px;
-    display: grid;
-    width: 90%;
-    gap: 25px;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+	font-size: 2em;
+	margin: 20px;
+	display: grid;
+	width: 90%;
+	gap: 25px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 @media only screen and (max-width: 800px) {
-    .header {
-        grid-template-columns: repeat(2, minmax(0px, 1fr));
-    }
+	.header {
+		grid-template-columns: repeat(2, minmax(0px, 1fr));
+	}
 }
 
 .active {
-    background-color: var(--background-active) !important;
+	background-color: var(--background-active) !important;
 }
 
 .post-container {
-    display: flex;
-    flex-direction: column;
-    width: 90vw;
-    margin: 5vh auto 0;
+	display: flex;
+	flex-direction: column;
+	width: 90vw;
+	margin: 5vh auto 0;
 }
 
 .post-header {
-    display: flex;
-    margin-bottom: 30px;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	margin-bottom: 30px;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .post-links {
-    margin-top: 30px;
+	margin-top: 30px;
 }
 
 .comment-container {
-    padding: 2px;
-    margin-bottom: 5px;
+	padding: 2px;
+	margin-bottom: 5px;
 }
 
 .comment-container:nth-child(2n) {
-    background: var(--background-focus);
+	background: var(--background-focus);
 }
 
 .post-body {
-    width: 80%;
-    -webkit-line-clamp: 2 !important;
+	width: 80%;
+	-webkit-line-clamp: 2 !important;
 }
 
 .post-content {
-    color: white !important;
-    word-wrap: break-word;
-    word-break: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+	color: white !important;
+	word-wrap: break-word;
+	word-break: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .class-name {
-    width: 80px;
-    border-right: 1px solid #304430;
+	width: 80px;
+	border-right: 1px solid #304430;
 }
 
 .submit-form {
-    margin: 2em;
-    width: 20%;
-    height: 20%;
+	margin: 2em;
+	width: 20%;
+	height: 20%;
 }
-#class-selection{
-    display: flex;
-    justify-content: center;
+#class-selection {
+	display: flex;
+	justify-content: center;
 }
-#class-selection-select{
-    width: unset;
+#class-selection-select {
+	width: unset;
 }
