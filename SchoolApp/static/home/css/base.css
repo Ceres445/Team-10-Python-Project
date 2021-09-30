@@ -3,141 +3,140 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
 :root {
-    --light-blue: hsl(199, 80%, 63%);
-    --dark-blue: hsl(200, 39%, 44%);
+	--light-blue: hsl(199, 80%, 63%);
+	--dark-blue: hsl(200, 39%, 44%);
 }
-html{
-    background-color: unset;
+html {
+	background-color: unset;
 }
 
 .dropdown {
-    margin-left: auto;
+	margin-left: auto;
 }
 
 .collapse {
-    display: flex;
+	display: flex;
 }
 
 body {
-    font-family: "Inter", serif;
-    background-color: hsl(216, 28%, 7%);
-    color: rgb(201, 209, 217)
+	font-family: 'Inter', serif;
+	background-color: hsl(216, 28%, 7%);
+	color: rgb(201, 209, 217);
 }
 
 a {
-    color: var(--light-blue);
-    text-decoration: none;
+	color: var(--light-blue);
+	text-decoration: none;
 }
 
 a:hover {
-    color: var(--dark-blue);
+	color: var(--dark-blue);
 }
 
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
+	border: 16px solid #f3f3f3; /* Light grey */
+	border-top: 16px solid #3498db; /* Blue */
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
+	animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
-    margin: auto;
-    text-align: center;
-
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 300px;
+	margin: auto;
+	text-align: center;
 }
 
 .title {
-    color: grey;
-    font-size: 15px;
+	color: grey;
+	font-size: 15px;
 }
 
 button {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: black;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 15px;
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: black;
+	text-align: center;
+	cursor: pointer;
+	width: 100%;
+	font-size: 15px;
 }
 
 .right-nav {
-    border-right: 1px solid #304430;
+	border-right: 1px solid #304430;
 }
 
 #navigation-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 @media screen and (min-width: 1024px) {
-    .navbar {
-        flex-wrap: wrap;
-        width: 95%;
-        height: 75px;
-        border-radius: 5px;
-        box-sizing: border-box;
-        padding: 0 20px;
-    }
+	.navbar {
+		flex-wrap: wrap;
+		width: 95%;
+		height: 75px;
+		border-radius: 5px;
+		box-sizing: border-box;
+		padding: 0 20px;
+	}
 }
 .navbar-item {
-    font-size: 1.2rem;
-    padding-right: .5rem;
-    padding-left: 0.5rem;
-    color: #ffffff8c;
+	font-size: 1.2rem;
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+	color: #ffffff8c;
 }
 
 .link-nav:hover {
-    color: #ffffffbf;
+	color: #ffffffbf;
 }
 
 .submit {
-    align-self: center;
-    background-color: #3e8ed0;
-    width: auto;
-    color: white;
-    padding: 5px 15px;
-    font-weight: 500;
-    margin-top: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition-duration: 0.4s;
-    border: 2px solid #264b5d;
+	align-self: center;
+	background-color: #3e8ed0;
+	width: auto;
+	color: white;
+	padding: 5px 15px;
+	font-weight: 500;
+	margin-top: 10px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition-duration: 0.4s;
+	border: 2px solid #264b5d;
 }
 
 .submit[disabled] {
-    color: black;
-    background-color: grey;
-    cursor: unset;
+	color: black;
+	background-color: grey;
+	cursor: unset;
 }
 
 .submit:hover:enabled {
-    background-color: #3e8ed0;
-    color: white;
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-    0 17px 0 0 rgba(0, 0, 0, 0.19);
+	background-color: #3e8ed0;
+	color: white;
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+		0 17px 0 0 rgba(0, 0, 0, 0.19);
 }
-.navbar-divider{
-    height: 1px;
-    opacity: .25;
+.navbar-divider {
+	height: 1px;
+	opacity: 0.25;
 }
-p{
-    font-family: 'Roboto', sans-serif;
+p {
+	font-family: 'Roboto', sans-serif;
 }
