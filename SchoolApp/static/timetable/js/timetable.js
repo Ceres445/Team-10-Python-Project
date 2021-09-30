@@ -1,3 +1,5 @@
+import { escapeHtml } from '../../home/js/modules/functions.js';
+
 const records = JSON.parse(document.getElementById('records').textContent);
 
 const table_element = document.getElementById('table');
@@ -75,7 +77,9 @@ Array.from(document.getElementsByClassName('filterbutton')).forEach(el =>
 			filterby_checklist.insertAdjacentHTML(
 				'beforeend',
 				`<label class="checkbox">
-									<input type="checkbox" class="filterby load" name="${el}"><p>"${el}"</p>
+									<input type="checkbox" class="filterby load" name="${escapeHtml(
+										el
+									)}">${escapeHtml(el)}
 								</label>`
 			);
 		});
