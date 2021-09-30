@@ -3,11 +3,12 @@ import { COMMENT, URL } from './constants.js';
 function addPostToHTML(el, container) {
 	//<div class="post-header">Posted by <a href="/profile/${el.author}">
 	// ${el.author}</a></div>
-	const html = `<a href="${URL}/posts/${el.id}" class="no-hover">
+
+	const html = `<a href="${URL}/posts/${escapeHtml(el.id)}" class="no-hover">
 									<div class="post">
 									<div class="content">
-												<h3 class="post-content">${el.title}</h3>
-												<p class="post-content post-body" style="color: #afafaf;">${el.content}</p>
+												<h3 class="post-content">${escapeHtml(el.title)}</h3>
+												<p class="post-content post-body" style="color: #afafaf;">${escapeHtml(el.content)}</p>
 									</div>
 														
 									<div class = "comment-footer"> ${COMMENT} ${
@@ -34,5 +35,13 @@ function getCookie(name) {
 	}
 	return cookieValue;
 }
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
 
 export { addPostToHTML, getCookie };
