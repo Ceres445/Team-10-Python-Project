@@ -36,5 +36,5 @@ def create_timetable(request):
         else:
             message = "Error!, unable to create"
     else:
-        return HttpResponseForbidden(f"Method {request.method} not allowed")
+        return HttpResponseForbidden(f"Method is not allowed")
     return render(request, 'timetable/create.html', {"form": form, "records": classes, "message": message})
