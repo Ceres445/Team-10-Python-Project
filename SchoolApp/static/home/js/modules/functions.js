@@ -8,7 +8,9 @@ function addPostToHTML(el, container) {
 									<div class="post">
 									<div class="content">
 												<h3 class="post-content">${escapeHtml(el.title)}</h3>
-												<p class="post-content post-body" style="color: #afafaf;">${escapeHtml(el.content)}</p>
+												<p class="post-content post-body" style="color: #afafaf;">${escapeHtml(
+													el.content
+												)}</p>
 									</div>
 														
 									<div class = "comment-footer"> ${COMMENT} ${
@@ -36,12 +38,12 @@ function getCookie(name) {
 	return cookieValue;
 }
 function escapeHtml(unsafe) {
-    return unsafe
-         .replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#039;");
- }
+	return unsafe
+		.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;')
+		.replace(/"/g, '&quot;')
+		.replace(/'/g, '&#039;');
+}
 
-export { addPostToHTML, getCookie };
+export { addPostToHTML, getCookie, escapeHtml };

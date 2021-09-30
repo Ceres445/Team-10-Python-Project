@@ -1,4 +1,4 @@
-import { addPostToHTML, getCookie } from './modules/functions.js';
+import { addPostToHTML, escapeHtml, getCookie } from './modules/functions.js';
 import { URL } from './modules/constants.js';
 
 const tabContent = document.querySelector('.tabcontent');
@@ -90,7 +90,16 @@ async function changeUI(name, category = false) {
 				`<div class="selector" id="class-selection"><label>Choose a class:</label>
 											<select id="class-selection-select">
 											<option value="all"> all </option>
-												${courses.map(el => `<option value="${el}"> ${el} </option>`).join('\n')}
+												${courses
+													.map(
+														el =>
+															`<option value="${escapeHtml(
+																el
+															)}"> ${escapeHtml(
+																el
+															)} </option>`
+													)
+													.join('\n')}
 											</select>
 						</div>`
 			);
