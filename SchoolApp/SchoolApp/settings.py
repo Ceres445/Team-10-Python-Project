@@ -132,16 +132,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # database for heroku
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 # set allowed hosts for heroku
-ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost', '0.0.0.0']
+ALLOWED_HOSTS = ['school-portal-ceres.herokuapp.com', '127.0.0.1', 'localhost', '0.0.0.0',
+                 'edu-orange.herokuapp.com']
+
+
+# Static files
+STATIC_URL = '/static/'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
