@@ -12,7 +12,7 @@
 />
 {% endblock %} {% block content %}
 <div class="container" style="display: flex">
-	<table style="width: 300px; margin-top: 20px">
+	<table style="width: 300px; margin-top: 20px" class="table is-striped is-hoverable is-bordered">
 		<caption>
 			Classes you have joined
 		</caption>
@@ -22,7 +22,7 @@
 			<th>Assignments</th>
 		</tr>
 		{% for i in joined %}
-		<tr id="{{ i.id }}">
+		<tr id="{{ i.id }}" class="class-view">
 			<td class="class-name">{{ i.class_name }}</td>
 			<td>{{ i.teacher_id }}</td>
 			{% if i.assignments.all %}
@@ -33,7 +33,7 @@
 		</tr>
 		{% endfor %}
 	</table>
-	<table style="width: 300px; margin-top: 20px">
+	<table style="width: 300px; margin-top: 20px" class="table is-striped is-hoverable is-bordered">
 		<caption>
 			Classes you teach
 		</caption>
@@ -43,7 +43,7 @@
 			<th>Assignments</th>
 		</tr>
 		{% for i in teacher %}
-		<tr id="{{ i.id }}">
+		<tr id="{{ i.id }}" class="class-view">
 			<td class="class-name">{{ i.class_name }}</td>
 			<td>{{ i.teacher_id }}</td>
 			{% if i.assignments.all %}
@@ -55,7 +55,7 @@
 		{% endfor %}
 	</table>
 
-	<table style="width: 300px; margin-top: 20px">
+	<table style="width: 300px; margin-top: 20px" class="table is-striped is-hoverable is-bordered">
 		<caption>
 			Public classes you can join
 		</caption>
@@ -65,7 +65,7 @@
 			<th>Assignments</th>
 		</tr>
 		{% for i in public %}
-		<tr id="{{ i.id }}">
+		<tr id="{{ i.id }}" class="class-view">
 			<td class="class-name">{{ i.class_name }}</td>
 			<td>{{ i.teacher_id }}</td>
 			{% if i.assignments.all %}

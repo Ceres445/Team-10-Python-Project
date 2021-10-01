@@ -2,7 +2,52 @@
 {% block form_title %} Change data {% endblock %}
 {% block form %}
 <div class="container">
-	{{ form.as_p }}
-	<input class="submit" type="submit" name="Sign in " />
+	<form
+	method="post"
+	action="{% url 'changeAvatar' %}"
+	enctype="multipart/form-data"
+>
+	<div class="container">
+		{% csrf_token %}
+		<div class="input-label">
+			<label for="{{ second_form.bio.id_for_label }}">Bio</label>
+			<textarea
+				name="{{ second_form.bio.name }}"
+				cols="40"
+				rows="10"
+				maxlength="500"
+				id="{{ second_form.bio.id_for_label }}"
+			></textarea>
+			{{ second_form.bio.errors }}
+		</div>
+		<p>
+			<label for="{{ second_form.avatar.id_for_label }}">Avatar</label>
+			{% if user.profile.avatar %} Currently
+			<img src="{{ user.profile.avatar.url }}" alt="Profile photo" />
+			<input type="checkbox" name="avatar-clear" id="avatar-clear_id" />
+			<label for="avatar-clear_id">Clear</label>
+			{% endif %}
+		</p>
+
+		<p>Change</p>
+  <div class="file has-name">
+  <label class="file-label">
+    <input class="file-input" type="file" name="avatar" accept="image/*"  id="id_avatar"/>
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+    <span class="file-name">
+      No file chosen...
+      </span>
+  </label>
+</div>
+		<input class="submit" type="submit" name="Change " />
+	</div>
+</form>
 </div>
 {% endblock %} {% block redirect_url %} {% endblock %}

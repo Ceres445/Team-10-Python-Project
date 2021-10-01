@@ -21,17 +21,13 @@ html {
 body {
 	font-family: 'Inter', serif;
 	background-color: hsl(216, 28%, 7%);
-	color: rgb(201, 209, 217);
+	color: white;
 }
 
 a {
-	color: var(--light-blue);
 	text-decoration: none;
 }
 
-a:hover {
-	color: var(--dark-blue);
-}
 
 .loader {
 	border: 16px solid #f3f3f3; /* Light grey */
@@ -100,7 +96,6 @@ button {
 	font-size: 1.2rem;
 	padding-right: 0.5rem;
 	padding-left: 0.5rem;
-	color: #ffffff8c;
 }
 
 .link-nav:hover {
@@ -109,7 +104,7 @@ button {
 
 .submit {
 	align-self: center;
-	background-color: #3e8ed0;
+	background-color: hsl(36, 80%, 50%);
 	width: auto;
 	color: white;
 	padding: 5px 15px;
@@ -125,10 +120,11 @@ button {
 	color: black;
 	background-color: grey;
 	cursor: unset;
+	color: hsl(35, 100%, 45%);
 }
 
 .submit:hover:enabled {
-	background-color: #3e8ed0;
+	background-color: hsl(36, 95%, 66%);
 	color: white;
 	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
 		0 17px 0 0 rgba(0, 0, 0, 0.19);

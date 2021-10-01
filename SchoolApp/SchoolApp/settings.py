@@ -184,25 +184,31 @@ CACHES = {
         'LOCATION': 'unix:/tmp/memcached.sock',
     }
 }
-
+colors = {
+    'orange_color': 'hsl(35, 100%, 45%)'
+}
 BULMA_SETTINGS = {
     "extensions": [
         "bulma-collapsible",
         "bulma-navbar-burger",
-        "bulma-collapsible-runner"
+        "bulma-collapsible-runner",
+        "bulma-fileupload",
     ],
     "variables": {
-        'table-row-hover-background-color': 'hsl(222, 50%, 25%)',
-        'scheme-main': 'hsl(222, 50%, 18%)',
-        'scheme-main-bis': 'hsla(0, 0%, 100%, 0.11)',
-        'scheme-main-ter': 'hsl(222, 50%, 25%)',
-        'border': 'hsl(200, 42%, 26%)',
-        'link': 'white',
-        'link-hover': 'white',
-        'link-active': 'white',
-        'link-focus': 'white',
-        'text': 'white',
-        'text-strong': 'white',
+        'table-row-hover-background-color': 'hsl(34, 100%, 74%)',
+        'message-header-background-color': 'hsl(222, 50%, 18%)',
+        'scheme-main': 'hsl(36, 95%, 40%)',  # main color (orange)
+        'scheme-main-bis': 'hsla(0, 0, 90%, 0.11)',  # nth even color
+        'scheme-main-ter': 'hsl(36, 95%, 66%)',  # nth hover color
+        'border': 'hsl(200, 42%, 26%)',  # border color
+        'link': colors['orange_color'],
+        'grey-darker': 'black',
+        'navbar-item-hover-color': 'black',
+        'link-hover': 'hsl(36, 95%, 66%)',
+        'link-active': 'black',
+        'link-focus': 'black',
+        'text': 'black',
+        'text-strong': 'black',
         'link-invert': 'hsla(0, 0%, 100%, 0.15)',
         'background': 'hsla(0, 0%, 100%, 0.15)',
         "size-1": "6rem",
