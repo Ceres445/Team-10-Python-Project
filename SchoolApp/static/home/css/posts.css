@@ -155,3 +155,9 @@
 #class-selection-select {
 	width: unset;
 }
+.out-link{
+	color: hsl(35, 100%, 45%)
+}
+.class-view:hover{
+	cursor: pointer;
+}

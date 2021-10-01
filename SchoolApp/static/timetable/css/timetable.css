@@ -6,10 +6,11 @@ table {
 	border-collapse: collapse;
 	text-align: center;
 	margin: auto;
+	color: black;
 }
 
 .span {
-	background-color: hsl(222, 50%, 18%);
+	background-color: hsl(36, 80%, 50%);
 }
 
 table td,
@@ -23,8 +24,6 @@ table th {
 	padding-top: 12px;
 	padding-bottom: 12px;
 	text-align: center;
-	background-color: var(--background);
-	color: white;
 }
 
 .min {
@@ -49,4 +48,18 @@ table th {
 }
 .field.is-grouped {
 	justify-content: space-evenly;
+}
+
+.table thead,
+.table th{
+    background-color: hsl(36, 95%, 66%);
+	color: black
+}
+.table td,
+.table thead td,
+.table td a{
+	color: black
+}
+.checkbox:hover{
+	color: #fbb956;
 }

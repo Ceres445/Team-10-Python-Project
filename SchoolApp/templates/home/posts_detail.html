@@ -1,5 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Post {{ post.title
-}} {% endblock %} {% block extra_head %}
+{% extends 'base.html' %} {% load static %} {% block title %} Post {{ post.title}} {% endblock %} {% block extra_head %}
 <link
 	rel="stylesheet"
 	href="{% static 'home/css/posts.css' %}"
@@ -14,10 +13,10 @@
 <div class="post-container">
 	<div class="post-header">
 		<div class="post-title">
-			<h1>{{ post.title }}</h1>
+			<h1 class="title is-3">{{ post.title }}</h1>
 			<p>
 				Posted by
-				<a href="{% url 'profileView' author.username %}"
+				<a href="{% url 'profileView' author.username %}" class="out-link"
 					>{{ post.author }}</a
 				>
 				at {{ post.created_at }}
@@ -52,7 +51,7 @@
 		{% for comment in comments %}
 		<div class="comment-container">
 			<p class="comment-header">
-				<a href="{% url 'profileView' comment.author.username %}"
+				<a href="{% url 'profileView' comment.author.username %}" class="out-link"
 					>{{ comment.author }}</a
 				>
 				<span class="inactive"> at {{ comment.created_at }}</span>
