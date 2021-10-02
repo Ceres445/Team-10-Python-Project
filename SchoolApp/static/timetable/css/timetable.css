@@ -1,6 +1,9 @@
 @import '../../home/css/posts.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap');
 
+caption{
+	color: white;
+}
 table {
 	font-family: 'Inter', sans-serif;
 	border-collapse: collapse;
