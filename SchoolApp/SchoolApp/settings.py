@@ -195,6 +195,8 @@ BULMA_SETTINGS = {
         "bulma-fileupload",
     ],
     "variables": {
+        'box-color': 'white',
+        'box-background-color': 'hsl(216, 50%, 12%)',
         'table-row-hover-background-color': 'hsl(34, 100%, 74%)',
         'message-header-background-color': 'hsl(222, 50%, 18%)',
         'scheme-main': 'hsl(36, 95%, 40%)',  # main color (orange)

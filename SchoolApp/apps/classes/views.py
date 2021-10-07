@@ -87,7 +87,7 @@ def view_submissions(request, pk):
     assignment = get_object_or_404(Assignment, pk=pk)
     if assignment.key_class.teacher_id == request.user:
         uploads = Upload.objects.all().filter(assignment=assignment)[::-1]
-        return render(request, 'classes/view_submissions.html', {'uploads': uploads})
+        return render(request, 'classes/view_submissions.html', {'uploads': uploads, 'assignment': assignment})
     else:
         raise PermissionDenied("Only the teacher can see uploads")
 
