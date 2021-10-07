@@ -1,5 +1,5 @@
-# Team-10-Python-Project
-A simple website
+# EduOrange
+A simple school portal website for students and teachers
 
 
 # Running a local instance
