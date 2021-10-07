@@ -1,7 +1,25 @@
-{% extends 'base.html' %} {% block content %} {% for i in uploads %}
-<div class="post">
-	<h1>Student: {{ i.author }}</h1>
-	<p>File: <a href="{{ i.file.url }}">File</a></p>
-	<p>Uploaded at: {{ i.created_at }}</p>
+{% extends 'base.html' %} {% load static %} {% block extra_head %}
+<link
+	rel="stylesheet"
+	href="{% static 'home/css/forms.css' %}"
+	type="text/css"
+/>
+{% endblock %}{% block content %}
+
+<div class="form-container" style="align-items: center">
+	<p class="title is-3">Class - {{ assignment.key_class }}</p>
+	<p class="title is-3">Assignment - {{ assignment.title }}</p>
 </div>
-{% endfor %} {% endblock %}
+<div class="columns is-mobile is-flex-direction-column" style="margin-top: 1.5rem; align-items: center;">
+	{% for i in uploads %}
+	<div class="column is-half is-centered">
+		<div class="box">
+			<h1>Student: {{ i.author }}</h1>
+			<p>File: <a href="{{ i.file.url }}">File</a></p>
+			<p>Uploaded at: {{ i.created_at }}</p>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
+{% endblock %}
