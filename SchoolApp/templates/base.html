@@ -12,6 +12,7 @@
     name="google-site-verification"
     content="iDQL3060-udG_CC8R-kNSEDe5D1_teAcxzguYmd4H1Y"
   />
+  <link rel="icon" href="{% static 'svg/logo.svg' %}">
   {# Verify with google#}
   <title>EduOrange{% block title %}{% endblock %}</title>
 {#  <link#}
@@ -35,14 +36,15 @@
 <body>
 {% block navbar %}
   <div id="navigation-container">
-  <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
+  <nav class="navbar" role="navigation" aria-label="main navigation" style="padding-left: 0">
   <div class="navbar-brand">
 {#    <a class="navbar-item" href="https://bulma.io">#}
 {#      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">#}
 {#    </a>#}
-    <a class="navbar-item" href="/" style="font-size: 1.3rem">
-        Home
-      </a>
+    <a class="navbar-item" href="/">
+      <img src="{% static 'svg/logo.svg' %}" width="50" height="28" alt="site logo">
+      Home
+    </a>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
