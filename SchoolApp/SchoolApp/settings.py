@@ -211,6 +211,7 @@ BULMA_SETTINGS = {
         "bulma-fileupload",
     ],
     "variables": {
+        'title-color': 'white',
         'box-color': 'white',
         'box-background-color': 'hsl(216, 50%, 12%)',
         'table-row-hover-background-color': 'hsl(34, 100%, 74%)',
@@ -229,7 +230,7 @@ BULMA_SETTINGS = {
         'text-strong': 'black',
         'link-invert': 'hsla(0, 0%, 100%, 0.15)',
         'background': 'hsla(0, 0%, 100%, 0.15)',
-        "size-1": "6rem",
+        "size-1": "5rem",
     },
     "output_style": "compressed",
 }

@@ -53,12 +53,6 @@ a {
 	margin: auto;
 	text-align: center;
 }
-
-.title {
-	color: grey;
-	font-size: 15px;
-}
-
 button {
 	border: none;
 	outline: 0;
@@ -90,6 +84,11 @@ button {
 		border-radius: 5px;
 		box-sizing: border-box;
 		padding: 0 20px;
+	}
+}
+@media only screen and (max-width: 800px){
+	.title.is-1{
+		font-size: 3rem;
 	}
 }
 .navbar-item {
