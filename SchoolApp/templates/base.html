@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% load static %}{% load tags %}{% load django_simple_bulma %} {% bulma %} {% font_awesome%}
+	{% load static %}{% load tags %}{% load django_simple_bulma %} {% bulma %}
+	{% font_awesome%}
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,15 +11,41 @@
 			content="iDQL3060-udG_CC8R-kNSEDe5D1_teAcxzguYmd4H1Y"
 		/>
 		<link rel="icon" href="{% static 'svg/logo.svg' %}" />
-		{# Verify with google#}
-		<title>EduOrange{% block title %}{% endblock %}</title>
-		<meta content="Edu Orange" property="og:title" />
+		{# Verify with google#} !-- Primary Meta Tags -->
+		<title>Edu Orange</title>
+		<meta name="title" content="Edu Orange" />
 		<meta
+			name="description"
 			content="A simple school portal website for students and teachers"
+		/>
+
+		<!-- Open Graph / Facebook / Discord-->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="{{ request.build_absolute_uri }}" />
+		<meta property="og:title" content="Edu Orange" />
+		<meta
 			property="og:description"
+			content="A simple school portal website for students and teachers"
+		/>
+		<meta property="og:image" content="{% fullstatic 'svg/logo.svg' %}" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta
+			property="twitter:url"
+			content="{{ request.build_absolute_uri }}"
+		/>
+		<meta property="twitter:title" content="Edu Orange" />
+		<meta
+			property="twitter:description"
+			content="A simple school portal website for students and teachers"
+		/>
+		<meta
+			property="twitter:image"
+			content="{% fullstatic 'svg/logo.svg' %}"
 		/>
 		<meta content="{{ request.build_absolute_uri }}" property="og:url" />
-		<meta content={% fullstatic 'svg/logo.svg' %} property="og:image" />
+		<meta content="{% fullstatic 'svg/logo.svg' %}" property="og:image" />
 		<meta content="#c77905" data-react-helmet="true" name="theme-color" />
 		<link
 			rel="stylesheet"
