@@ -89,6 +89,9 @@
 	.header {
 		grid-template-columns: repeat(2, minmax(0px, 1fr));
 	}
+	.shrink-small {
+		flex-direction: column;
+	}
 }
 
 .active {
