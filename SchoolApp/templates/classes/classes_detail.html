@@ -15,9 +15,10 @@
 
 {% block content %}
   <div class="form-container" style="left: auto">
-    <h1> Class: {{ class.class_name }}</h1>
-    <h2> Teacher: {{ class.teacher_id }}</h2>
-
+  <div class="columns is-half is-centered is-flex-direction-column" style="align-items: center">
+    <p class="title is-3"> Class: {{ class.class_name }}</p>
+    <p class="title is-3"> Teacher: {{ class.teacher_id }}</p>
+  </div>
     {% for i, j in assignments %}
       <div class="container" style="margin-bottom: 5px">
         <p>Title: {{ i.title }} </p>

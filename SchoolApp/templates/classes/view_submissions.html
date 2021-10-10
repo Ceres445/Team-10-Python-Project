@@ -6,11 +6,11 @@
 />
 {% endblock %}{% block content %}
 
-<div class="form-container" style="align-items: center">
-	<p class="title is-3">Class - {{ assignment.key_class }}</p>
-	<p class="title is-3">Assignment - {{ assignment.title }}</p>
-</div>
 <div class="columns is-mobile is-flex-direction-column" style="margin-top: 1.5rem; align-items: center;">
+  <div class="columns column is-half is-centered is-flex-direction-column" style="align-items: center">
+    <p class="title is-3" style="align-self: center">Class - {{ assignment.key_class }}</p>
+	<p class="title is-3">Assignment - {{ assignment.title }}</p>
+  </div>
 	{% for i in uploads %}
 	<div class="column is-half is-centered">
 		<div class="box">
