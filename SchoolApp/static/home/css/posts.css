@@ -92,6 +92,9 @@
 	.shrink-small {
 		flex-direction: column;
 	}
+	.shrink-small > .submit-form{
+		width: unset;
+	}
 }
 
 .active {
