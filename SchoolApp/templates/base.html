@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% load static %} {% load django_simple_bulma %} {% bulma %} {% font_awesome%}
+	{% load static %}{% load tags %}{% load django_simple_bulma %} {% bulma %} {% font_awesome%}
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,8 +17,8 @@
 			content="A simple school portal website for students and teachers"
 			property="og:description"
 		/>
-		<meta content="{% url 'homePage' %}" property="og:url" />
-		<meta content={% static 'svg/logo.svg' %} property="og:image" />
+		<meta content="{{ request.build_absolute_uri }}" property="og:url" />
+		<meta content={% fullstatic 'svg/logo.svg' %} property="og:image" />
 		<meta content="#c77905" data-react-helmet="true" name="theme-color" />
 		<link
 			rel="stylesheet"
