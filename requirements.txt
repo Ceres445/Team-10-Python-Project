@@ -8,7 +8,7 @@ dj-database-url==0.5.0
 Django==3.2.7
 django-appconf==1.0.5
 django-invitations==1.9.3
-django-storages==1.11.1
+django-storages==1.12
 djangorestframework==3.12.4
 dropbox==11.21.0
 flake8==3.9.2
