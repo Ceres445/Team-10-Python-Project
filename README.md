@@ -1,4 +1,6 @@
 # EduOrange
+Your classroom made online
+
 A simple school portal website for students and teachers
 
 
