@@ -28,6 +28,7 @@
 			content="A simple school portal website for students and teachers"
 		/>
 		<meta property="og:image" content="{% static 'svg/logo.png' %}" />
+    <meta content="#c77905" data-react-helmet="true" name="theme-color" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
@@ -44,9 +45,6 @@
 			property="twitter:image"
 			content="{% fullstatic 'svg/logo.svg' %}"
 		/>
-		<meta content="{{ request.build_absolute_uri }}" property="og:url" />
-		<meta content="{% fullstatic 'svg/logo.png'%}" property="og:image" />
-		<meta content="#c77905" data-react-helmet="true" name="theme-color" />
 		<link
 			rel="stylesheet"
 			href="{% static 'home/css/base.css' %}"
