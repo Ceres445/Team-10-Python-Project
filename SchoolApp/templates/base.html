@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 	{% load static %}{% load tags %}{% load django_simple_bulma %} {% bulma %}
-	{% font_awesome%}
+	<script
+		src="https://kit.fontawesome.com/a505c2a1a4.js"
+		crossorigin="anonymous"
+	></script>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,7 +31,7 @@
 			content="A simple school portal website for students and teachers"
 		/>
 		<meta property="og:image" content="{% static 'misc/logo.png' %}" />
-    <meta content="#c77905" data-react-helmet="true" name="theme-color" />
+		<meta content="#c77905" data-react-helmet="true" name="theme-color" />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
@@ -148,10 +151,76 @@
 			</nav>
 		</div>
 		{% endblock %} {% block content %} {% endblock %}
-		<meta
-			name="google-site-verification"
-			content="iDQL3060-udG_CC8R-kNSEDe5D1_teAcxzguYmd4H1Y"
-		/>
-		{# Verify by google#}
+		<footer class="footer" style="padding: unset">
+			<div class="content has-text-centered">
+				<p>
+					Made with
+					<a href="https://www.djangoproject.com/"
+						><span id="django-logo">django</span></a
+					>
+					and
+					<a href="https://bulma.io"
+						><span id="bulma-logo">Bulma</span></a
+					>
+				</p>
+			</div>
+			<div class="columns" style="padding-left: 2em">
+				<div class="column">
+					<p class="title is-5">Contact us</p>
+					<div style="display: grid">
+						<a
+							href="https://github.com/Ceres445/Team-10-Python-Project"
+							style="color: white"
+							target="_blank"
+						>
+							<span class="icon is-medium">
+								<i class="fab fa-github"></i> </span
+							><span>Github</span></a
+						>
+						<a
+							href="https://discord.com/users/488278979900342282"
+							style="color: #5c7cfa"
+							target="_blank"
+							><span class="icon is-medium"
+								><i class="fab fa-discord"></i></span
+							><span>Discord</span></a
+						>
+						<a
+							href="https://github.com/Ceres445/Team-10-Python-Project/issues"
+							style="color: hsl(0,80%,60%)"
+							target="_blank"
+						>
+							<span class="icon is-medium">
+								<i class="fas fa-bug"></i> </span
+							><span>Report a bug</span></a
+						>
+					</div>
+				</div>
+				<div class="column">
+					<p class="title is-5">Project</p>
+					<div style="display: grid">
+						<a
+							href="{% url 'docs' %}"
+							style="color: lightblue"
+							target="_blank"
+						>
+							<span class="icon is-medium">
+								<i class="fas fa-book-open"></i
+							></span>
+							<span>API Documentation</span></a
+						>
+						<a
+							href="{% url 'homePage' %}#features"
+							style="color: lightcoral"
+						>
+							<span class="icon is-medium">
+								<i class="fas fa-cogs"></i>
+								</span>
+							<span>Features</span></a
+						>
+					</div>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>

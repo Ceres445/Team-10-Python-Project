@@ -79,6 +79,12 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
     permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticatedOrReadOnly, IsInClass]
 
+    def get_queryset(self):
+        return filter_queryset(self.request.user, Comment, {'authenticated': authenticated_home, 'anon': anon_home},
+                               class_in='post__category__key_class__in',
+                               name='post__category__name'
+                               )
+
 
 class CategoryList(generics.ListAPIView):
     def get_queryset(self):

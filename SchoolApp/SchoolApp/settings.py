@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'invitations',
     'storages',
     'django_simple_bulma',
+    'drf_yasg',
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.auth',
@@ -157,7 +158,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication'
-    ]
+    ],
+    # 'DEFAULT_THROTTLE_CLASSES': [
+    #     'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.UserRateThrottle'
+    # ],
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'anon': '100/day',
+    #     'user': '1000/day'
+    # }
 }
 
 # static file storage
