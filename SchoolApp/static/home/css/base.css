@@ -134,3 +134,16 @@ button {
 p {
 	font-family: 'Roboto', sans-serif;
 }
+#bulma-logo {
+    padding-left: 18px;
+ 	height: 20px;
+ 	background: url(https://bulma.io/images/bulma-logo-white.png) no-repeat center;
+    background-size: 60px;
+    color: #00000000;
+}
+#django-logo {
+	padding-bottom: 2px;
+	background-size: 49px 23px !important;
+	background: url(https://static.djangoproject.com/img/logos/django-logo-negative.png) no-repeat;
+	color: #00000000;
+}
