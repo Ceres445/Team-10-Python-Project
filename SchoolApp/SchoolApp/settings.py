@@ -220,6 +220,7 @@ BULMA_SETTINGS = {
         "bulma-fileupload",
     ],
     "variables": {
+        'footer-background-color': 'hsl(12,33%,9%)',
         'title-color': 'white',
         'box-color': 'white',
         'box-background-color': 'hsl(216, 50%, 12%)',
