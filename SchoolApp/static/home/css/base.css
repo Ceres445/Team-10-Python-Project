@@ -147,3 +147,17 @@ p {
 	background: url(https://static.djangoproject.com/img/logos/django-logo-negative.png) no-repeat;
 	color: #00000000;
 }
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content-container{
+  flex: 1 0 auto;
+}
+.footer {
+  flex-shrink: 0;
+	color: #1a1800;
+}
