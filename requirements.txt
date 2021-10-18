@@ -40,7 +40,7 @@ six==1.16.0
 sqlparse==0.4.2
 stone==3.2.1
 tzlocal==2.1
-uritemplate==4.1.0
+uritemplate==4.1.1
 urllib3==1.26.7
 whitenoise==5.3.0
 git+https://github.com/Ceres445/django-simple-bulma
