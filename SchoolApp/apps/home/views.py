@@ -19,9 +19,9 @@ def index(request):
     # return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
     if request.user.is_authenticated:
         return render(request, "home/index.html",
-                      {
-                          'courses': list(map(str, request.user.profile.courses.all()))
-                      })
+                {
+                    'courses': list(map(str, request.user.profile.courses.all()))
+                    })
     else:
         return render(request, "home/index.html")
 
@@ -39,9 +39,9 @@ def register(request):
     else:
         return HttpResponseForbidden()
     return render(
-        request, "registration/register.html",
-        {"form": creation_form}
-    )
+            request, "registration/register.html",
+            {"form": creation_form}
+            )
 
 
 # DONE: ability to see others profiles
@@ -71,7 +71,7 @@ def edit_profile(request):
         first_form = CustomUserChangeForm(instance=request.user)
 
     return render(request, 'home/edit_profile.html',
-                  {'form': first_form, 'second_form': second_form, 'files': True})
+            {'form': first_form, 'second_form': second_form, 'files': True})
 
 
 @login_required
@@ -80,7 +80,7 @@ def change_avatar(request):
 
     if request.method == 'POST':
         form = AvatarChangeForm(request.POST, request.FILES,
-                                instance=request.user.profile)
+                instance=request.user.profile)
         if form.is_valid():
             form.save()
             return redirect(reverse('profile'))
@@ -95,18 +95,18 @@ def view_post_detail(request, pk=1):
     post = get_object_or_404(Post, pk=pk)  # raise 404 if invalid user
     comments = Comment.objects.all().filter(post__id=post.id)
     return render(request, 'home/posts_detail.html', {"pk": mark_safe(pk),
-                                                      'post': post, 'user': request.user,
-                                                      'comments': comments,
-                                                      'author': post.author})
+        'post': post, 'user': request.user,
+        'comments': comments,
+        'author': post.author})
 
 
 def view_posts(request):
     """See all posts """
     if request.user.is_authenticated:
         return render(request, "home/posts.html",
-                      {
-                          'courses': list(map(str, request.user.profile.courses.all()))
-                      })
+                {
+                    'courses': list(map(str, request.user.profile.courses.all()))
+                    })
     else:
         return render(request, "home/posts.html")
 
@@ -118,4 +118,4 @@ def view_user_posts(request, pk=None):
 
     user = get_object_or_404(User, pk=pk)
     return render(request, 'home/view_user_posts.html',
-                  {"pk": user.username, "user": user})
+            {"pk": user.username, "user": user})
