@@ -16,7 +16,7 @@ gunicorn==20.1.0
 idna==3.3
 inflection==0.5.1
 itypes==1.2.0
-Jinja2==3.0.2
+Jinja2==3.0.3
 libsass==0.21.0
 MarkupSafe==2.0.1
 mccabe==0.6.1
