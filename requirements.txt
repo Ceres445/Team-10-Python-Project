@@ -11,7 +11,7 @@ django-invitations==1.9.3
 django-storages==1.12.3
 djangorestframework==3.12.4
 drf-yasg==1.20.0
-dropbox==11.24.0
+dropbox==11.25.0
 gunicorn==20.1.0
 idna==3.3
 inflection==0.5.1
