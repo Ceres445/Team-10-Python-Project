@@ -41,6 +41,6 @@ sqlparse==0.4.2
 stone==3.2.1
 tzlocal==4.1
 uritemplate==4.1.1
-urllib3==1.26.7
+urllib3==1.26.8
 whitenoise==5.3.0
 git+https://github.com/Ceres445/django-simple-bulma
