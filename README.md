@@ -160,4 +160,4 @@ the website works without those options.
 
 
 # Requirements
-Python 3.6+ (The project was built with python 3.9.5 but 3.6+ should work fine)
+Python 3.8+ (The project was built with python 3.9.5 but 3.8+ should work fine)
