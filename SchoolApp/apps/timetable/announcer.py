@@ -9,7 +9,7 @@ from apps.timetable.utils import get_class_announcement
 
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(announce, 'cron', minute='10/15')
+    scheduler.add_job(announce, "cron", minute="10/15")
     scheduler.start()
     print("Started APS Scheduler")
 

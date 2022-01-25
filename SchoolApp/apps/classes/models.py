@@ -47,47 +47,47 @@ class Upload(models.Model):
 
 
 class ClassInvitation(AbstractBaseInvitation):
-    email = models.EmailField(unique=False, verbose_name='email_address',
-                              max_length=420)
-    created = models.DateTimeField(verbose_name='created',
-                                   default=timezone.now)
-    invited_class = models.ForeignKey(Classes, on_delete=models.CASCADE, related_name='invitees')
+    email = models.EmailField(
+        unique=False, verbose_name="email_address", max_length=420
+    )
+    created = models.DateTimeField(verbose_name="created", default=timezone.now)
+    invited_class = models.ForeignKey(
+        Classes, on_delete=models.CASCADE, related_name="invitees"
+    )
 
     @classmethod
     def create(cls, email, inviter=None, **kwargs):
         key = get_random_string(64).lower()
         instance = cls._default_manager.create(
             email=email,
-            invited_class=kwargs.pop('invited_class', None),
+            invited_class=kwargs.pop("invited_class", None),
             key=key,
             inviter=inviter,
-            **kwargs)
+            **kwargs,
+        )
         return instance
 
     def key_expired(self):
-        expiration_date = (
-                self.sent + timedelta(days=3))
+        expiration_date = self.sent + timedelta(days=3)
         return expiration_date <= timezone.now()
 
     def send_invitation(self, request, **kwargs):
-        invite_url = reverse('AcceptInvite',
-                             args=[self.key])
+        invite_url = reverse("AcceptInvite", args=[self.key])
         ctx = kwargs
-        ctx.update({
-            'invite_url': request.build_absolute_uri(invite_url),
-            'register_url': request.build_absolute_uri(reverse("register")),
-            'site_name': self.invited_class.class_name,
-            'email': self.email,
-            'key': self.key,
-            'inviter': self.inviter,
-        })
+        ctx.update(
+            {
+                "invite_url": request.build_absolute_uri(invite_url),
+                "register_url": request.build_absolute_uri(reverse("register")),
+                "site_name": self.invited_class.class_name,
+                "email": self.email,
+                "key": self.key,
+                "inviter": self.inviter,
+            }
+        )
 
-        email_template = 'emails/email_invite'
+        email_template = "emails/email_invite"
 
-        get_invitations_adapter().send_mail(
-            email_template,
-            self.email,
-            ctx)
+        get_invitations_adapter().send_mail(email_template, self.email, ctx)
         self.sent = timezone.now()
         self.save()
 
