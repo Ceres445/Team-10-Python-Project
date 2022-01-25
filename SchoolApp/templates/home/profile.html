@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="redirect">
-        <a href="{% url 'viewPosts' %}?username={{ user.username | urlencode }}"> View Posts</a>
+        <a href="{% url 'viewPosts' username=user.username %}"> View Posts</a>
 	</div>
 	{% if current %}
 	<div class="redirect">
