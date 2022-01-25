@@ -17,8 +17,12 @@ class IsInClass(permissions.BasePermission):
             try:
                 obj = obj.post
             except AttributeError:
-                raise RuntimeError("Invalid object of type", obj.__type__, 'passed, IsInClass expects Post or Comment')
-        if obj.category.name != 'Class':
+                raise RuntimeError(
+                    "Invalid object of type",
+                    obj.__type__,
+                    "passed, IsInClass expects Post or Comment",
+                )
+        if obj.category.name != "Class":
             return True
         if request.method in permissions.SAFE_METHODS:
             if obj.category.key_class in request.user.profile.courses.all():

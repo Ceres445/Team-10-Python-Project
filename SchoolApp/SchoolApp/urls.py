@@ -21,11 +21,11 @@ from django.urls import path, include
 from SchoolApp import settings
 
 urlpatterns = [
-    path('', include("apps.home.urls")),
-    path('classes/', include("apps.classes.urls")),
-    path('admin/', admin.site.urls),
-    path('api/', include('apps.public_api.urls')),
-    path('timetable/', include('apps.timetable.urls')),
-    url(r'^invitations/', include('invitations.urls', namespace='invitations')),
-    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("", include("apps.home.urls")),
+    path("classes/", include("apps.classes.urls")),
+    path("admin/", admin.site.urls),
+    path("api/", include("apps.public_api.urls")),
+    path("timetable/", include("apps.timetable.urls")),
+    url(r"^invitations/", include("invitations.urls", namespace="invitations")),
+    *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
