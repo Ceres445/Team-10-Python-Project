@@ -1,7 +1,7 @@
-asgiref==3.4.1
+asgiref==3.5.0
 certifi==2021.10.8
 chardet==4.0.0
-charset-normalizer==2.0.10
+charset-normalizer==2.0.11
 coreapi==2.3.3
 coreschema==0.0.4
 dj-database-url==0.5.0
@@ -11,7 +11,7 @@ django-invitations==1.9.3
 django-storages==1.12.3
 djangorestframework==3.13.1
 drf-yasg==1.20.0
-dropbox==11.25.0
+dropbox==11.26.0
 gunicorn==20.1.0
 idna==3.3
 inflection==0.5.1
@@ -38,7 +38,7 @@ ruamel.yaml==0.17.20
 ruamel.yaml.clib==0.2.6
 six==1.16.0
 sqlparse==0.4.2
-stone==3.2.1
+stone==3.3.1
 tzlocal==4.1
 uritemplate==4.1.1
 urllib3==1.26.8
