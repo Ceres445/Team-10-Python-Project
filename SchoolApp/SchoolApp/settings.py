@@ -24,7 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'ph+0qjo^*#n_!*d=nizy4ly7$dm-&nvk9yq0&_*#(=gxgd-*-w'
 
-<<<<<<< HEAD
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = False
@@ -32,11 +31,6 @@ SECRET_KEY = os.environ.get(
     "DJANGO_SECRET_KEY", "ph+0qjo^*#n_!*d=nizy4ly7$dm-&nvk9yq0&_*#(=gxgd-*-w"
 )
 # ALLOWED_HOSTS = []
-=======
-DEBUG = True
-
-ALLOWED_HOSTS = []
->>>>>>> master
 
 # Application definition
 
