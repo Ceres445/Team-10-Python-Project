@@ -83,7 +83,7 @@ def classes_detail(request, pk=1):
             },
         )
     else:
-        raise PermissionDenied("You are not in this class")
+        return redirect(reverse("JoinClass", args=[pk]))
 
 
 @login_required
